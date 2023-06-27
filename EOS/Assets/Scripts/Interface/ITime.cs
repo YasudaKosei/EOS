@@ -1,4 +1,4 @@
 public interface ITime
 {
-    int Time { get; }
+    int ITime { get; }
 }

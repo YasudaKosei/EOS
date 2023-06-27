@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour,ITime
 {
-    public int Time => _time;
+    public int ITime => _time;
 
     private int _time;
 

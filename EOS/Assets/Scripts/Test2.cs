@@ -13,6 +13,6 @@ public class Test2 : MonoBehaviour
 
     void Update()
     {
-        if(test != null) Debug.Log(test.GetComponent<ITime>().Time);
+        if(test != null) Debug.Log(test.GetComponent<ITime>().ITime);
     }
 }
