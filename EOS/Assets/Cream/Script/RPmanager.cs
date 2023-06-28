@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +10,7 @@ public class RPmanager : MonoBehaviour
     [SerializeField] Text timeText;
     [SerializeField] Text dayText;
 
-    public void StartRankPrefab(int rankVal, string playerName, int timeVal, string day)
+    public void StartRankText(int rankVal, string playerName, int timeVal, string day)
     {
         rankText.text = rankVal.ToString();
         timeText.text = Convertime(timeVal);
