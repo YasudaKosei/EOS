@@ -321,7 +321,7 @@ namespace PlayFab.PfEditor
 
                     if (deserialized.TryGetValue("useSpinner", out useSpinner) && bool.Parse(useSpinner.ToString()))
                     {
-                        UnityEngine.UIElements.ProgressBar.UpdateState(UnityEngine.UIElements.ProgressBar.ProgressBarStates.spin);
+                        ProgressBar.UpdateState(ProgressBar.ProgressBarStates.spin);
                     }
 
                     if (deserialized.TryGetValue("blockUi", out blockUi) && bool.Parse(blockUi.ToString()))
@@ -331,28 +331,28 @@ namespace PlayFab.PfEditor
                     break;
 
                 case EdExStates.OnHttpRes:
-                    UnityEngine.UIElements.ProgressBar.UpdateState(UnityEngine.UIElements.ProgressBar.ProgressBarStates.off);
-                    UnityEngine.UIElements.ProgressBar.UpdateState(UnityEngine.UIElements.ProgressBar.ProgressBarStates.success);
+                    ProgressBar.UpdateState(ProgressBar.ProgressBarStates.off);
+                    ProgressBar.UpdateState(ProgressBar.ProgressBarStates.success);
                     ClearBlockingRequest(status);
                     break;
 
                 case EdExStates.OnError:
                     // deserialize and add json details
                     // clear blocking requests
-                    UnityEngine.UIElements.ProgressBar.UpdateState(UnityEngine.UIElements.ProgressBar.ProgressBarStates.error);
+                    ProgressBar.UpdateState(ProgressBar.ProgressBarStates.error);
                     ClearBlockingRequest();
                     Debug.LogError(string.Format("PlayFab EditorExtensions: Caught an error:{0}", status));
                     break;
 
                 case EdExStates.OnWarning:
-                    UnityEngine.UIElements.ProgressBar.UpdateState(UnityEngine.UIElements.ProgressBar.ProgressBarStates.warning);
+                    ProgressBar.UpdateState(ProgressBar.ProgressBarStates.warning);
                     ClearBlockingRequest();
                     Debug.LogWarning(string.Format("PlayFab EditorExtensions: {0}", status));
                     break;
 
                 case EdExStates.OnSuccess:
                     ClearBlockingRequest();
-                    UnityEngine.UIElements.ProgressBar.UpdateState(UnityEngine.UIElements.ProgressBar.ProgressBarStates.success);
+                    ProgressBar.UpdateState(ProgressBar.ProgressBarStates.success);
                     break;
             }
         }
