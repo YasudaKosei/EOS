@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class TomatoController : MonoBehaviour
+public class PotController : MonoBehaviour
 {
     public float moveSpeed = 5;
+    public float rotationSpeed = 5;
     public float jumpPower = 3;
     public float deceleration = 3;
 
@@ -26,10 +27,14 @@ public class TomatoController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        Quaternion horizontalRotation = Quaternion.Euler(0f, moveHorizontal * rotationSpeed, 0f);
+        Quaternion verticalRotation = Quaternion.Euler(0f, 0f, moveVertical * rotationSpeed);
         if (movement.magnitude > 0)
         {
             movement.Normalize();
             rb.AddForce(movement * moveSpeed * jumpSpeed);
+            rb.MoveRotation(rb.rotation * horizontalRotation);
+            rb.MoveRotation(rb.rotation * verticalRotation);
         }
 
         //ƒWƒƒƒ“ƒv
