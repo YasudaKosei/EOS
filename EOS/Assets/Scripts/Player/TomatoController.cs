@@ -21,7 +21,7 @@ public class TomatoController : MonoBehaviour
 
     void Update()
     {
-        //à⁄ìÆ
+        //????
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -29,10 +29,10 @@ public class TomatoController : MonoBehaviour
         if (movement.magnitude > 0)
         {
             movement.Normalize();
-            rb.AddForce(movement * moveSpeed);
+            rb.AddForce(movement * moveSpeed * jumpSpeed);
         }
 
-        //ÉWÉÉÉìÉv
+        //?W?????v
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -56,7 +56,7 @@ public class TomatoController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //ínñ Ç…ê⁄êGÇµÇƒÇ¢ÇÈÇ©îªíË
+        //?n???????G??????????????
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
