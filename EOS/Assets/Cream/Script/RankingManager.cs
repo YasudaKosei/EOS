@@ -13,15 +13,19 @@ public class RankingManager : MonoBehaviour
     public Transform myrankingPos;
     private RPmanager rPmanager;
 
+
     void Start()
     {
-        Login();
-        SetRanking();
+        PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
     }
-
-    void Update()
+    void OnEnable()
     {
-        
+        PlayFabAuthService.OnLoginSuccess += PlayFabLogin_OnLoginSuccess;
+    }
+    private void PlayFabLogin_OnLoginSuccess(LoginResult result)
+    {
+        SetRanking();
+        Debug.Log("Login Success!");
     }
 
     private void Login()
