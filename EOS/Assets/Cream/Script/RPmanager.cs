@@ -32,9 +32,9 @@ public class RPmanager : MonoBehaviour
         string time;
 
         //時分秒それぞれの値を計算
-        hoursVal = (timeVal / 60) / 60;
-        minutesVal = ((timeVal / 60) % 60) / 60;
-        secondsVal = ((timeVal / 60) % 60) % 60;
+        hoursVal = timeVal / 3600;
+        minutesVal = (timeVal % 3600) / 60;
+        secondsVal = timeVal % 60;
 
         //TimeCheckを使って値が10未満なら文字列の最初に0を入れる
         hours = TimeCheck(hoursVal);
