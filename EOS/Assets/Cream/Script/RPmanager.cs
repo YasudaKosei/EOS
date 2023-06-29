@@ -8,14 +8,12 @@ public class RPmanager : MonoBehaviour
     [SerializeField] Text rankText;
     [SerializeField] Text playerNameText;
     [SerializeField] Text timeText;
-    [SerializeField] Text dayText;
 
-    public void StartRankText(int rankVal, string playerName, int timeVal, string day)
+    public void StartRankText(int rankVal, string playerName, int timeVal)
     {
         rankText.text = rankVal.ToString();
         timeText.text = Convertime(timeVal);
         playerNameText.text = playerName;
-        dayText.text = day;
     }
 
     //秒数を、時分秒の表示になをす
