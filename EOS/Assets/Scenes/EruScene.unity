@@ -532,8 +532,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1655190563}
   - component: {fileID: 1655190562}
-  - component: {fileID: 1655190564}
   - component: {fileID: 1655190561}
+  - component: {fileID: 1655190564}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -620,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2616296380817233135}
+  rotationSpeed: 5
 --- !u!1 &1889922734
 GameObject:
   m_ObjectHideFlags: 0
