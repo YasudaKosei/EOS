@@ -5,6 +5,7 @@ public class TomatoController : MonoBehaviour
     public float moveSpeed = 5;
     public float jumpPower = 3;
     public float deceleration = 3;
+    public Transform cameraTransform;
 
     private Rigidbody rb;
     private bool isJumping = false;
@@ -22,15 +23,26 @@ public class TomatoController : MonoBehaviour
     void Update()
     {
         //ˆÚ“®
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        if (movement.magnitude > 0)
+        Vector3 moveDirection = Vector3.zero;
+        if (Input.GetKey(KeyCode.W))
         {
-            movement.Normalize();
-            rb.AddForce(movement * moveSpeed * jumpSpeed);
+            moveDirection += cameraTransform.forward;
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            moveDirection -= cameraTransform.forward;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveDirection -= cameraTransform.right;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveDirection += cameraTransform.right;
+        }
+
+        moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
+        rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //ƒWƒƒƒ“ƒv
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)

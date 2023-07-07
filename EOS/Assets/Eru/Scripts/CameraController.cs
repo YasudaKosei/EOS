@@ -3,27 +3,30 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player; // プレイヤーのTransform
-    public float distance = -6f; // プレイヤーからの距離
-    public float height = 3f; // プレイヤーからの高さ
+    public float distance = 10f; // カメラとプレイヤーの距離
+    public float rotationSpeed = 1f; // カメラの回転速度
 
-    private Vector3 offset; // カメラのオフセット
+    private Vector3 offset; // カメラとプレイヤーのオフセット
 
     void Start()
     {
-        // カメラの初期位置を設定
-        offset = new Vector3(0f, height, -distance);
-        transform.position = player.position + offset;
-        transform.LookAt(player.position);
+        // カメラとプレイヤーの初期オフセットを計算
+        offset = transform.position - player.position;
     }
 
     void LateUpdate()
     {
-        // プレイヤーの回転に合わせてカメラを移動・回転させる
-        Quaternion playerRotation = player.rotation;
-        Quaternion cameraRotation = Quaternion.Euler(0f, playerRotation.eulerAngles.y, 0f);
-        Vector3 desiredPosition = player.position + (cameraRotation * offset);
+        // マウスのX座標の変化量に基づいてカメラを回転させる
+        float mouseX = Input.GetAxis("Mouse X");
+        transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);
 
+        // カメラの位置を更新
+        Quaternion rotation = Quaternion.Euler(0f, mouseX * rotationSpeed, 0f);
+        offset = rotation * offset;
+        Vector3 desiredPosition = player.position + offset;
         transform.position = desiredPosition;
+
+        // カメラをプレイヤーを中心に移動させる
         transform.LookAt(player.position);
     }
 }
