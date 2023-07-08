@@ -13,49 +13,22 @@ public class RankingManager : MonoBehaviour
     public Transform myrankingPos;
     private RPmanager rPmanager;
 
+
     void Start()
     {
-        Login();
+        PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
+    }
+    void OnEnable()
+    {
+        PlayFabAuthService.OnLoginSuccess += PlayFabLogin_OnLoginSuccess;
+    }
+    private void PlayFabLogin_OnLoginSuccess(LoginResult result)
+    {
         SetRanking();
+        Debug.Log("Login Success!");
     }
 
-    void Update()
-    {
-        
-    }
-
-    private void Login()
-    {
-        PlayFabSettings.staticSettings.TitleId = "9BC90"; // TitleIDを設定
-
-        //ログイン作業(初回ログイン処理も含む)
-        string customIdPath = Path.Combine(Application.persistentDataPath, "customId.txt");
-        string customId;
-        if (File.Exists(customIdPath))
-        {
-            customId = File.ReadAllText(customIdPath);
-        }
-        else
-        {
-            customId = Guid.NewGuid().ToString();
-            File.WriteAllText(customIdPath, customId);
-        }
-        PlayFabClientAPI.LoginWithCustomID(new LoginWithCustomIDRequest()
-        {
-            CustomId = customId,
-        }, result =>
-        {
-            playerID = customId;
-            Debug.Log("ログイン成功 IDは " + result.PlayFabId);
-
-        }, error =>
-        {
-            Debug.Log("ログインエラー");
-        });
-    }
-
-
-    //週間ランキングを更新ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    //ランキングを取得
     public void SetRanking()
     {
         var request = new GetLeaderboardRequest
@@ -93,7 +66,7 @@ public class RankingManager : MonoBehaviour
 
             rPmanager = RankObj.GetComponent<RPmanager>();
 
-            rPmanager.StartRankText(rankVal++, item.DisplayName, item.StatValue, "0000");
+            rPmanager.StartRankText(rankVal++, item.DisplayName, item.StatValue);
 
         }
     }
@@ -131,7 +104,7 @@ public class RankingManager : MonoBehaviour
 
         rPmanager = RankObj.GetComponent<RPmanager>();
 
-        rPmanager.StartRankText(rankVal, DisplayName, StatValue, "0000");
+        rPmanager.StartRankText(rankVal, DisplayName, StatValue);
 
     }
 
@@ -140,5 +113,4 @@ public class RankingManager : MonoBehaviour
         // ランキングデータの取得に失敗した場合の処理
         Debug.Log("Failed to get leaderboard data: " + error.ErrorMessage);
     }
-    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }

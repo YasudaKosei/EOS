@@ -8,14 +8,12 @@ public class RPmanager : MonoBehaviour
     [SerializeField] Text rankText;
     [SerializeField] Text playerNameText;
     [SerializeField] Text timeText;
-    [SerializeField] Text dayText;
 
-    public void StartRankText(int rankVal, string playerName, int timeVal, string day)
+    public void StartRankText(int rankVal, string playerName, int timeVal)
     {
         rankText.text = rankVal.ToString();
         timeText.text = Convertime(timeVal);
         playerNameText.text = playerName;
-        dayText.text = day;
     }
 
     //秒数を、時分秒の表示になをす
@@ -32,9 +30,9 @@ public class RPmanager : MonoBehaviour
         string time;
 
         //時分秒それぞれの値を計算
-        hoursVal = (timeVal / 60) / 60;
-        minutesVal = ((timeVal / 60) % 60) / 60;
-        secondsVal = ((timeVal / 60) % 60) % 60;
+        hoursVal = timeVal / 3600;
+        minutesVal = (timeVal % 3600) / 60;
+        secondsVal = timeVal % 60;
 
         //TimeCheckを使って値が10未満なら文字列の最初に0を入れる
         hours = TimeCheck(hoursVal);
