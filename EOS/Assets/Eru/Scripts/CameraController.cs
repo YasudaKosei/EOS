@@ -6,16 +6,13 @@ public class CameraController : MonoBehaviour
     public float distance = 10f; // カメラとプレイヤーの距離
     public float rotationSpeed = 1f; // カメラの回転速度
 
-    private Vector3 offset; // カメラとプレイヤーのオフセット
-
-    void Start()
-    {
-        // カメラとプレイヤーの初期オフセットを計算
-        offset = transform.position - player.position;
-    }
+    [HideInInspector]
+    public Vector3 offset; // カメラとプレイヤーのオフセット
 
     void LateUpdate()
     {
+        if (player == null) return;
+
         // マウスのX座標の変化量に基づいてカメラを回転させる
         float mouseX = Input.GetAxis("Mouse X");
         transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);

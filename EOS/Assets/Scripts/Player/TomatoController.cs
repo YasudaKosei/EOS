@@ -5,19 +5,24 @@ public class TomatoController : MonoBehaviour
     public float moveSpeed = 5;
     public float jumpPower = 3;
     public float deceleration = 3;
-    public Transform cameraTransform;
 
     private Rigidbody rb;
     private bool isJumping = false;
     private bool jumpFlg = false;
     private float jumpSpeed = 1f;
     private float jumpTimeCount = 0f;
+    private Camera cam;
+    private Transform cameraTransform;
 
     private const float jumpTime = 0.3f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
+        cameraTransform = cam.transform;
+        cam.GetComponent<CameraController>().player = this.transform;
+        cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
     }
 
     void Update()
