@@ -8,7 +8,8 @@ public class DebugStart : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //左クリックしたら1秒かけてFadeInし、LoadSceneに移行する
+            //???N???b?N??????1?b??????FadeIn???ALoadScene?????s????
+            Load.SL = 1;
             fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));
         }
     }
