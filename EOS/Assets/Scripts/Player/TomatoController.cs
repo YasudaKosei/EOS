@@ -5,6 +5,7 @@ public class TomatoController : MonoBehaviour
     public float moveSpeed = 5;
     public float jumpPower = 3;
     public float deceleration = 3;
+    public PlayerChange pc;
 
     private Rigidbody rb;
     private bool isJumping = false;
