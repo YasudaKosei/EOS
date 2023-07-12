@@ -14,11 +14,14 @@ public class PlayerChange : MonoBehaviour
     private int time;
     private float timer = 0;
     private bool changeFlg = false;
+    private PlayerInput playerInput;
 
     void Awake()
     {
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
         time = coolDownTime;
+        playerInput = new PlayerInput();
+        playerInput.Enable();
     }
 
     void Update()
@@ -34,7 +37,7 @@ public class PlayerChange : MonoBehaviour
             if (time <= 0) changeFlg = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (playerInput.actions.Change.triggered)
         {
             if (changeFlg) ChangePlayer();
             else Debug.Log("クールダウン中");
