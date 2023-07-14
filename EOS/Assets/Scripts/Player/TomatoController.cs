@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TomatoController : MonoBehaviour
 {
@@ -6,6 +7,12 @@ public class TomatoController : MonoBehaviour
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
+
+    [SerializeField]
+    private InputActionReference jump;
+
+    [SerializeField]
+    private InputActionReference move;
 
     private Rigidbody rb;
     private bool isJumping = false;
@@ -15,7 +22,6 @@ public class TomatoController : MonoBehaviour
     private const float jumpTime = 0.3f;
     private Camera cam;
     private Transform cameraTransform;
-    private PlayerInput playerInput;
 
     void Start()
     {
@@ -24,14 +30,14 @@ public class TomatoController : MonoBehaviour
         cameraTransform = cam.transform;
         cam.GetComponent<CameraController>().player = this.transform;
         cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
-        playerInput = new PlayerInput();
-        playerInput.Enable();
+        jump.action.Enable();
+        move.action.Enable();
     }
 
     void Update()
     {
         //ˆÚ“®
-        Vector2 moveInput = playerInput.actions.Move.ReadValue<Vector2>();
+        Vector2 moveInput = move.action.ReadValue<Vector2>();
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
         moveDirection.y = 0;
@@ -39,13 +45,13 @@ public class TomatoController : MonoBehaviour
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //ƒWƒƒƒ“ƒv
-        if (playerInput.actions.Jump.triggered && !isJumping)
+        if (jump.action.triggered && !isJumping)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
             jumpSpeed = 0.5f;
         }
-        if (playerInput.actions.Jump.ReadValue<float>() > 0 && !jumpFlg)
+        if (jump.action.ReadValue<float>() > 0 && !jumpFlg)
         {
             jumpTimeCount += Time.deltaTime;
         }

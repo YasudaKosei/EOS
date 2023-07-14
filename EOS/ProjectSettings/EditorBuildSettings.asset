@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cream/Scenens/Ranking.unity
     guid: 7c161eb8287af4769b69b2d852c28a4c
+  - enabled: 1
+    path: Assets/Scenes/EruScene.unity
+    guid: a1913ab78e24b6245923492c6dfd98b6
+  - enabled: 1
+    path: Assets/Eru/Scenes/KeyScene.unity
+    guid: b4a24bd373d64484cbdf91490e2d7cc1
   m_configObjects: {}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerChange : MonoBehaviour
 {
@@ -9,19 +10,20 @@ public class PlayerChange : MonoBehaviour
     [SerializeField]
     private GameObject[] playerType;
 
+    [SerializeField]
+    private InputActionReference change;
+
     private GameObject nowPlayer;
     private Vector3 nowPos;
     private int time;
     private float timer = 0;
     private bool changeFlg = false;
-    private PlayerInput playerInput;
 
     void Awake()
     {
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
         time = coolDownTime;
-        playerInput = new PlayerInput();
-        playerInput.Enable();
+        change.action.Enable();
     }
 
     void Update()
@@ -37,7 +39,7 @@ public class PlayerChange : MonoBehaviour
             if (time <= 0) changeFlg = true;
         }
 
-        if (playerInput.actions.Change.triggered)
+        if (change.action.triggered)
         {
             if (changeFlg) ChangePlayer();
             else Debug.Log("クールダウン中");

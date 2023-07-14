@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,12 +10,12 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public Vector3 offset; // カメラとプレイヤーのオフセット
 
-    private PlayerInput playerInput;
+    [SerializeField]
+    private InputActionReference _camera;
 
     void Start()
     {
-        playerInput = new PlayerInput();
-        playerInput.Enable();
+        _camera.action.Enable();
     }
 
     void LateUpdate()
@@ -22,7 +23,7 @@ public class CameraController : MonoBehaviour
         if (player == null) return;
 
         // マウスのX座標の変化量に基づいてカメラを回転させる
-        float mouseX = playerInput.actions.Camera.ReadValue<float>();
+        float mouseX = _camera.action.ReadValue<float>();
         transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);
 
         // カメラの位置を更新
@@ -37,6 +38,6 @@ public class CameraController : MonoBehaviour
 
     void OnDisable()
     {
-        playerInput.Disable();
+        _camera.action.Disable();
     }
 }
