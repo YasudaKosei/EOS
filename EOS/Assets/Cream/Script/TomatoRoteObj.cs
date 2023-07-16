@@ -28,7 +28,6 @@ public class TomatoRoteObj : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(transform.localEulerAngles.z);
         if(!(transform.localEulerAngles.z < 2 && transform.localEulerAngles.z > -2) && hit == false)
         {
             transform.Rotate(new Vector3(0, 0, rotateSpeed));
