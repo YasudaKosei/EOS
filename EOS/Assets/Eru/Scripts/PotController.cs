@@ -1,49 +1,87 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PotController : MonoBehaviour
 {
-    public float moveSpeed = 5f;     // 移動速度
-    public float jumpForce = 5f;     // ジャンプ力
-    public float rotationSpeed = 100f;   // 回転速度
+    public float moveSpeed = 5;
+    public float jumpPower = 3;
+    public float rollForce = 10f;
+    public float deceleration = 3;
 
-    private bool isJumping = false;  // ジャンプ中かどうかのフラグ
+    [SerializeField]
+    private InputActionReference jump;
+
+    [SerializeField]
+    private InputActionReference move;
 
     private Rigidbody rb;
+    private bool isJumping = false;
+    private bool jumpFlg = false;
+    private float jumpSpeed = 1f;
+    private float jumpTimeCount = 0f;
+    private const float jumpTime = 0.3f;
+    private Camera cam;
+    private Transform cameraTransform;
 
-    private void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
+        cameraTransform = cam.transform;
+        cam.GetComponent<CameraController>().player = this.transform;
+        cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
+        jump.action.Enable();
+        move.action.Enable();
     }
 
-    private void Update()
+    void Update()
     {
-        // 入力の受け取り
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        //移動
+        Vector2 moveInput = move.action.ReadValue<Vector2>();
+        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+        moveDirection = cameraTransform.TransformDirection(moveDirection);
+        moveDirection.y = 0;
+        moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
+        rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
-        // 移動処理
-        Vector3 movement = new Vector3(moveX, 0f, moveZ) * moveSpeed * Time.deltaTime;
-        rb.MovePosition(transform.position + transform.TransformDirection(movement));
-
-        // 回転処理
-        float rotate = (moveX != 0f || moveZ != 0f) ? Mathf.Atan2(moveX, moveZ) * Mathf.Rad2Deg : 0f;
-        Quaternion targetRotation = Quaternion.Euler(0f, rotate, 0f);
-        rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.deltaTime));
-
-        // ジャンプ処理
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        //ジャンプ
+        if (jump.action.triggered && !isJumping)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
+            jumpSpeed = 0.5f;
+        }
+        if (jump.action.ReadValue<float>() > 0 && !jumpFlg)
+        {
+            jumpTimeCount += Time.deltaTime;
+        }
+        else if (isJumping)
+        {
+            jumpTimeCount = 0;
+            jumpFlg = true;
+        }
+        if (jumpTimeCount <= jumpTime && !jumpFlg && isJumping)
+        {
+            rb.AddForce(Vector3.up * jumpPower * 0.1f, ForceMode.Impulse);
+        }
+
+        // 回転
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rollForce * Time.deltaTime);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        // 地面に接触したらジャンプフラグをリセット
+        //地面着地判定
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
+            jumpFlg = false;
+            jumpSpeed = 1f;
+            jumpTimeCount = 0f;
         }
     }
 }

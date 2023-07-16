@@ -1,57 +1,57 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TomatoController : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float jumpPower = 3;
+    public float rollForce = 10f;
     public float deceleration = 3;
-    public Transform cameraTransform;
+
+    [SerializeField]
+    private InputActionReference jump;
+
+    [SerializeField]
+    private InputActionReference move;
 
     private Rigidbody rb;
     private bool isJumping = false;
     private bool jumpFlg = false;
     private float jumpSpeed = 1f;
     private float jumpTimeCount = 0f;
-
     private const float jumpTime = 0.3f;
+    private Camera cam;
+    private Transform cameraTransform;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
+        cameraTransform = cam.transform;
+        cam.GetComponent<CameraController>().player = this.transform;
+        cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
+        jump.action.Enable();
+        move.action.Enable();
     }
 
     void Update()
     {
         //ˆÚ“®
-        Vector3 moveDirection = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveDirection += cameraTransform.forward;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveDirection -= cameraTransform.forward;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDirection -= cameraTransform.right;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection += cameraTransform.right;
-        }
-
+        Vector2 moveInput = move.action.ReadValue<Vector2>();
+        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+        moveDirection = cameraTransform.TransformDirection(moveDirection);
+        moveDirection.y = 0;
         moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //ƒWƒƒƒ“ƒv
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (jump.action.triggered && !isJumping)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
             jumpSpeed = 0.5f;
         }
-        if (Input.GetKey(KeyCode.Space) && !jumpFlg)
+        if (jump.action.ReadValue<float>() > 0 && !jumpFlg)
         {
             jumpTimeCount += Time.deltaTime;
         }

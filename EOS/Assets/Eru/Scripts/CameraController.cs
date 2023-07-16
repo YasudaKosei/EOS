@@ -1,23 +1,29 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
     public Transform player; // プレイヤーのTransform
     public float distance = 10f; // カメラとプレイヤーの距離
-    public float rotationSpeed = 1f; // カメラの回転速度
+    public float rotationSpeed = 0.1f; // カメラの回転速度
 
-    private Vector3 offset; // カメラとプレイヤーのオフセット
+    [HideInInspector]
+    public Vector3 offset; // カメラとプレイヤーのオフセット
+
+    [SerializeField]
+    private InputActionReference _camera;
 
     void Start()
     {
-        // カメラとプレイヤーの初期オフセットを計算
-        offset = transform.position - player.position;
+        _camera.action.Enable();
     }
 
     void LateUpdate()
     {
+        if (player == null) return;
+
         // マウスのX座標の変化量に基づいてカメラを回転させる
-        float mouseX = Input.GetAxis("Mouse X");
+        float mouseX = _camera.action.ReadValue<float>();
         transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);
 
         // カメラの位置を更新
@@ -28,5 +34,10 @@ public class CameraController : MonoBehaviour
 
         // カメラをプレイヤーを中心に移動させる
         transform.LookAt(player.position);
+    }
+
+    void OnDisable()
+    {
+        _camera.action.Disable();
     }
 }
