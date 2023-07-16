@@ -22,6 +22,10 @@ public class CameraController : MonoBehaviour
     {
         if (player == null) return;
 
+        if(Gamepad.current != null) rotationSpeed = 1.5f;
+        else if(Joystick.current != null) rotationSpeed = 1.5f;
+        else rotationSpeed = 0.1f;
+
         // マウスのX座標の変化量に基づいてカメラを回転させる
         float mouseX = _camera.action.ReadValue<float>();
         transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerChange : MonoBehaviour
@@ -9,6 +10,12 @@ public class PlayerChange : MonoBehaviour
 
     [SerializeField]
     private GameObject[] playerType;
+
+    [SerializeField]
+    private GameObject can;
+
+    [SerializeField]
+    private Image[] playerImage;
 
     [SerializeField]
     private InputActionReference change;
@@ -24,6 +31,7 @@ public class PlayerChange : MonoBehaviour
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
         time = coolDownTime;
         change.action.Enable();
+        can.SetActive(false);
     }
 
     void Update()
@@ -41,15 +49,19 @@ public class PlayerChange : MonoBehaviour
 
         if (change.action.triggered)
         {
-            if (changeFlg) ChangePlayer();
+            if (changeFlg) can.SetActive(!can.activeSelf);
             else Debug.Log("クールダウン中");
+        }
+
+        for(int i = 0;i<playerImage.Length; i++)
+        {
+            if (playerID == i) playerImage[i].color = Color.yellow;
+            else playerImage[i].color = Color.white;
         }
     }
 
     public void ChangePlayer()
     {
-        playerID++;
-        if (playerID > playerType.Length - 1) playerID = 0;
         nowPos = nowPlayer.transform.position;
         nowPos.y += 1f;
         Transform cam = Camera.main.GetComponent<Transform>();

@@ -120,6 +120,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e660cd6a-5d7a-48d9-bb89-7d6a9391ee08",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "993149d2-17e1-474f-ba23-7c6c3b835747",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -133,6 +144,17 @@
                     "name": "",
                     "id": "09e93873-8d18-47f0-94cf-b9557e02da21",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23874677-bd50-42cf-b5f7-7a91ef8e4a23",
+                    "path": "<HID::JC-U3613M - DirectXInput Mode>/button3",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -164,6 +186,17 @@
                 },
                 {
                     "name": "",
+                    "id": "05e0314c-2f12-4326-a72d-648e31db8eb9",
+                    "path": "<HID::JC-U3613M - DirectXInput Mode>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f11791f1-8848-4975-a489-192224f8ad64",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -186,6 +219,17 @@
                 },
                 {
                     "name": "",
+                    "id": "fa995f6e-0d97-4ed8-8ae3-7f7a4b1f281f",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Change",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f831dba9-3b64-4d4f-8817-0e3bf8ae60e8",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -199,6 +243,17 @@
                     "name": "",
                     "id": "ca4f449e-d150-47c8-a529-5cf167e49da9",
                     "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1f2a958-b911-4bb8-8a4e-2ac74cdc8800",
+                    "path": "<HID::JC-U3613M - DirectXInput Mode>/button11",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
