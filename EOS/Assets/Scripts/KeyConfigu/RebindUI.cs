@@ -26,22 +26,11 @@ public class RebindUI : MonoBehaviour
     {
         if (_actionRef == null) return;
 
-        if(Gamepad.current != null) _scheme = "Gamepad";
-        if(Joystick.current != null) _scheme = "Gamepad";
-        else _scheme = "Keyboard";
-
         // InputActionインスタンスを保持しておく
         _action = _actionRef.action;
 
         // キーバインドの表示を反映する
         RefreshDisplay();
-    }
-
-    private void FixedUpdate()
-    {
-        if (Gamepad.current != null) _scheme = "Gamepad";
-        if (Joystick.current != null) _scheme = "Gamepad";
-        else _scheme = "Keyboard";
     }
 
     // 後処理

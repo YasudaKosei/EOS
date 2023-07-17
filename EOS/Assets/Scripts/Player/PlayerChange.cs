@@ -8,6 +8,12 @@ public class PlayerChange : MonoBehaviour
     public Vector3 startPos;
     public int coolDownTime = 5;
 
+    [HideInInspector]
+    public int nowPlayerID;
+
+    [HideInInspector]
+    public bool nowStopFlg = false;
+
     [SerializeField]
     private GameObject[] playerType;
 
@@ -24,7 +30,8 @@ public class PlayerChange : MonoBehaviour
     private Vector3 nowPos;
     private int time;
     private float timer = 0;
-    private bool changeFlg = false;
+    private bool changeFlg = true;
+    private bool idFlg = true;
 
     void Awake()
     {
@@ -32,10 +39,14 @@ public class PlayerChange : MonoBehaviour
         time = coolDownTime;
         change.action.Enable();
         can.SetActive(false);
+        nowPlayerID = playerID;
+        nowStopFlg = false;
     }
 
     void Update()
     {
+        if (Stop.stopFlg && !nowStopFlg) return;
+
         if (!changeFlg)
         {
             timer += Time.deltaTime;
@@ -49,11 +60,18 @@ public class PlayerChange : MonoBehaviour
 
         if (change.action.triggered)
         {
-            if (changeFlg) can.SetActive(!can.activeSelf);
+            if (changeFlg)
+            {
+                can.SetActive(true);
+                if (idFlg) nowPlayerID = playerID;
+                idFlg = false;
+                Stop.stopFlg = true;
+                nowStopFlg = true;
+            }
             else Debug.Log("クールダウン中");
         }
 
-        for(int i = 0;i<playerImage.Length; i++)
+        for (int i = 0; i < playerImage.Length; i++)
         {
             if (playerID == i) playerImage[i].color = Color.yellow;
             else playerImage[i].color = Color.white;
@@ -71,5 +89,6 @@ public class PlayerChange : MonoBehaviour
         time = coolDownTime;
         timer = 0;
         changeFlg = false;
+        idFlg = true;
     }
 }

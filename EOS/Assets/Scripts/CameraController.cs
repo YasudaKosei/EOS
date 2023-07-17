@@ -21,8 +21,9 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         if (player == null) return;
+        if (Stop.stopFlg) return;
 
-        if(Gamepad.current != null) rotationSpeed = 1.5f;
+        if (Gamepad.current != null) rotationSpeed = 1.5f;
         else if(Joystick.current != null) rotationSpeed = 1.5f;
         else rotationSpeed = 0.1f;
 

@@ -36,6 +36,13 @@ public class PotController : MonoBehaviour
 
     void Update()
     {
+        if (Stop.stopFlg)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            return;
+        }
+        else rb.constraints = RigidbodyConstraints.None;
+
         //ˆÚ“®
         Vector2 moveInput = move.action.ReadValue<Vector2>();
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);

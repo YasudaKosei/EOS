@@ -26,6 +26,8 @@ public class TimeManager : MonoBehaviour,ITime
 
     void Update()
     {
+        if (Stop.stopFlg) return;
+
         time += Time.deltaTime;
 
         //•b
