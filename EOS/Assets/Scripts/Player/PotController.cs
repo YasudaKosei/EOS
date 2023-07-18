@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PotController : MonoBehaviour
 {
     public float moveSpeed = 5;
+    public float dashSpeed = 1.5f;
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
@@ -13,6 +14,9 @@ public class PotController : MonoBehaviour
 
     [SerializeField]
     private InputActionReference move;
+
+    [SerializeField]
+    private InputActionReference dash;
 
     private Rigidbody rb;
     private bool isJumping = false;
@@ -48,6 +52,10 @@ public class PotController : MonoBehaviour
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
         moveDirection.y = 0;
+        float dashS;
+        if (dash.action.inProgress) dashS = dashSpeed;
+        else dashS = 1f;
+        moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed * dashS;
         moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 

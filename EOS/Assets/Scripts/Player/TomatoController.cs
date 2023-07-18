@@ -4,15 +4,19 @@ using UnityEngine.InputSystem;
 public class TomatoController : MonoBehaviour
 {
     public float moveSpeed = 5;
+    public float dashSpeed = 1.5f;
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
 
     [SerializeField]
     private InputActionReference jump;
-
+    
     [SerializeField]
     private InputActionReference move;
+
+    [SerializeField]
+    private InputActionReference dash;
 
     private Rigidbody rb;
     private bool isJumping = false;
@@ -32,6 +36,7 @@ public class TomatoController : MonoBehaviour
         cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();
+        dash.action.Enable();
     }
 
     void Update()
@@ -48,7 +53,10 @@ public class TomatoController : MonoBehaviour
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
         moveDirection.y = 0;
-        moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
+        float dashS;
+        if (dash.action.inProgress) dashS = dashSpeed;
+        else dashS = 1f;
+        moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed * dashS;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //ƒWƒƒƒ“ƒv

@@ -5,34 +5,18 @@ using UnityEngine.InputSystem;
 
 public class GamePadTest : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionReference move;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        move.action.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Gamepad.current != null)
-        {
-            Cursor.lockState = CursorLockMode.Locked;  // マウスカーソルをロックして非表示にする
-            Cursor.visible = false;
-            
-
-            // UnityのInputSystemを使用している場合
-            Keyboard.current.onTextInput += (value) => { /* キーボード入力を無視する処理 */ };
-            Debug.Log("true");
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;  // マウスカーソルのロックを解除し、表示する
-            Cursor.visible = true;
-
-            // UnityのInputSystemを使用している場合
-            Keyboard.current.onTextInput += (value) => { /* キーボード入力を処理するコード */ };
-
-            Debug.Log("else");
-        }
+        Debug.Log(move.action.ReadValue<Vector2>());
     }
 }

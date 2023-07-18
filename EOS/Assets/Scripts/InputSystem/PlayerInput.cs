@@ -46,9 +46,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Camera"",
+                    ""name"": ""MouseCamera"",
                     ""type"": ""Value"",
                     ""id"": ""3aa508c7-8491-47e5-ab87-34babaacad24"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PadCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""c15d3931-32a8-4a56-93cf-0024cbe5d715"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -67,6 +76,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""eb48640a-0bad-4056-8d9f-781d8580003e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""4de7eb21-faf1-4c46-9c8b-f9a759160a32"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -175,45 +193,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""23874677-bd50-42cf-b5f7-7a91ef8e4a23"",
-                    ""path"": ""<HID::JC-U3613M - DirectXInput Mode>/button3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""834b1c71-bea1-4b36-a449-37b8ab5e1ecc"",
                     ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a219cdd5-9159-4c3b-95a3-e4a63736083e"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05e0314c-2f12-4326-a72d-648e31db8eb9"",
-                    ""path"": ""<HID::JC-U3613M - DirectXInput Mode>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Camera"",
+                    ""action"": ""MouseCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -231,18 +216,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""78ef9441-1574-454a-b153-5ff5ec436379"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Change"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fa995f6e-0d97-4ed8-8ae3-7f7a4b1f281f"",
-                    ""path"": ""<Joystick>/trigger"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -274,12 +248,45 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c1f2a958-b911-4bb8-8a4e-2ac74cdc8800"",
-                    ""path"": ""<HID::JC-U3613M - DirectXInput Mode>/button11"",
+                    ""id"": ""7f8e18ef-185a-40b5-b591-04bff0379e7d"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Pause"",
+                    ""action"": ""PadCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5521ea8b-de52-46d0-9551-3dbc1e9abce8"",
+                    ""path"": ""<HID::JC-U3613M - DirectXInput Mode>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PadCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9533dfb7-98ef-45b7-8148-b343397af658"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6727d94-7589-400a-bd9f-3e0d01ad881b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -303,9 +310,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions = asset.FindActionMap("actions", throwIfNotFound: true);
         m_actions_Move = m_actions.FindAction("Move", throwIfNotFound: true);
         m_actions_Jump = m_actions.FindAction("Jump", throwIfNotFound: true);
-        m_actions_Camera = m_actions.FindAction("Camera", throwIfNotFound: true);
+        m_actions_MouseCamera = m_actions.FindAction("MouseCamera", throwIfNotFound: true);
+        m_actions_PadCamera = m_actions.FindAction("PadCamera", throwIfNotFound: true);
         m_actions_Change = m_actions.FindAction("Change", throwIfNotFound: true);
         m_actions_Pause = m_actions.FindAction("Pause", throwIfNotFound: true);
+        m_actions_Dash = m_actions.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -369,18 +378,22 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
     private readonly InputAction m_actions_Move;
     private readonly InputAction m_actions_Jump;
-    private readonly InputAction m_actions_Camera;
+    private readonly InputAction m_actions_MouseCamera;
+    private readonly InputAction m_actions_PadCamera;
     private readonly InputAction m_actions_Change;
     private readonly InputAction m_actions_Pause;
+    private readonly InputAction m_actions_Dash;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
         public ActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_actions_Move;
         public InputAction @Jump => m_Wrapper.m_actions_Jump;
-        public InputAction @Camera => m_Wrapper.m_actions_Camera;
+        public InputAction @MouseCamera => m_Wrapper.m_actions_MouseCamera;
+        public InputAction @PadCamera => m_Wrapper.m_actions_PadCamera;
         public InputAction @Change => m_Wrapper.m_actions_Change;
         public InputAction @Pause => m_Wrapper.m_actions_Pause;
+        public InputAction @Dash => m_Wrapper.m_actions_Dash;
         public InputActionMap Get() { return m_Wrapper.m_actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -396,15 +409,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Camera.started += instance.OnCamera;
-            @Camera.performed += instance.OnCamera;
-            @Camera.canceled += instance.OnCamera;
+            @MouseCamera.started += instance.OnMouseCamera;
+            @MouseCamera.performed += instance.OnMouseCamera;
+            @MouseCamera.canceled += instance.OnMouseCamera;
+            @PadCamera.started += instance.OnPadCamera;
+            @PadCamera.performed += instance.OnPadCamera;
+            @PadCamera.canceled += instance.OnPadCamera;
             @Change.started += instance.OnChange;
             @Change.performed += instance.OnChange;
             @Change.canceled += instance.OnChange;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -415,15 +434,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Camera.started -= instance.OnCamera;
-            @Camera.performed -= instance.OnCamera;
-            @Camera.canceled -= instance.OnCamera;
+            @MouseCamera.started -= instance.OnMouseCamera;
+            @MouseCamera.performed -= instance.OnMouseCamera;
+            @MouseCamera.canceled -= instance.OnMouseCamera;
+            @PadCamera.started -= instance.OnPadCamera;
+            @PadCamera.performed -= instance.OnPadCamera;
+            @PadCamera.canceled -= instance.OnPadCamera;
             @Change.started -= instance.OnChange;
             @Change.performed -= instance.OnChange;
             @Change.canceled -= instance.OnChange;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -463,8 +488,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnCamera(InputAction.CallbackContext context);
+        void OnMouseCamera(InputAction.CallbackContext context);
+        void OnPadCamera(InputAction.CallbackContext context);
         void OnChange(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Camera",
+                    "name": "MouseCamera",
                     "type": "Value",
                     "id": "3aa508c7-8491-47e5-ab87-34babaacad24",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PadCamera",
+                    "type": "Value",
+                    "id": "c15d3931-32a8-4a56-93cf-0024cbe5d715",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -45,6 +54,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "eb48640a-0bad-4056-8d9f-781d8580003e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "4de7eb21-faf1-4c46-9c8b-f9a759160a32",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -153,45 +171,12 @@
                 },
                 {
                     "name": "",
-                    "id": "23874677-bd50-42cf-b5f7-7a91ef8e4a23",
-                    "path": "<HID::JC-U3613M - DirectXInput Mode>/button3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "834b1c71-bea1-4b36-a449-37b8ab5e1ecc",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a219cdd5-9159-4c3b-95a3-e4a63736083e",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "05e0314c-2f12-4326-a72d-648e31db8eb9",
-                    "path": "<HID::JC-U3613M - DirectXInput Mode>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Camera",
+                    "action": "MouseCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -209,18 +194,7 @@
                 {
                     "name": "",
                     "id": "78ef9441-1574-454a-b153-5ff5ec436379",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Change",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fa995f6e-0d97-4ed8-8ae3-7f7a4b1f281f",
-                    "path": "<Joystick>/trigger",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -252,12 +226,45 @@
                 },
                 {
                     "name": "",
-                    "id": "c1f2a958-b911-4bb8-8a4e-2ac74cdc8800",
-                    "path": "<HID::JC-U3613M - DirectXInput Mode>/button11",
+                    "id": "7f8e18ef-185a-40b5-b591-04bff0379e7d",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Pause",
+                    "action": "PadCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5521ea8b-de52-46d0-9551-3dbc1e9abce8",
+                    "path": "<HID::JC-U3613M - DirectXInput Mode>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PadCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9533dfb7-98ef-45b7-8148-b343397af658",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6727d94-7589-400a-bd9f-3e0d01ad881b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

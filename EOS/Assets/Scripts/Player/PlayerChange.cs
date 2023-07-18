@@ -47,6 +47,7 @@ public class PlayerChange : MonoBehaviour
     {
         if (Stop.stopFlg && !nowStopFlg) return;
 
+        //クールタイムカウント
         if (!changeFlg)
         {
             timer += Time.deltaTime;
@@ -58,6 +59,7 @@ public class PlayerChange : MonoBehaviour
             if (time <= 0) changeFlg = true;
         }
 
+        //プレイヤー選択処理
         if (change.action.triggered)
         {
             if (changeFlg)
@@ -78,12 +80,15 @@ public class PlayerChange : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// プレイヤー変更処理
+    /// </summary>
     public void ChangePlayer()
     {
         nowPos = nowPlayer.transform.position;
         nowPos.y += 1f;
         Transform cam = Camera.main.GetComponent<Transform>();
-        cam.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 1, cam.transform.position.z);
+        cam.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 0.5f, cam.transform.position.z);
         Destroy(nowPlayer);
         nowPlayer = Instantiate(playerType[playerID], nowPos, Quaternion.identity);
         time = coolDownTime;
