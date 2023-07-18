@@ -35,9 +35,11 @@ public class PlayerChange : MonoBehaviour
 
     void Awake()
     {
+        //有効化
+        change.action.Enable();
+
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
         time = coolDownTime;
-        change.action.Enable();
         can.SetActive(false);
         nowPlayerID = playerID;
         nowStopFlg = false;
@@ -73,6 +75,7 @@ public class PlayerChange : MonoBehaviour
             else Debug.Log("クールダウン中");
         }
 
+        //色変更
         for (int i = 0; i < playerImage.Length; i++)
         {
             if (playerID == i) playerImage[i].color = Color.yellow;
@@ -85,6 +88,7 @@ public class PlayerChange : MonoBehaviour
     /// </summary>
     public void ChangePlayer()
     {
+        nowPlayerID = playerID;
         nowPos = nowPlayer.transform.position;
         nowPos.y += 1f;
         Transform cam = Camera.main.GetComponent<Transform>();

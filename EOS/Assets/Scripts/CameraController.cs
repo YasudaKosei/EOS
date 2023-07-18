@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        //—LŒø‰»
         _camera.action.Enable();
         _padCamera.action.Enable();
     }
@@ -52,11 +53,5 @@ public class CameraController : MonoBehaviour
         transform.position = desiredPosition;
 
         transform.LookAt(player.position);
-    }
-
-    void OnDisable()
-    {
-        _camera.action.Disable();
-        _padCamera.action.Disable();
     }
 }
