@@ -17,7 +17,7 @@ public class PotController : MonoBehaviour
     private Rigidbody rb;
     private bool isJumping = false;
     private bool jumpFlg = false;
-    private float jumpSpeed = 1f;
+    //private float jumpSpeed = 1f;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -41,7 +41,8 @@ public class PotController : MonoBehaviour
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
         moveDirection.y = 0;
-        moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
+        //moveDirection = moveDirection.normalized * moveSpeed * jumpSpeed;
+        moveDirection = moveDirection.normalized * moveSpeed;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //ƒWƒƒƒ“ƒv
@@ -49,7 +50,7 @@ public class PotController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
-            jumpSpeed = 0.5f;
+            //jumpSpeed = 0.5f;
         }
         if (jump.action.ReadValue<float>() > 0 && !jumpFlg)
         {
@@ -80,7 +81,7 @@ public class PotController : MonoBehaviour
         {
             isJumping = false;
             jumpFlg = false;
-            jumpSpeed = 1f;
+            //jumpSpeed = 1f;
             jumpTimeCount = 0f;
         }
     }
