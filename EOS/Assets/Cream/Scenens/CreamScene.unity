@@ -2626,7 +2626,7 @@ MonoBehaviour:
   startPos: {x: 0, y: 1, z: 0}
   coolDownTime: 5
   playerType:
-  - {fileID: 7130652301535656318, guid: 4083b98822fa3c04483abe7d713e1423, type: 3}
+  - {fileID: 5810004026231032013, guid: 470d1db1c9a607148ab19cf5f8d016c4, type: 3}
   - {fileID: 2628508093572256840, guid: 52c4078084173694992b24144b19e107, type: 3}
   change: {fileID: -6126877187433577426, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
 --- !u!4 &1774871605
