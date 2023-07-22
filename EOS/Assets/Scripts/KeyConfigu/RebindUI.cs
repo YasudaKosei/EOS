@@ -7,9 +7,6 @@ public class RebindUI : MonoBehaviour
     // リバインド対象のAction
     [SerializeField] private InputActionReference _actionRef;
 
-    // リバインド対象のScheme
-    [SerializeField] private string _scheme = "Keyboard";
-
     // 現在のBindingのパスを表示するテキスト
     [SerializeField] private TMP_Text _pathText;
 

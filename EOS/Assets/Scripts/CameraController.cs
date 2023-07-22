@@ -4,9 +4,12 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     public Transform player; // プレイヤーのTransform
-    public float distance = 10f; // カメラとプレイヤーの距離
+    public float distance = 6f; // カメラとプレイヤーの距離
     public float rotationSpeed = 0.1f; // カメラの回転速度
     public float padRotationSpeed = 1.5f; // カメラの回転速度
+
+    [SerializeField]
+    private int targetFps = 60;
 
     [HideInInspector]
     public Vector3 offset; // カメラとプレイヤーのオフセット
@@ -19,6 +22,8 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = targetFps;
+
         //有効化
         _camera.action.Enable();
         _padCamera.action.Enable();
