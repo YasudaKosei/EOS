@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8788165600270948522}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Player
+  m_TagString: Tomato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!64 &5615999058309480339
 MeshCollider:
   m_ObjectHideFlags: 0

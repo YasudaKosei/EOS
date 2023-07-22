@@ -5,47 +5,27 @@ using UnityEngine;
 public class MoveObj : MonoBehaviour
 {
 
-    public float speed = 0.02f;
-    public float areaVal = 2;
+    public float speed = 0.2f;
+    public float delay = 2.0f;
 
-    private Transform sTransform;
-    private Vector3 spos;
-
-    private bool moveFlag = false;
-
-    private void Start()
+    void Start()
     {
-        sTransform = this.transform;
-        spos = sTransform.position;
+        Invoke("Swith2", 0f);
     }
 
     void Update()
     {
-        // transformを取得
-        Transform myTransform = this.transform;
-
-        // 座標を取得
-        Vector3 mpos = myTransform.position;
-
-        Debug.Log(mpos.x - spos.x);
-        if(mpos.x - spos.x < areaVal && moveFlag == false)
-        {
-            mpos.x += speed;
-        }
-        else
-        {
-            moveFlag = true;
-        }
-
-        if (mpos.x - spos.x > -1*areaVal && moveFlag == true)
-        {
-            mpos.x -= speed;
-        }
-        else
-        {
-            moveFlag = false;
-        }
-
-        myTransform.position = mpos;  // 座標を設定
+        Vector3 p = new Vector3(speed, 0, 0);
+        transform.Translate(p);
+    }
+    void Swith()
+    {
+        speed = 0.1f;
+        Invoke("Swith2", delay);
+    }
+    void Swith2()
+    {
+        speed = -0.1f;
+        Invoke("Swith", delay);
     }
 }
