@@ -92,7 +92,7 @@ public class PlayerChange : MonoBehaviour
         nowPos = nowPlayer.transform.position;
         nowPos.y += 1f;
         Transform cam = Camera.main.GetComponent<Transform>();
-        cam.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 0.5f, cam.transform.position.z);
+        cam.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 1f, cam.transform.position.z);
         Destroy(nowPlayer);
         nowPlayer = Instantiate(playerType[playerID], nowPos, Quaternion.identity);
         time = coolDownTime;

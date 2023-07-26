@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -859,8 +859,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655190560}
-  m_LocalRotation: {x: 0.2164396, y: -0, z: -0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: 4, z: -6}
+  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
+  m_LocalPosition: {x: 0, y: 4, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -883,7 +883,8 @@ MonoBehaviour:
   distance: 6
   rotationSpeed: 0.1
   padRotationSpeed: 1.5
-  offset: {x: 0, y: 0, z: 0}
+  targetFps: 60
+  offset: {x: 0, y: 4, z: -6}
   _camera: {fileID: 1449215134108560251, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   _padCamera: {fileID: 3368374410900292050, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
 --- !u!64 &1682152466

@@ -32,7 +32,7 @@ public class PotController : MonoBehaviour
         cam = Camera.main;
         cameraTransform = cam.transform;
         cam.GetComponent<CameraController>().player = this.transform;
-        cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
+        //cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();
     }

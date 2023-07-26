@@ -11,8 +11,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private int targetFps = 60;
 
-    [HideInInspector]
-    public Vector3 offset; // カメラとプレイヤーのオフセット
+    //[HideInInspector]
+    public Vector3 offset = new Vector3(0,4,-6); // カメラとプレイヤーのオフセット
 
     [SerializeField]
     private InputActionReference _camera;
@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
         transform.position = desiredPosition;
 
         // カメラをプレイヤーを中心に移動させる
-        transform.LookAt(player.position);
+        //transform.LookAt(player.position);
 
         //パッド用
         mouseX = _padCamera.action.ReadValue<float>();
@@ -57,6 +57,6 @@ public class CameraController : MonoBehaviour
         desiredPosition = player.position + offset;
         transform.position = desiredPosition;
 
-        transform.LookAt(player.position);
+        //transform.LookAt(player.position);
     }
 }
