@@ -288,6 +288,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6419745871428730555, guid: f8ce995d169e17b469e9d1da56ca426c, type: 3}
+      propertyPath: coolDownTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6419745871428730556, guid: f8ce995d169e17b469e9d1da56ca426c, type: 3}
       propertyPath: m_Name
       value: PlayerChange
@@ -587,6 +591,7 @@ MonoBehaviour:
   distance: 6
   rotationSpeed: 0.1
   padRotationSpeed: 1.5
-  offset: {x: 0, y: 0, z: 0}
+  targetFps: 60
+  offset: {x: 0, y: 4, z: -6}
   _camera: {fileID: 1449215134108560251, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   _padCamera: {fileID: 3368374410900292050, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}

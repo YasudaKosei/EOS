@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ObjectRotation : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Header("‰ñ“]‘¬“x")]
     private float rotationSpeed = 5f;
 
-    [SerializeField]
+    [SerializeField,Header("‰ñ“]Ž²")]
     private XYZ axis;
     
     public enum XYZ
