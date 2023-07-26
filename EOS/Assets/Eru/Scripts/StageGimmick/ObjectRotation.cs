@@ -25,6 +25,7 @@ public class ObjectRotation : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "ground") return;
         collision.gameObject.transform.parent = this.transform;
     }
 
