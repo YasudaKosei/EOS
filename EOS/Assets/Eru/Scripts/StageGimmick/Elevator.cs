@@ -35,6 +35,7 @@ public class Elevator : MonoBehaviour
 
     private void Start()
     {
+        //初期値を配列の先頭に追加
         startPos = this.transform.position;
         movetPos = movetPos.Prepend<Vector3>(startPos).ToArray();
 
@@ -47,11 +48,15 @@ public class Elevator : MonoBehaviour
     private void Update()
     {
         if (Stop.stopFlg) return;
+
         if (!moveFlg && Vector3.Distance(startPos, this.transform.position) <= 0.1f) return;
         else if (!moveFlg) ReturnInit();
         else MoveNext();
     }
 
+    /// <summary>
+    /// 初期地に戻る
+    /// </summary>
     private void ReturnInit()
     {
         if(nextMovePoint != 0 && Vector3.Distance(this.transform.position, movetPos[nextMovePoint]) <= 0.1f) nextMovePoint += back;
@@ -59,11 +64,14 @@ public class Elevator : MonoBehaviour
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
+    /// <summary>
+    /// 次の中間点に移動
+    /// </summary>
     private void MoveNext()
     {
         Vector3 direction = (movetPos[nextMovePoint] - this.transform.position).normalized;
 
-        // オブジェクトの位置が目標座標に十分近づいたら移動を終了
+        // オブジェクトの位置が目標座標に十分近づいたら次の中間点へ移動
         if (Vector3.Distance(this.transform.position, movetPos[nextMovePoint]) <= 0.1f)
         {
             if (loopFlg)
@@ -78,7 +86,7 @@ public class Elevator : MonoBehaviour
             }
         }
 
-        // 方向ベクトルを使ってオブジェクトを移動させる
+        // オブジェクトを移動
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
@@ -86,23 +94,23 @@ public class Elevator : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb) && collision.gameObject.tag == playerType.ToString())
         {
-            moveFlg = true;
+            //親子関係にする
             collision.transform.parent = this.transform;
+            //移動を開始
+            moveFlg = true;
             if (nextMovePoint < movetPos.Length - 1) nextMovePoint++;
             back = 1;
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag != playerType.ToString() && collision.gameObject == null && playerType != PlayerType.none) moveFlg = false;
-    }
-
     private void OnCollisionExit(Collision collision)
     {
+        //親子関係破棄
         collision.transform.parent = null;
+
         if (playerType != PlayerType.none)
         {
+            //移動停止及び帰還
             moveFlg = false;
             if (back < 0) return;
             back = -1;
