@@ -14,6 +14,9 @@ public class PlayerChange : MonoBehaviour
     [HideInInspector]
     public bool nowStopFlg = false;
 
+    [HideInInspector]
+    public bool elevatorFlg = false;
+
     [SerializeField]
     private GameObject[] playerType;
 
@@ -39,6 +42,8 @@ public class PlayerChange : MonoBehaviour
         change.action.Enable();
 
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
+        if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PlayerChange>();
+        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PlayerChange>();
         time = coolDownTime;
         can.SetActive(false);
         nowPlayerID = playerID;
@@ -64,7 +69,7 @@ public class PlayerChange : MonoBehaviour
         //プレイヤー選択処理
         if (change.action.triggered)
         {
-            if (changeFlg)
+            if (changeFlg && !elevatorFlg)
             {
                 can.SetActive(true);
                 if (idFlg) nowPlayerID = playerID;
@@ -95,6 +100,8 @@ public class PlayerChange : MonoBehaviour
         cam.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 1f, cam.transform.position.z);
         Destroy(nowPlayer);
         nowPlayer = Instantiate(playerType[playerID], nowPos, Quaternion.identity);
+        if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PlayerChange>();
+        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PlayerChange>();
         time = coolDownTime;
         timer = 0;
         changeFlg = false;

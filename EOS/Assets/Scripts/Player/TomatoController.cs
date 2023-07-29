@@ -9,6 +9,9 @@ public class TomatoController : MonoBehaviour
     public float rollForce = 10f;
     public float deceleration = 3;
 
+    [HideInInspector]
+    public PlayerChange pc;
+
     [SerializeField]
     private InputActionReference jump;
     
@@ -82,11 +85,17 @@ public class TomatoController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //’n–Ê’…’n”»’è
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
         {
             isJumping = false;
             jumpFlg = false;
             jumpTimeCount = 0f;
         }
+        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
     }
 }

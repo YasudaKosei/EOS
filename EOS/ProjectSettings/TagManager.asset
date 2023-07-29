@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Tomato
   - floor
+  - Pot
+  - Broccoli
+  - Carrot
+  - Watermelon
+  - Elevator
   layers:
   - Default
   - TransparentFX
