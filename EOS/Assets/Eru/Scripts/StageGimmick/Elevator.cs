@@ -65,13 +65,13 @@ public class Elevator : MonoBehaviour
     }
 
     /// <summary>
-    /// 次の中間点に移動
+    /// 次の移動先に移動
     /// </summary>
     private void MoveNext()
     {
         Vector3 direction = (movetPos[nextMovePoint] - this.transform.position).normalized;
 
-        // オブジェクトの位置が目標座標に十分近づいたら次の中間点へ移動
+        // オブジェクトの位置が目標座標に十分近づいたら次の移動先へ移動するようにする
         if (Vector3.Distance(this.transform.position, movetPos[nextMovePoint]) <= 0.1f)
         {
             if (loopFlg)
