@@ -12,6 +12,9 @@ public class PotController : MonoBehaviour
     [HideInInspector]
     public PlayerChange pc;
 
+    [HideInInspector]
+    public bool knockBackFlg = false;
+
     [SerializeField]
     private InputActionReference jump;
 
@@ -20,6 +23,9 @@ public class PotController : MonoBehaviour
 
     [SerializeField]
     private InputActionReference dash;
+
+    [SerializeField]
+    private float movementThreshold = 3f;
 
     private Rigidbody rb;
     private bool isJumping = false;
@@ -38,6 +44,7 @@ public class PotController : MonoBehaviour
         //cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();
+        dash.action.Enable();
     }
 
     void Update()
@@ -48,6 +55,12 @@ public class PotController : MonoBehaviour
             return;
         }
         else rb.constraints = RigidbodyConstraints.None;
+
+        if (knockBackFlg)
+        {
+            if (rb.velocity.magnitude < movementThreshold) knockBackFlg = false;
+            return;
+        }
 
         //ˆÚ“®
         Vector2 moveInput = move.action.ReadValue<Vector2>();

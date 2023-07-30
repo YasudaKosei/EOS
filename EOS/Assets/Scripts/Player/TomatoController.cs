@@ -12,6 +12,9 @@ public class TomatoController : MonoBehaviour
     [HideInInspector]
     public PlayerChange pc;
 
+    [HideInInspector]
+    public bool knockBackFlg = false;
+
     [SerializeField]
     private InputActionReference jump;
     
@@ -20,6 +23,9 @@ public class TomatoController : MonoBehaviour
 
     [SerializeField]
     private InputActionReference dash;
+
+    [SerializeField]
+    private float movementThreshold = 3f;
 
     private Rigidbody rb;
     private bool isJumping = false;
@@ -49,6 +55,12 @@ public class TomatoController : MonoBehaviour
             return;
         }
         else rb.constraints = RigidbodyConstraints.None;
+
+        if (knockBackFlg)
+        {
+            if (rb.velocity.magnitude < movementThreshold) knockBackFlg = false;
+            return;
+        }
 
         //ˆÚ“®
         Vector2 moveInput = move.action.ReadValue<Vector2>();
