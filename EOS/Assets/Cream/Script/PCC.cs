@@ -30,6 +30,8 @@ public class PCC : MonoBehaviour
 
     void Update()
     {
+        if (Stop.stopFlg) return;
+
         //クールタイムカウント
         if (time > 0)
         {
@@ -38,15 +40,17 @@ public class PCC : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.E)) Right();
-            else if (Input.GetKeyDown(KeyCode.Q)) Left();
-            else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
-            else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
-            else if (Input.GetKeyDown(KeyCode.Alpha5)) num(4);
+            if (Input.GetKeyDown(KeyCode.F)) CP();
             timetext.text = "OK";
         }
+
+        if (Input.GetKeyDown(KeyCode.E)) Right();
+        else if (Input.GetKeyDown(KeyCode.Q)) Left();
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) num(4);
     }
 
     /// <summary>
@@ -56,8 +60,6 @@ public class PCC : MonoBehaviour
     {
         if (pc.playerID == 4 || time > 0) return;
         pc.playerID++;
-        pc.ChangePlayer();
-        Fin();
     }
 
     /// <summary>
@@ -67,8 +69,6 @@ public class PCC : MonoBehaviour
     {
         if (pc.playerID == 0 || time > 0) return;
         pc.playerID--;
-        pc.ChangePlayer();
-        Fin();
     }
 
     /// <summary>
@@ -77,6 +77,11 @@ public class PCC : MonoBehaviour
     public void num(int num)
     {
         pc.playerID = num;
+    }
+
+    public void CP()
+    {
+        if (pc.nowPlayerID == pc.playerID) return;
         pc.ChangePlayer();
         Fin();
     }

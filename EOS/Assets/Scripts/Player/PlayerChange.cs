@@ -96,8 +96,6 @@ public class PlayerChange : MonoBehaviour
         nowPlayerID = playerID;
         nowPos = nowPlayer.transform.position;
         nowPos.y += 1f;
-        Transform cam = Camera.main.GetComponent<Transform>();
-        cam.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 1f, cam.transform.position.z);
         Destroy(nowPlayer);
         nowPlayer = Instantiate(playerType[playerID], nowPos, Quaternion.identity);
         if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PlayerChange>();
