@@ -697,9 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140b56749949f0d4d90f93576eebbbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeedx: 0
-  rotateSpeedy: 2
-  rotateSpeedz: 0
 --- !u!65 &543224585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1199,9 +1196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140b56749949f0d4d90f93576eebbbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeedx: 2
-  rotateSpeedy: 0
-  rotateSpeedz: 0
 --- !u!4 &963104848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3475178001699288668, guid: c61730e7e4ed08945ac03d38e89efc05, type: 3}
@@ -2448,7 +2442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746b3693c7a7d4f4fb0110ce9a52efc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 5
+  jumpPower: 15
   playerType: 1
 --- !u!65 &1578188069
 BoxCollider:
@@ -2458,7 +2452,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578188067}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
