@@ -40,6 +40,7 @@ public class Elevator : MonoBehaviour
         movetPos = movetPos.Prepend<Vector3>(startPos).ToArray();
 
         back = 1;
+        nextMovePoint = 1;
 
         if (playerType == PlayerType.none) moveFlg = true;
         else moveFlg = false;
