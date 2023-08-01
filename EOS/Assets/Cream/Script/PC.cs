@@ -59,7 +59,6 @@ public class PC : MonoBehaviour
     /// </summary>
     public void ChangePlayer()
     {
-        if (nowPlayerID == playerID) return;
         nowPlayerID = playerID;
         nowPos = nowPlayer.transform.position;
         nowPos.y += 1f;
