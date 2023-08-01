@@ -24,4 +24,11 @@ public class JumpTrap : MonoBehaviour
         if (playerType != PlayerType.none && other.gameObject.tag != playerType.ToString()) return; 
         if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb)) rb.AddForce(jumpPower * Vector3.up, ForceMode.Impulse);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //対象のプレイヤーか検知
+        if (playerType != PlayerType.none && collision.gameObject.tag != playerType.ToString()) return;
+        if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb)) rb.AddForce(jumpPower * Vector3.up, ForceMode.Impulse);
+    }
 }
