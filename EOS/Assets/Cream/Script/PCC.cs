@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class PlayerChangeCanvas : MonoBehaviour
+public class PCC : MonoBehaviour
 {
     [SerializeField]
-    private PlayerChange pc;
+    private PC pc;
 
     [SerializeField]
     private InputActionReference move;
@@ -15,8 +16,9 @@ public class PlayerChangeCanvas : MonoBehaviour
     [SerializeField]
     private InputActionReference pause;
 
-    private float coolTime = 0.25f;
     private float time = 0;
+
+    public Text timetext;
 
     void Start()
     {
@@ -29,15 +31,22 @@ public class PlayerChangeCanvas : MonoBehaviour
     void Update()
     {
         //クールタイムカウント
-        if (time > 0) time -= Time.deltaTime;
-
-        //選択
-        if (time == 0)
+        if (time > 0)
         {
-            if (move.action.ReadValue<Vector2>().x > 0.0f) Right();
-            else if (move.action.ReadValue<Vector2>().x < 0.0f) Left();
+            time -= Time.deltaTime;
+            timetext.text = Mathf.Ceil(time).ToString();
         }
-
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E)) Right();
+            else if (Input.GetKeyDown(KeyCode.Q)) Left();
+            else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
+            else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
+            else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
+            else if (Input.GetKeyDown(KeyCode.Alpha5)) num(4);
+            timetext.text = "OK";
+        }
     }
 
     /// <summary>
@@ -47,7 +56,6 @@ public class PlayerChangeCanvas : MonoBehaviour
     {
         if (pc.playerID == 4 || time > 0) return;
         pc.playerID++;
-        time = coolTime;
         pc.ChangePlayer();
         Fin();
     }
@@ -59,7 +67,16 @@ public class PlayerChangeCanvas : MonoBehaviour
     {
         if (pc.playerID == 0 || time > 0) return;
         pc.playerID--;
-        time = coolTime;
+        pc.ChangePlayer();
+        Fin();
+    }
+
+    /// <summary>
+    /// 数字選択
+    /// </summary>
+    public void num(int num)
+    {
+        pc.playerID = num;
         pc.ChangePlayer();
         Fin();
     }
@@ -72,5 +89,7 @@ public class PlayerChangeCanvas : MonoBehaviour
         Stop.stopFlg = false;
         pc.nowStopFlg = false;
         pc.playerID = pc.nowPlayerID;
+
+        time = pc.coolDownTime;
     }
 }
