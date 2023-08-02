@@ -93,6 +93,7 @@ public class Elevator : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Oncoll");
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb) && collision.gameObject.tag == playerType.ToString())
         {
             //êeéqä÷åWÇ…Ç∑ÇÈ

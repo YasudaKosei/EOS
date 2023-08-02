@@ -10,7 +10,7 @@ public class TomatoController : MonoBehaviour
     public float deceleration = 3;
 
     [HideInInspector]
-    public PlayerChange pc;
+    public PC pc;
 
     [HideInInspector]
     public bool knockBackFlg = false;

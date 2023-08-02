@@ -38,8 +38,8 @@ public class PC : MonoBehaviour
         change.action.Enable();
 
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
-        if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PlayerChange>();
-        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PlayerChange>();
+        if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PC>();
+        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
     }
 
     void Update()
@@ -64,7 +64,7 @@ public class PC : MonoBehaviour
         nowPos.y += 1f;
         Destroy(nowPlayer);
         nowPlayer = Instantiate(playerType[playerID], nowPos, Quaternion.identity);
-        if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PlayerChange>();
-        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PlayerChange>();
+        if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PC>();
+        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
     }
 }
