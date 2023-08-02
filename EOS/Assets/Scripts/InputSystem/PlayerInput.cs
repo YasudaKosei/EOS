@@ -89,6 +89,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CharaChangeLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""98bac88f-9d43-48ed-ae1d-41db31cb3f2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CharaChangeRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""63da5537-5624-40be-8db8-883cbbcfd665"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -289,6 +307,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8a54984-8e20-4e41-b4e2-d09db8bf1592"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CharaChangeLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23c72aa8-3226-4789-a43c-05d668ea9523"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CharaChangeRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -315,6 +355,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions_Change = m_actions.FindAction("Change", throwIfNotFound: true);
         m_actions_Pause = m_actions.FindAction("Pause", throwIfNotFound: true);
         m_actions_Dash = m_actions.FindAction("Dash", throwIfNotFound: true);
+        m_actions_CharaChangeLeft = m_actions.FindAction("CharaChangeLeft", throwIfNotFound: true);
+        m_actions_CharaChangeRight = m_actions.FindAction("CharaChangeRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -383,6 +425,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_actions_Change;
     private readonly InputAction m_actions_Pause;
     private readonly InputAction m_actions_Dash;
+    private readonly InputAction m_actions_CharaChangeLeft;
+    private readonly InputAction m_actions_CharaChangeRight;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -394,6 +438,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Change => m_Wrapper.m_actions_Change;
         public InputAction @Pause => m_Wrapper.m_actions_Pause;
         public InputAction @Dash => m_Wrapper.m_actions_Dash;
+        public InputAction @CharaChangeLeft => m_Wrapper.m_actions_CharaChangeLeft;
+        public InputAction @CharaChangeRight => m_Wrapper.m_actions_CharaChangeRight;
         public InputActionMap Get() { return m_Wrapper.m_actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -424,6 +470,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @CharaChangeLeft.started += instance.OnCharaChangeLeft;
+            @CharaChangeLeft.performed += instance.OnCharaChangeLeft;
+            @CharaChangeLeft.canceled += instance.OnCharaChangeLeft;
+            @CharaChangeRight.started += instance.OnCharaChangeRight;
+            @CharaChangeRight.performed += instance.OnCharaChangeRight;
+            @CharaChangeRight.canceled += instance.OnCharaChangeRight;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -449,6 +501,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @CharaChangeLeft.started -= instance.OnCharaChangeLeft;
+            @CharaChangeLeft.performed -= instance.OnCharaChangeLeft;
+            @CharaChangeLeft.canceled -= instance.OnCharaChangeLeft;
+            @CharaChangeRight.started -= instance.OnCharaChangeRight;
+            @CharaChangeRight.performed -= instance.OnCharaChangeRight;
+            @CharaChangeRight.canceled -= instance.OnCharaChangeRight;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -493,5 +551,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnChange(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnCharaChangeLeft(InputAction.CallbackContext context);
+        void OnCharaChangeRight(InputAction.CallbackContext context);
     }
 }

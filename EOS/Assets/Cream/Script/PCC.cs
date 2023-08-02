@@ -16,6 +16,12 @@ public class PCC : MonoBehaviour
     [SerializeField]
     private InputActionReference pause;
 
+    [SerializeField]
+    private InputActionReference cL;
+
+    [SerializeField]
+    private InputActionReference cR;
+
     private float time = 0;
 
     public Text timetext;
@@ -26,6 +32,8 @@ public class PCC : MonoBehaviour
         move.action.Enable();
         change.action.Enable();
         pause.action.Enable();
+        cL.action.Enable();
+        cR.action.Enable();
     }
 
     void Update()
@@ -44,8 +52,8 @@ public class PCC : MonoBehaviour
             timetext.text = "OK";
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) Right();
-        else if (Input.GetKeyDown(KeyCode.Q)) Left();
+        if (cR.action.triggered) Right();
+        else if (cL.action.triggered) Left();
         else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
         else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
