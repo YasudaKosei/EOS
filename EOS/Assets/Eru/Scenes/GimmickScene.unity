@@ -2679,7 +2679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 666205226249429291, guid: a6ee2a78b079c9744a466b70fcff9e5d, type: 3}
       propertyPath: coolDownTime
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6329475901113081275, guid: a6ee2a78b079c9744a466b70fcff9e5d, type: 3}
       propertyPath: m_RootOrder
