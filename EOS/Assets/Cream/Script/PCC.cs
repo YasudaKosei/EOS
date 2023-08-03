@@ -24,7 +24,7 @@ public class PCC : MonoBehaviour
 
     private float time = 0;
 
-    public Text timetext;
+    public Image[] timeGage;
 
     void Start()
     {
@@ -40,15 +40,18 @@ public class PCC : MonoBehaviour
     {
         if (Stop.stopFlg) return;
 
+        for(int i = 0; i < timeGage.Length; i++)
+        {
+            timeGage[i].fillAmount = time;
+        }
+
         //クールタイムカウント
         if (time > 0)
         {
             time -= Time.deltaTime;
-            timetext.text = Mathf.Ceil(time).ToString();
         }
         else
         {
-            timetext.text = "OK";
             if (!pc.elevatorFlg) if (Input.GetKeyDown(KeyCode.F)) CP();
         }
 
