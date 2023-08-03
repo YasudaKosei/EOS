@@ -7,7 +7,7 @@ public class KeyManager : MonoBehaviour
     private InputActionReference pause;
 
     [SerializeField]
-    private GameObject keyCan,padCan;
+    private GameObject select,DisCan,keyCan,padCan,VolCan,OthCan;
 
     [SerializeField] 
     private RebindSaveManager rsm;
@@ -17,8 +17,12 @@ public class KeyManager : MonoBehaviour
     private void Awake()
     {
         rsm.Load();
+        select.SetActive(false);
         keyCan.SetActive(false);
         padCan.SetActive(false);
+        DisCan.SetActive(false);
+        VolCan.SetActive(false);
+        OthCan.SetActive(false);
         pause.action.Enable();
         nowFlg = false;
     }
@@ -29,29 +33,65 @@ public class KeyManager : MonoBehaviour
         {
             if (Stop.stopFlg == false)
             {
-                keyCan.SetActive(true);
+                select.SetActive(true);
+                DisCan.SetActive(true);
                 Stop.stopFlg = true;
                 nowFlg = true;
             }
             else if(nowFlg)
             {
+                select.SetActive(false);
                 keyCan.SetActive(false);
                 padCan.SetActive(false);
+                DisCan.SetActive(false);
+                VolCan.SetActive(false);
+                OthCan.SetActive(false);
                 Stop.stopFlg = false;
                 nowFlg = false;
             }
         }
     }
-
+    public void DisplayCanvas()
+    {
+        DisCan.SetActive(true);
+        keyCan.SetActive(false);
+        padCan.SetActive(false);
+        VolCan.SetActive(false);
+        OthCan.SetActive(false);
+    }
     public void KeyBoardCanvas()
     {
         keyCan.SetActive(true);
         padCan.SetActive(false);
+        DisCan.SetActive(false);
+        VolCan.SetActive(false);
+        OthCan.SetActive(false);
     }
 
     public void GamePadCanvas()
     {
         padCan.SetActive(true);
         keyCan.SetActive(false);
+        DisCan.SetActive(false);
+        VolCan.SetActive(false);
+        OthCan.SetActive(false);
+    }
+
+    public void VolumeCanvas()
+    {
+        VolCan.SetActive(true);
+        keyCan.SetActive(false);
+        padCan.SetActive(false);
+        DisCan.SetActive(false);
+        OthCan.SetActive(false);
+    }
+
+    public void OthersCanvas()
+    {
+        OthCan.SetActive(true);
+        VolCan.SetActive(false);
+        keyCan.SetActive(false);
+        padCan.SetActive(false);
+        DisCan.SetActive(false);
     }
 }
