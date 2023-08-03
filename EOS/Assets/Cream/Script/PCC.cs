@@ -40,9 +40,19 @@ public class PCC : MonoBehaviour
     {
         if (Stop.stopFlg) return;
 
-        for(int i = 0; i < timeGage.Length; i++)
+        if (pc.elevatorFlg)
         {
-            timeGage[i].fillAmount = time;
+            for (int i = 0; i < timeGage.Length; i++)
+            {
+                timeGage[i].fillAmount = 1;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < timeGage.Length; i++)
+            {
+                timeGage[i].fillAmount = time / pc.coolDownTime;
+            }
         }
 
         //クールタイムカウント
