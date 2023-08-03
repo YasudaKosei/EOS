@@ -49,20 +49,16 @@ public class PCC : MonoBehaviour
         else
         {
             timetext.text = "OK";
-            if (pc.elevatorFlg == true) return;
-            if (Input.GetKeyDown(KeyCode.F)) CP();
+            if (!pc.elevatorFlg) if (Input.GetKeyDown(KeyCode.F)) CP();
         }
 
-        if(pc.elevatorFlg == false)
-        {
-            if (cR.action.triggered) Right();
-            else if (cL.action.triggered) Left();
-            else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
-            else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
-            else if (Input.GetKeyDown(KeyCode.Alpha5)) num(4);
-        }
+        if (cR.action.triggered) Right();
+        else if (cL.action.triggered) Left();
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) num(4);
         
     }
 
@@ -71,7 +67,7 @@ public class PCC : MonoBehaviour
     /// </summary>
     public void Right()
     {
-        if (pc.playerID == 4 || time > 0) return;
+        if (pc.playerID == 4) return;
         pc.playerID++;
     }
 
@@ -80,7 +76,7 @@ public class PCC : MonoBehaviour
     /// </summary>
     public void Left()
     {
-        if (pc.playerID == 0 || time > 0) return;
+        if (pc.playerID == 0) return;
         pc.playerID--;
     }
 
