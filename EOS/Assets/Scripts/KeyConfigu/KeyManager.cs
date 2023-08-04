@@ -33,23 +33,33 @@ public class KeyManager : MonoBehaviour
         {
             if (Stop.stopFlg == false)
             {
-                select.SetActive(true);
-                DisCan.SetActive(true);
-                Stop.stopFlg = true;
-                nowFlg = true;
+                Set();
             }
             else if(nowFlg)
             {
-                select.SetActive(false);
-                keyCan.SetActive(false);
-                padCan.SetActive(false);
-                DisCan.SetActive(false);
-                VolCan.SetActive(false);
-                OthCan.SetActive(false);
-                Stop.stopFlg = false;
-                nowFlg = false;
+                End();
             }
         }
+    }
+
+    public void Set()
+    {
+        select.SetActive(true);
+        DisCan.SetActive(true);
+        Stop.stopFlg = true;
+        nowFlg = true;
+    }
+
+    public void End()
+    {
+        select.SetActive(false);
+        keyCan.SetActive(false);
+        padCan.SetActive(false);
+        DisCan.SetActive(false);
+        VolCan.SetActive(false);
+        OthCan.SetActive(false);
+        Stop.stopFlg = false;
+        nowFlg = false;
     }
     public void DisplayCanvas()
     {
