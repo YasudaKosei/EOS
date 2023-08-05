@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class AudioPlay : MonoBehaviour
+public class DebugAudioPlay : MonoBehaviour
 {
     [SerializeField]
     AudioSource seAudioSource;
+
+    private void Start()
+    {
+        Debug.Log("SpaceÉLÅ[Ç≈SEçƒê∂");
+    }
 
     void Update()
     {
