@@ -128,11 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85587b7c86bc1584094a2a15ef28d939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   dashSpeed: 1.75
   jumpPower: 4
   rollForce: 10
   deceleration: 3
+  pc: {fileID: 0}
+  knockBackFlg: 0
   jump: {fileID: 8324888889075417498, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   move: {fileID: -4387869940633876883, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   dash: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  movementThreshold: 3

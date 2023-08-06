@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PC : MonoBehaviour
 {
     public int playerID = 0;
-    public Vector3 startPos;
+    public Transform startPos;
     public int coolDownTime = 5;
 
     [HideInInspector]
@@ -37,7 +37,7 @@ public class PC : MonoBehaviour
         //—LŒø‰»
         change.action.Enable();
 
-        nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
+        nowPlayer = Instantiate(playerType[playerID], startPos.position, Quaternion.identity);
         if (nowPlayer.TryGetComponent<TomatoController>(out TomatoController tc)) tc.pc = this.gameObject.GetComponent<PC>();
         if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
     }
