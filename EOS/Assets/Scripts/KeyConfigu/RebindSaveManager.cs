@@ -112,7 +112,7 @@ public class RebindSaveManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("セーブファイルがありません");
+            Debug.Log("KeyConfigのセーブファイルがありません");
         }
     }
 
