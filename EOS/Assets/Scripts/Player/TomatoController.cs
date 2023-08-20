@@ -15,6 +15,9 @@ public class TomatoController : MonoBehaviour
     [HideInInspector]
     public bool knockBackFlg = false;
 
+    [HideInInspector]
+    public bool isJumping = false;
+
     [SerializeField]
     private InputActionReference jump;
     
@@ -28,7 +31,6 @@ public class TomatoController : MonoBehaviour
     private float movementThreshold = 3f;
 
     private Rigidbody rb;
-    private bool isJumping = false;
     private bool jumpFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
