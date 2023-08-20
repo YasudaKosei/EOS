@@ -65,6 +65,28 @@ public class PCC : MonoBehaviour
             if (!pc.elevatorFlg) if (Input.GetKeyDown(KeyCode.F)) CP();
         }
 
+        if (pc.nowPlayer.TryGetComponent<TomatoController>(out TomatoController tomatoC))
+        {
+            if (tomatoC.isJumping)
+            {
+                for (int i = 0; i < timeGage.Length; i++)
+                {
+                    timeGage[i].fillAmount = 1;
+                }
+            }
+        }
+
+        if (pc.nowPlayer.TryGetComponent<PotController>(out PotController potC))
+        {
+            if (potC.isJumping)
+            {
+                for (int i = 0; i < timeGage.Length; i++)
+                {
+                    timeGage[i].fillAmount = 1;
+                }
+            }
+        }
+
         if (cR.action.triggered) Right();
         else if (cL.action.triggered) Left();
         else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);

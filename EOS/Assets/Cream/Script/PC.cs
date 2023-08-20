@@ -17,6 +17,9 @@ public class PC : MonoBehaviour
     [HideInInspector]
     public bool elevatorFlg = false;
 
+    [HideInInspector]
+    public GameObject nowPlayer;
+
     [SerializeField]
     private GameObject[] playerType;
 
@@ -29,7 +32,6 @@ public class PC : MonoBehaviour
     [SerializeField]
     private InputActionReference change;
 
-    private GameObject nowPlayer;
     private Vector3 nowPos;
 
     void Awake()
