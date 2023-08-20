@@ -24,6 +24,11 @@ public class PCC : MonoBehaviour
 
     private float time = 0;
 
+    [SerializeField]
+    private bool tChangeFlg = false;
+    [SerializeField]
+    private bool pChangeFlg = false;
+
     public Image[] timeGage;
 
     void Start()
@@ -34,6 +39,9 @@ public class PCC : MonoBehaviour
         pause.action.Enable();
         cL.action.Enable();
         cR.action.Enable();
+
+        tChangeFlg = true;
+        pChangeFlg = true;
     }
 
     void Update()
@@ -62,7 +70,7 @@ public class PCC : MonoBehaviour
         }
         else
         {
-            if (!pc.elevatorFlg) if (Input.GetKeyDown(KeyCode.F)) CP();
+            if (tChangeFlg && pChangeFlg && !pc.elevatorFlg) if (Input.GetKeyDown(KeyCode.F)) CP();
         }
 
         if (pc.nowPlayer.TryGetComponent<TomatoController>(out TomatoController tomatoC))
@@ -73,7 +81,9 @@ public class PCC : MonoBehaviour
                 {
                     timeGage[i].fillAmount = 1;
                 }
+                tChangeFlg = false;
             }
+            else tChangeFlg = true;
         }
 
         if (pc.nowPlayer.TryGetComponent<PotController>(out PotController potC))
@@ -84,7 +94,9 @@ public class PCC : MonoBehaviour
                 {
                     timeGage[i].fillAmount = 1;
                 }
+                pChangeFlg = false;
             }
+            else pChangeFlg = true;
         }
 
         if (cR.action.triggered) Right();
