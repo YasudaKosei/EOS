@@ -1,36 +1,26 @@
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
-using System.IO;
-using System.Text;
-using System.Security.Cryptography;
 
-public class ChangeSoundVolume : MonoBehaviour
+public class DisplayManager : MonoBehaviour
 {
-    [SerializeField]
-    private AudioMixer audioMixer;
+    [SerializeField, Header("スクリーンモードドロップダウン")]
+    private Dropdown screenDropDown;
 
-    [SerializeField]
-    private Slider masterSlider;
+    [SerializeField, Header("解像度ドロップダウン")]
+    private Dropdown resolutionDropDown;
 
-    [SerializeField]
-    private Slider bgmSlider;
+    private int width = 1920;
+    private int height = 1080;
+    private bool screenModeFlg = true;
 
-    [SerializeField]
-    private Slider seSlider;
-
-    [SerializeField]
-    private Toggle masterToggle;
-
-    [SerializeField]
-    private Toggle bgmToggle;
-
-    [SerializeField]
-    private Toggle seToggle;
-
-    private void Start()
+    void Start()
     {
         Load();
+        ChangeScreenMode();
+        ChangeResolution();
     }
 
     private void OnDestroy()
@@ -38,61 +28,99 @@ public class ChangeSoundVolume : MonoBehaviour
         Save();
     }
 
-    public void SetBGM(float volume)
+    /// <summary>
+    /// スクリーンモード変更
+    /// </summary>
+    public void ChangeScreenMode()
     {
-        if (volume <= -50f)
+        //フルスクリーンモード
+        if (screenDropDown.value == 0) screenModeFlg = true;
+
+        //ウィンドウモード
+        else if (screenDropDown.value == 1) screenModeFlg = false;
+
+        //更新
+        ChangeDisplay();
+    }
+
+    /// <summary>
+    /// 解像度変更
+    /// </summary>
+    public void ChangeResolution()
+    {
+        //1920 * 1080
+        if (resolutionDropDown.value == 0)
         {
-            volume = -80f;
-            bgmToggle.isOn = false;
+            width = 1920;
+            height = 1080;
         }
-        audioMixer.SetFloat("BgmVolume", volume);
-    }
 
-    public void SetSE(float volume)
-    {
-        if (volume <= -50f)
+        //1680 * 1050
+        else if (resolutionDropDown.value == 1)
         {
-            volume = -80f;
-            seToggle.isOn = false;
+            width = 1680;
+            height = 1050;
         }
-        audioMixer.SetFloat("SeVolume", volume);
-    }
 
-    public void SetMASTER(float volume)
-    {
-        if (volume <= -50f)
+        //1440 * 1080
+        else if (resolutionDropDown.value == 2)
         {
-            volume = -80f;
-            masterToggle.isOn = false;
+            width = 1440;
+            height = 1080;
         }
-        audioMixer.SetFloat("MasterVolume", volume);
+
+        //1280 * 1024
+        else if (resolutionDropDown.value == 3)
+        {
+            width = 1280;
+            height = 1024;
+        }
+
+        //1440 * 900
+        else if (resolutionDropDown.value == 4)
+        {
+            width = 1440;
+            height = 900;
+        }
+
+        //1280 * 960
+        else if (resolutionDropDown.value == 5)
+        {
+            width = 1280;
+            height = 960;
+        }
+
+        //1152 * 864
+        else if (resolutionDropDown.value == 6)
+        {
+            width = 1152;
+            height = 864;
+        }
+
+        //1280 * 720
+        else if (resolutionDropDown.value == 7)
+        {
+            width = 1280;
+            height = 720;
+        }
+
+        //1024 * 768
+        else if (resolutionDropDown.value == 8)
+        {
+            width = 1024;
+            height = 768;
+        }
+
+        //更新
+        ChangeDisplay();
     }
 
-    public void MuteMASTER(bool mute)
+    /// <summary>
+    /// ディスプレイ設定変更
+    /// </summary>
+    private void ChangeDisplay()
     {
-        float vol;
-        if (!mute) vol = -80f;
-        else vol = masterSlider.value;
-
-        audioMixer.SetFloat("MasterVolume", vol);
-    }
-
-    public void MuteBGM(bool mute)
-    {
-        float vol;
-        if (!mute) vol = -80f;
-        else vol = bgmSlider.value;
-
-        audioMixer.SetFloat("BgmVolume", vol);
-    }
-
-    public void MuteSE(bool mute)
-    {
-        float vol;
-        if (!mute) vol = -80f;
-        else vol = seSlider.value;
-
-        audioMixer.SetFloat("SeVolume", vol);
+        Screen.SetResolution(width, height, screenModeFlg);
     }
 
 
@@ -112,10 +140,10 @@ public class ChangeSoundVolume : MonoBehaviour
 #endif
 
         //セーブファイルのパスを設定
-        string SaveFilePath = path + "/SoundVolume.bytes";
+        string SaveFilePath = path + "/display.bytes";
 
         // セーブデータの作成
-        SoundVolumeSaveData saveData = CreateSaveData();
+        DisplaySaveData saveData = CreateSaveData();
 
         // セーブデータをJSON形式の文字列に変換
         string jsonString = JsonUtility.ToJson(saveData);
@@ -162,7 +190,7 @@ public class ChangeSoundVolume : MonoBehaviour
 #endif
 
         //セーブファイルのパスを設定
-        string SaveFilePath = path + "/SoundVolume.bytes";
+        string SaveFilePath = path + "/display.bytes";
 
         //セーブファイルがあるか
         if (File.Exists(SaveFilePath))
@@ -181,7 +209,7 @@ public class ChangeSoundVolume : MonoBehaviour
                 string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
 
                 // JSON形式の文字列をセーブデータのクラスに変換
-                SoundVolumeSaveData saveData = JsonUtility.FromJson<SoundVolumeSaveData>(decryptStr);
+                DisplaySaveData saveData = JsonUtility.FromJson<DisplaySaveData>(decryptStr);
 
                 //データの反映
                 ReadData(saveData);
@@ -198,82 +226,31 @@ public class ChangeSoundVolume : MonoBehaviour
         }
         else
         {
-            Debug.Log("SoundVolumeのセーブファイルがありません");
+            screenDropDown.value = 0;
+            resolutionDropDown.value = 0;
         }
     }
 
 
 
     // セーブデータの作成
-    private SoundVolumeSaveData CreateSaveData()
+    private DisplaySaveData CreateSaveData()
     {
         //セーブデータのインスタンス化
-        SoundVolumeSaveData saveData = new SoundVolumeSaveData();
+        DisplaySaveData saveData = new DisplaySaveData();
 
-        //ゲームデータの値をセーブデータに代入
-        //Master
-        saveData.masVol = masterSlider.value;   
-        saveData.masFlg = masterToggle.isOn;
-
-        //Bgm
-        saveData.bgmVol = bgmSlider.value;
-        saveData.bgmFlg = bgmToggle.isOn;
-
-        //Se
-        saveData.seVol = seSlider.value;
-        saveData.seFlg = seToggle.isOn;
+        saveData.screenMode = screenDropDown.value;
+        saveData.resolution = resolutionDropDown.value;
 
         return saveData;
     }
 
     //データの読み込み（反映）
-    private void ReadData(SoundVolumeSaveData saveData)
+    private void ReadData(DisplaySaveData saveData)
     {
-        float vol;
-
-        //Master
-        if (!saveData.masFlg)
-        {
-            masterToggle.isOn = false;
-            vol = -80f;
-        }
-        else
-        {
-            masterToggle.isOn = true;
-            vol = saveData.masVol;
-        }
-        masterSlider.value = saveData.masVol;
-        audioMixer.SetFloat("MasterVolume", vol);
-
-        //Bgm
-        if (!saveData.bgmFlg)
-        {
-            bgmToggle.isOn = false;
-            vol = -80f;
-        }
-        else
-        {
-            bgmToggle.isOn = true;
-            vol = saveData.bgmVol;
-        }
-        bgmSlider.value = saveData.bgmVol;
-        audioMixer.SetFloat("BgmVolume", vol);
-
-        //Se
-        if (!saveData.seFlg)
-        {
-            seToggle.isOn = false;
-            vol = -80f;
-        }
-        else
-        {
-            seToggle.isOn = true;
-            vol = saveData.seVol;
-        }
-        seSlider.value = saveData.seVol;
-        audioMixer.SetFloat("SeVolume", vol);
+        screenDropDown.value = saveData.screenMode;
+        resolutionDropDown.value = saveData.resolution;
     }
-
 
 
     /// <summary>
@@ -283,8 +260,8 @@ public class ChangeSoundVolume : MonoBehaviour
     private AesManaged GetAesManager()
     {
         //任意の半角英数16文字(Read.csと同じやつに)
-        string aesIv = "1897154867465325";
-        string aesKey = "8984557159843457";
+        string aesIv = "8974632758937851";
+        string aesKey = "7468735999189354";
 
         AesManaged aes = new AesManaged();
         aes.KeySize = 128;
@@ -343,22 +320,18 @@ public class ChangeSoundVolume : MonoBehaviour
 #endif
 
         //ファイル削除
-        File.Delete(path + "/SoundVolume.bytes");
+        File.Delete(path + "/display.bytes");
 
         ////リロード
         Load();
 
-        Debug.Log("データの削除が終わりました");
+        Debug.Log("データの初期化が終わりました");
     }
 }
 
 [System.Serializable]
-public class SoundVolumeSaveData
+public class DisplaySaveData
 {
-    public float masVol;
-    public float bgmVol;
-    public float seVol;
-    public bool masFlg;
-    public bool bgmFlg;
-    public bool seFlg;
+    public int resolution;
+    public int screenMode;
 }
