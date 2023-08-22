@@ -21,6 +21,7 @@ public class DisplayManager : MonoBehaviour
         Load();
         ChangeScreenMode();
         ChangeResolution();
+        Save();
     }
 
     private void OnDestroy()
@@ -123,7 +124,6 @@ public class DisplayManager : MonoBehaviour
         Screen.SetResolution(width, height, screenModeFlg);
     }
 
-
     public void Save()
     {
 #if UNITY_EDITOR
@@ -172,7 +172,6 @@ public class DisplayManager : MonoBehaviour
             }
         }
     }
-
 
     public void Load()
     {
@@ -228,10 +227,11 @@ public class DisplayManager : MonoBehaviour
         {
             screenDropDown.value = 0;
             resolutionDropDown.value = 0;
+
+            //更新
+            ChangeDisplay();
         }
     }
-
-
 
     // セーブデータの作成
     private DisplaySaveData CreateSaveData()
@@ -252,14 +252,13 @@ public class DisplayManager : MonoBehaviour
         resolutionDropDown.value = saveData.resolution;
     }
 
-
     /// <summary>
     ///  AesManagedマネージャーを取得
     /// </summary>
     /// <returns></returns>
     private AesManaged GetAesManager()
     {
-        //任意の半角英数16文字(Read.csと同じやつに)
+        //任意の半角英数16文字
         string aesIv = "8974632758937851";
         string aesKey = "7468735999189354";
 
@@ -322,7 +321,7 @@ public class DisplayManager : MonoBehaviour
         //ファイル削除
         File.Delete(path + "/display.bytes");
 
-        ////リロード
+        //リロード
         Load();
 
         Debug.Log("データの初期化が終わりました");
