@@ -141,8 +141,8 @@ public class DisplayManager : MonoBehaviour
     /// <param name="brightness"></param>
     public void SetBrightness(float brightness)
     {
-        light.intensity = brightness;
-        brightnessText.text = (brightness * 50f).ToString("F0");
+        light.intensity = brightness / 50f;
+        brightnessText.text = brightness.ToString("F0");
     }
 
 
