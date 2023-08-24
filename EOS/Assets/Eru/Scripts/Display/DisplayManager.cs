@@ -12,15 +12,26 @@ public class DisplayManager : MonoBehaviour
     [SerializeField, Header("解像度ドロップダウン")]
     private Dropdown resolutionDropDown;
 
+    [SerializeField, Header("ライト")]
+    private new Light light;
+
+    [SerializeField, Header("明るさテキスト")]
+    private Text brightnessText;
+
+    [SerializeField, Header("明るさスライダー")]
+    private Slider brightnessSlider;
+
     private int width = 1920;
     private int height = 1080;
     private bool screenModeFlg = true;
 
     void Start()
     {
+        if (light == null) light = GameObject.Find("Directional Light").GetComponent<Light>();
         Load();
         ChangeScreenMode();
         ChangeResolution();
+        SetBrightness(brightnessSlider.value);
         Save();
     }
 
@@ -123,6 +134,23 @@ public class DisplayManager : MonoBehaviour
     {
         Screen.SetResolution(width, height, screenModeFlg);
     }
+
+    /// <summary>
+    /// 画面の明るさ変更
+    /// </summary>
+    /// <param name="brightness"></param>
+    public void SetBrightness(float brightness)
+    {
+        light.intensity = brightness;
+        brightnessText.text = (brightness * 50f).ToString("F0");
+    }
+
+
+
+
+
+
+
 
     public void Save()
     {
@@ -227,9 +255,11 @@ public class DisplayManager : MonoBehaviour
         {
             screenDropDown.value = 0;
             resolutionDropDown.value = 0;
+            brightnessSlider.value = 1f;
 
             //更新
             ChangeDisplay();
+            SetBrightness(brightnessSlider.value);
         }
     }
 
@@ -241,6 +271,7 @@ public class DisplayManager : MonoBehaviour
 
         saveData.screenMode = screenDropDown.value;
         saveData.resolution = resolutionDropDown.value;
+        saveData.brightness = brightnessSlider.value;
 
         return saveData;
     }
@@ -250,6 +281,7 @@ public class DisplayManager : MonoBehaviour
     {
         screenDropDown.value = saveData.screenMode;
         resolutionDropDown.value = saveData.resolution;
+        brightnessSlider.value = saveData.brightness;
     }
 
     /// <summary>
@@ -333,4 +365,5 @@ public class DisplaySaveData
 {
     public int resolution;
     public int screenMode;
+    public float brightness;
 }
