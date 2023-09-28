@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour,ITime
 
     void Start()
     {
-        //‰Šú‰»
+        //åˆæœŸåŒ–
         time = 0;
         timer = 0;
         second = 0;
@@ -30,7 +30,7 @@ public class TimeManager : MonoBehaviour,ITime
 
         time += Time.deltaTime;
 
-        //•b
+        //ç§’
         if(time >= 1f)
         {
             time = 0;
@@ -38,21 +38,21 @@ public class TimeManager : MonoBehaviour,ITime
             timer++;
         }
 
-        //•ª
+        //åˆ†
         if(second >= 60)
         {
             second = 0;
             minute++;
         }
 
-        //Žž
+        //æ™‚
         if(minute >= 60)
         {
             minute = 0;
             hour++;
         }
 
-        //ƒeƒLƒXƒg
+        //ãƒ†ã‚­ã‚¹ãƒˆ
         timeText.text = hour.ToString("d2") + ":" + minute.ToString("d2") + ":" + second.ToString("d2");
     }
 }

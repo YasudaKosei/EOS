@@ -16,12 +16,12 @@ public class FadeIn : MonoBehaviour
     //FadeIn
     public void In()
     {
-        //1•b‚©‚¯‚ÄFadeIn‚·‚é
-        //FadeIn‚¾‚¯‚µ‚½‚¢‚È‚ç‚±‚Á‚¿
+        //1ç§’ã‹ã‘ã¦FadeInã™ã‚‹
+        //FadeInã ã‘ã—ãŸã„ãªã‚‰ã“ã£ã¡
         //fade.FadeIn(1f);
 
-        //1•b‚©‚¯‚ÄFadeIn‚µI‚í‚Á‚½‚çScene2‚ÖˆÚs‚·‚é
-        //SceneˆÚs‚à‚µ‚½‚¢‚È‚ç‚±‚Á‚¿
+        //1ç§’ã‹ã‘ã¦FadeInã—çµ‚ã‚ã£ãŸã‚‰Scene2ã¸ç§»è¡Œã™ã‚‹
+        //Sceneç§»è¡Œã‚‚ã—ãŸã„ãªã‚‰ã“ã£ã¡
         fade.FadeIn(1f, () => SceneManager.LoadScene("Scene2"));
     }
 }

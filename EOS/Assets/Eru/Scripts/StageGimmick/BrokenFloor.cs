@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class BrokenFloor : MonoBehaviour
 {
-    [SerializeField, Header("‰ó‚ê‚é‚Ü‚Å‚ÌŠÔ")]
+    [SerializeField, Header("å£Šã‚Œã‚‹ã¾ã§ã®æ™‚é–“")]
     private float brokenTime = 1f;
 
-    [SerializeField, Header("‰ó‚ê‚é‚Ü‚Å‚ÌŠÔ")]
+    [SerializeField, Header("å£Šã‚Œã‚‹ã¾ã§ã®æ™‚é–“")]
     private float returnTime = 2f;
 
-    [SerializeField, Header("Œ³‚É–ß‚é")]
+    [SerializeField, Header("å…ƒã«æˆ»ã‚‹")]
     private bool returnOriginal = false;
 
-    [SerializeField, Header("ƒvƒŒƒCƒ„[w’è")]
+    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
     private PlayerType playerType;
 
     private MeshRenderer meshRenderer;
@@ -44,7 +44,7 @@ public class BrokenFloor : MonoBehaviour
     {
         if (btimer <= 0f && !returnFlg)
         {
-            //”j‰ó
+            //ç ´å£Š
             if (!returnOriginal) gameObject.SetActive(false);
             else
             {
@@ -60,7 +60,7 @@ public class BrokenFloor : MonoBehaviour
         if (rtimer > 0f) rtimer -= Time.deltaTime;
         else 
         {
-            //Œ³‚É–ß‚·
+            //å…ƒã«æˆ»ã™
             btimer = brokenTime;
             returnFlg = false;
             meshRenderer.enabled = true;

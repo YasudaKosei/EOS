@@ -64,7 +64,7 @@ public class PotController : MonoBehaviour
             return;
         }
 
-        //ˆÚ“®
+        //ç§»å‹•
         Vector2 moveInput = move.action.ReadValue<Vector2>();
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
@@ -76,7 +76,7 @@ public class PotController : MonoBehaviour
         moveDirection = moveDirection.normalized * moveSpeed;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
-        //ƒWƒƒƒ“ƒv
+        //ã‚¸ãƒ£ãƒ³ãƒ—
         if (jump.action.triggered && !isJumping)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -96,7 +96,7 @@ public class PotController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpPower * 0.1f, ForceMode.Impulse);
         }
 
-        // ‰ñ“]
+        // å›è»¢
         if (moveDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -106,7 +106,7 @@ public class PotController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //’n–Ê’…’n”»’è
+        //åœ°é¢ç€åœ°åˆ¤å®š
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
         {
             isJumping = false;

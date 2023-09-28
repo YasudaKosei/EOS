@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class JumpTrap : MonoBehaviour
 {
-    [SerializeField,Header("ƒWƒƒƒ“ƒv—Í")]
+    [SerializeField, Header("ã‚¸ãƒ£ãƒ³ãƒ—åŠ›")]
     private float jumpPower = 5f;
 
-    [SerializeField,Header("ƒvƒŒƒCƒ„[w’è")]
+    [SerializeField,Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
     private PlayerType playerType;
 
     private enum PlayerType
@@ -20,14 +20,14 @@ public class JumpTrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //‘ÎÛ‚ÌƒvƒŒƒCƒ„[‚©ŒŸ’m
+        //å¯¾è±¡ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹æ¤œçŸ¥
         if (playerType != PlayerType.none && other.gameObject.tag != playerType.ToString()) return; 
         if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb)) rb.AddForce(jumpPower * Vector3.up, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //‘ÎÛ‚ÌƒvƒŒƒCƒ„[‚©ŒŸ’m
+        //å¯¾è±¡ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹æ¤œçŸ¥
         if (playerType != PlayerType.none && collision.gameObject.tag != playerType.ToString()) return;
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb)) rb.AddForce(jumpPower * Vector3.up, ForceMode.Impulse);
     }

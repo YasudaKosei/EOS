@@ -20,7 +20,7 @@ public class PlayerChangeCanvas : MonoBehaviour
 
     void Start()
     {
-        //—LŒø‰»
+        //æœ‰åŠ¹åŒ–
         move.action.Enable();
         change.action.Enable();
         pause.action.Enable();
@@ -28,10 +28,10 @@ public class PlayerChangeCanvas : MonoBehaviour
 
     void Update()
     {
-        //ƒN[ƒ‹ƒ^ƒCƒ€ƒJƒEƒ“ƒg
+        //ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã‚«ã‚¦ãƒ³ãƒˆ
         if (time > 0) time -= Time.deltaTime;
 
-        //‘I‘ğ
+        //é¸æŠ
         if (time == 0)
         {
             if (move.action.ReadValue<Vector2>().x > 0.0f) Right();
@@ -41,7 +41,7 @@ public class PlayerChangeCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// ‰E‘I‘ğ
+    /// å³é¸æŠ
     /// </summary>
     public void Right()
     {
@@ -53,7 +53,7 @@ public class PlayerChangeCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// ¶‘I‘ğ
+    /// å·¦é¸æŠ
     /// </summary>
     public void Left()
     {
@@ -65,7 +65,7 @@ public class PlayerChangeCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// ‘I‘ğI—¹ˆ—
+    /// é¸æŠçµ‚äº†å‡¦ç†
     /// </summary>
     public void Fin()
     {

@@ -38,7 +38,7 @@ public class PlayerChange : MonoBehaviour
 
     void Awake()
     {
-        //—LŒø‰»
+        //æœ‰åŠ¹åŒ–
         change.action.Enable();
 
         nowPlayer = Instantiate(playerType[playerID], startPos, Quaternion.identity);
@@ -54,7 +54,7 @@ public class PlayerChange : MonoBehaviour
     {
         if (Stop.stopFlg && !nowStopFlg) return;
 
-        //ƒN[ƒ‹ƒ^ƒCƒ€ƒJƒEƒ“ƒg
+        //ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã‚«ã‚¦ãƒ³ãƒˆ
         if (!changeFlg)
         {
             timer += Time.deltaTime;
@@ -66,7 +66,7 @@ public class PlayerChange : MonoBehaviour
             if (time <= 0) changeFlg = true;
         }
 
-        //ƒvƒŒƒCƒ„[‘I‘ğˆ—
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é¸æŠå‡¦ç†
         if (change.action.triggered)
         {
             if (changeFlg && !elevatorFlg)
@@ -77,10 +77,10 @@ public class PlayerChange : MonoBehaviour
                 Stop.stopFlg = true;
                 nowStopFlg = true;
             }
-            else Debug.Log("ƒN[ƒ‹ƒ_ƒEƒ“’†");
+            else Debug.Log("ã‚¯ãƒ¼ãƒ«ãƒ€ã‚¦ãƒ³ä¸­");
         }
 
-        //F•ÏX
+        //è‰²å¤‰æ›´
         for (int i = 0; i < playerImage.Length; i++)
         {
             if (playerID == i) playerImage[i].color = Color.yellow;
@@ -89,7 +89,7 @@ public class PlayerChange : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[•ÏXˆ—
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å¤‰æ›´å‡¦ç†
     /// </summary>
     public void ChangePlayer()
     {
