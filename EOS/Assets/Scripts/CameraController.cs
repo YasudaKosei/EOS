@@ -3,16 +3,16 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player; // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®Transform
-    public float distance = 6f; // ã‚«ãƒ¡ãƒ©ã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è·é›¢
-    public float rotationSpeed = 0.1f; // ã‚«ãƒ¡ãƒ©ã®å›è»¢é€Ÿåº¦
-    public float padRotationSpeed = 1.5f; // ã‚«ãƒ¡ãƒ©ã®å›è»¢é€Ÿåº¦
+    public Transform player; // ƒvƒŒƒCƒ„[‚ÌTransform
+    public float distance = 6f; // ƒJƒƒ‰‚ÆƒvƒŒƒCƒ„[‚Ì‹——£
+    public float rotationSpeed = 0.1f; // ƒJƒƒ‰‚Ì‰ñ“]‘¬“x
+    public float padRotationSpeed = 1.5f; // ƒJƒƒ‰‚Ì‰ñ“]‘¬“x
 
     [SerializeField]
     private int targetFps = 60;
 
     //[HideInInspector]
-    public Vector3 offset = new Vector3(0,4,-6); // ã‚«ãƒ¡ãƒ©ã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+    public Vector3 offset = new Vector3(0,4,-6); // ƒJƒƒ‰‚ÆƒvƒŒƒCƒ„[‚ÌƒIƒtƒZƒbƒg
 
     [SerializeField]
     private InputActionReference _camera;
@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
     {
         Application.targetFrameRate = targetFps;
 
-        //æœ‰åŠ¹åŒ–
+        //—LŒø‰»
         _camera.action.Enable();
         _padCamera.action.Enable();
     }
@@ -34,21 +34,21 @@ public class CameraController : MonoBehaviour
         if (player == null) return;
         if (Stop.stopFlg) return;
 
-        //ãƒã‚¦ã‚¹ç”¨
-        // ãƒã‚¦ã‚¹ã®Xåº§æ¨™ã®å¤‰åŒ–é‡ã«åŸºã¥ã„ã¦ã‚«ãƒ¡ãƒ©ã‚’å›è»¢ã•ã›ã‚‹
+        //ƒ}ƒEƒX—p
+        // ƒ}ƒEƒX‚ÌXÀ•W‚Ì•Ï‰»—Ê‚ÉŠî‚Ã‚¢‚ÄƒJƒƒ‰‚ğ‰ñ“]‚³‚¹‚é
         float mouseX = _camera.action.ReadValue<float>();
         transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);
 
-        // ã‚«ãƒ¡ãƒ©ã®ä½ç½®ã‚’æ›´æ–°
+        // ƒJƒƒ‰‚ÌˆÊ’u‚ğXV
         Quaternion rotation = Quaternion.Euler(0f, mouseX * rotationSpeed, 0f);
         offset = rotation * offset;
         Vector3 desiredPosition = player.position + offset;
         transform.position = desiredPosition;
 
-        // ã‚«ãƒ¡ãƒ©ã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ä¸­å¿ƒã«ç§»å‹•ã•ã›ã‚‹
+        // ƒJƒƒ‰‚ğƒvƒŒƒCƒ„[‚ğ’†S‚ÉˆÚ“®‚³‚¹‚é
         //transform.LookAt(player.position);
 
-        //ãƒ‘ãƒƒãƒ‰ç”¨
+        //ƒpƒbƒh—p
         mouseX = _padCamera.action.ReadValue<float>();
         transform.RotateAround(player.position, Vector3.up, mouseX * padRotationSpeed);
 

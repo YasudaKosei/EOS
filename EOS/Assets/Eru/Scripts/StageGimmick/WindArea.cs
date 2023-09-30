@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class WindArea : MonoBehaviour
 {
-    [SerializeField, Header("é¢¨ã®åŠ›")]
+    [SerializeField, Header("•—‚Ì—Í")]
     private float windPower;
 
-    [SerializeField, Header("é¢¨ã®å‘ã")]
+    [SerializeField, Header("•—‚ÌŒü‚«")]
     private FBLR direction;
 
-    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
+    [SerializeField, Header("ƒvƒŒƒCƒ„[w’è")]
     private PlayerType playerType;
 
     private enum FBLR
@@ -31,7 +31,7 @@ public class WindArea : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //å¯¾è±¡ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹æ¤œçŸ¥
+        //‘ÎÛ‚ÌƒvƒŒƒCƒ„[‚©ŒŸ’m
         if (playerType != PlayerType.none && other.gameObject.tag != playerType.ToString()) return;
         if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {

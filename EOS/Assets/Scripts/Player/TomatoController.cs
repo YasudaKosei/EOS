@@ -64,7 +64,7 @@ public class TomatoController : MonoBehaviour
             return;
         }
 
-        //ç§»å‹•
+        //ˆÚ“®
         Vector2 moveInput = move.action.ReadValue<Vector2>();
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
@@ -75,7 +75,7 @@ public class TomatoController : MonoBehaviour
         moveDirection = moveDirection.normalized * moveSpeed * dashS;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
-        //ã‚¸ãƒ£ãƒ³ãƒ—
+        //ƒWƒƒƒ“ƒv
         if (jump.action.triggered && !isJumping)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -98,7 +98,7 @@ public class TomatoController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //åœ°é¢ç€åœ°åˆ¤å®š
+        //’n–Ê’…’n”»’è
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
         {
             isJumping = false;

@@ -99,45 +99,45 @@ public class ChangeSoundVolume : MonoBehaviour
     public void Save()
     {
 #if UNITY_EDITOR
-        //UnityEditorä¸Šãªã‚‰
-        //Assetãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã®Saveãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //UnityEditorã‚È‚ç
+        //Assetƒtƒ@ƒCƒ‹‚Ì’†‚ÌSaveƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğ“ü‚ê‚é
         string path = Application.dataPath + "/Save";
 
 #else
-        //ãã†ã§ãªã‘ã‚Œã°
-        //.exeãŒã‚ã‚‹ã¨ã“ã‚ã«Saveãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãã“ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //‚»‚¤‚Å‚È‚¯‚ê‚Î
+        //.exe‚ª‚ ‚é‚Æ‚±‚ë‚ÉSaveƒtƒ@ƒCƒ‹‚ğì¬‚µ‚»‚±‚ÌƒpƒX‚ğ“ü‚ê‚é
         Directory.CreateDirectory("Save");
         string path = Directory.GetCurrentDirectory() + "/Save";
 
 #endif
 
-        //ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®š
+        //ƒZ[ƒuƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è
         string SaveFilePath = path + "/SoundVolume.bytes";
 
-        // ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã®ä½œæˆ
+        // ƒZ[ƒuƒf[ƒ^‚Ìì¬
         SoundVolumeSaveData saveData = CreateSaveData();
 
-        // ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã‚’JSONå½¢å¼ã®æ–‡å­—åˆ—ã«å¤‰æ›
+        // ƒZ[ƒuƒf[ƒ^‚ğJSONŒ`®‚Ì•¶š—ñ‚É•ÏŠ·
         string jsonString = JsonUtility.ToJson(saveData);
 
-        // æ–‡å­—åˆ—ã‚’byteé…åˆ—ã«å¤‰æ›
+        // •¶š—ñ‚ğbyte”z—ñ‚É•ÏŠ·
         byte[] bytes = Encoding.UTF8.GetBytes(jsonString);
 
-        // AESæš—å·åŒ–
+        // AESˆÃ†‰»
         byte[] arrEncrypted = AesEncrypt(bytes);
 
-        // æŒ‡å®šã—ãŸãƒ‘ã‚¹ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆ
+        // w’è‚µ‚½ƒpƒX‚Éƒtƒ@ƒCƒ‹‚ğì¬
         FileStream file = new FileStream(SaveFilePath, FileMode.Create, FileAccess.Write);
 
-        //ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹
+        //ƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚é
         try
         {
-            // ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜
+            // ƒtƒ@ƒCƒ‹‚É•Û‘¶
             file.Write(arrEncrypted, 0, arrEncrypted.Length);
         }
         finally
         {
-            // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
+            // ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
             if (file != null)
             {
                 file.Close();
@@ -149,47 +149,47 @@ public class ChangeSoundVolume : MonoBehaviour
     public void Load()
     {
 #if UNITY_EDITOR
-        //UnityEditorä¸Šãªã‚‰
-        //Assetãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã®Saveãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //UnityEditorã‚È‚ç
+        //Assetƒtƒ@ƒCƒ‹‚Ì’†‚ÌSaveƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğ“ü‚ê‚é
         string path = Application.dataPath + "/Save";
 
 #else
-        //ãã†ã§ãªã‘ã‚Œã°
-        //.exeãŒã‚ã‚‹ã¨ã“ã‚ã«Saveãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãã“ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //‚»‚¤‚Å‚È‚¯‚ê‚Î
+        //.exe‚ª‚ ‚é‚Æ‚±‚ë‚ÉSaveƒtƒ@ƒCƒ‹‚ğì¬‚µ‚»‚±‚ÌƒpƒX‚ğ“ü‚ê‚é
         Directory.CreateDirectory("Save");
         string path = Directory.GetCurrentDirectory() + "/Save";
 
 #endif
 
-        //ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®š
+        //ƒZ[ƒuƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è
         string SaveFilePath = path + "/SoundVolume.bytes";
 
-        //ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚‹ã‹
+        //ƒZ[ƒuƒtƒ@ƒCƒ‹‚ª‚ ‚é‚©
         if (File.Exists(SaveFilePath))
         {
-            //ãƒ•ã‚¡ã‚¤ãƒ«ãƒ¢ãƒ¼ãƒ‰ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã«ã™ã‚‹
+            //ƒtƒ@ƒCƒ‹ƒ‚[ƒh‚ğƒI[ƒvƒ“‚É‚·‚é
             FileStream file = new FileStream(SaveFilePath, FileMode.Open, FileAccess.Read);
             try
             {
-                // ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
+                // ƒtƒ@ƒCƒ‹“Ç‚İ‚İ
                 byte[] arrRead = File.ReadAllBytes(SaveFilePath);
 
-                // å¾©å·åŒ–
+                // •œ†‰»
                 byte[] arrDecrypt = AesDecrypt(arrRead);
 
-                // byteé…åˆ—ã‚’æ–‡å­—åˆ—ã«å¤‰æ›
+                // byte”z—ñ‚ğ•¶š—ñ‚É•ÏŠ·
                 string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
 
-                // JSONå½¢å¼ã®æ–‡å­—åˆ—ã‚’ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã®ã‚¯ãƒ©ã‚¹ã«å¤‰æ›
+                // JSONŒ`®‚Ì•¶š—ñ‚ğƒZ[ƒuƒf[ƒ^‚ÌƒNƒ‰ƒX‚É•ÏŠ·
                 SoundVolumeSaveData saveData = JsonUtility.FromJson<SoundVolumeSaveData>(decryptStr);
 
-                //ãƒ‡ãƒ¼ã‚¿ã®åæ˜ 
+                //ƒf[ƒ^‚Ì”½‰f
                 ReadData(saveData);
 
             }
             finally
             {
-                // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
+                // ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
                 if (file != null)
                 {
                     file.Close();
@@ -198,19 +198,19 @@ public class ChangeSoundVolume : MonoBehaviour
         }
         else
         {
-            Debug.Log("SoundVolumeã®ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“");
+            Debug.Log("SoundVolume‚ÌƒZ[ƒuƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ");
         }
     }
 
 
 
-    // ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã®ä½œæˆ
+    // ƒZ[ƒuƒf[ƒ^‚Ìì¬
     private SoundVolumeSaveData CreateSaveData()
     {
-        //ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
+        //ƒZ[ƒuƒf[ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»
         SoundVolumeSaveData saveData = new SoundVolumeSaveData();
 
-        //ã‚²ãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿ã®å€¤ã‚’ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ã«ä»£å…¥
+        //ƒQ[ƒ€ƒf[ƒ^‚Ì’l‚ğƒZ[ƒuƒf[ƒ^‚É‘ã“ü
         //Master
         saveData.masVol = masterSlider.value;   
         saveData.masFlg = masterToggle.isOn;
@@ -226,7 +226,7 @@ public class ChangeSoundVolume : MonoBehaviour
         return saveData;
     }
 
-    //ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ï¼ˆåæ˜ ï¼‰
+    //ƒf[ƒ^‚Ì“Ç‚İ‚İi”½‰fj
     private void ReadData(SoundVolumeSaveData saveData)
     {
         float vol;
@@ -277,12 +277,12 @@ public class ChangeSoundVolume : MonoBehaviour
 
 
     /// <summary>
-    ///  AesManagedãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚’å–å¾—
+    ///  AesManagedƒ}ƒl[ƒWƒƒ[‚ğæ“¾
     /// </summary>
     /// <returns></returns>
     private AesManaged GetAesManager()
     {
-        //ä»»æ„ã®åŠè§’è‹±æ•°16æ–‡å­—(Read.csã¨åŒã˜ã‚„ã¤ã«)
+        //”CˆÓ‚Ì”¼Šp‰p”16•¶š(Read.cs‚Æ“¯‚¶‚â‚Â‚É)
         string aesIv = "1897154867465325";
         string aesKey = "8984557159843457";
 
@@ -297,58 +297,58 @@ public class ChangeSoundVolume : MonoBehaviour
     }
 
     /// <summary>
-    /// AESæš—å·åŒ–
+    /// AESˆÃ†‰»
     /// </summary>
     /// <param name="byteText"></param>
     /// <returns></returns>
     public byte[] AesEncrypt(byte[] byteText)
     {
-        // AESãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã®å–å¾—
+        // AESƒ}ƒl[ƒWƒƒ[‚Ìæ“¾
         AesManaged aes = GetAesManager();
-        // æš—å·åŒ–
+        // ˆÃ†‰»
         byte[] encryptText = aes.CreateEncryptor().TransformFinalBlock(byteText, 0, byteText.Length);
 
         return encryptText;
     }
 
     /// <summary>
-    /// AESå¾©å·åŒ–
+    /// AES•œ†‰»
     /// </summary>
     /// <param name="byteText"></param>
     /// <returns></returns>
     public byte[] AesDecrypt(byte[] byteText)
     {
-        // AESãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼å–å¾—
+        // AESƒ}ƒl[ƒWƒƒ[æ“¾
         var aes = GetAesManager();
-        // å¾©å·åŒ–
+        // •œ†‰»
         byte[] decryptText = aes.CreateDecryptor().TransformFinalBlock(byteText, 0, byteText.Length);
 
         return decryptText;
     }
 
-    //ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿å‰Šé™¤
+    //ƒZ[ƒuƒf[ƒ^íœ
     public void Init()
     {
 #if UNITY_EDITOR
-        //UnityEditorä¸Šãªã‚‰
-        //Assetãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã®Saveãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //UnityEditorã‚È‚ç
+        //Assetƒtƒ@ƒCƒ‹‚Ì’†‚ÌSaveƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğ“ü‚ê‚é
         string path = Application.dataPath + "/Save";
 
 #else
-        //ãã†ã§ãªã‘ã‚Œã°
-        //.exeãŒã‚ã‚‹ã¨ã“ã‚ã«Saveãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãã“ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //‚»‚¤‚Å‚È‚¯‚ê‚Î
+        //.exe‚ª‚ ‚é‚Æ‚±‚ë‚ÉSaveƒtƒ@ƒCƒ‹‚ğì¬‚µ‚»‚±‚ÌƒpƒX‚ğ“ü‚ê‚é
         Directory.CreateDirectory("Save");
         string path = Directory.GetCurrentDirectory() + "/Save";
 
 #endif
 
-        //ãƒ•ã‚¡ã‚¤ãƒ«å‰Šé™¤
+        //ƒtƒ@ƒCƒ‹íœ
         File.Delete(path + "/SoundVolume.bytes");
 
-        ////ãƒªãƒ­ãƒ¼ãƒ‰
+        ////ƒŠƒ[ƒh
         Load();
 
-        Debug.Log("ãƒ‡ãƒ¼ã‚¿ã®å‰Šé™¤ãŒçµ‚ã‚ã‚Šã¾ã—ãŸ");
+        Debug.Log("ƒf[ƒ^‚Ìíœ‚ªI‚í‚è‚Ü‚µ‚½");
     }
 }
 

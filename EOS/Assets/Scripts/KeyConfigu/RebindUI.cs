@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 
 public class RebindUI : MonoBehaviour
 {
-    // ãƒªãƒã‚¤ãƒ³ãƒ‰å¯¾è±¡ã®Action
+    // ƒŠƒoƒCƒ“ƒh‘ÎÛ‚ÌAction
     [SerializeField] private InputActionReference _actionRef;
 
-    // ç¾åœ¨ã®Bindingã®ãƒ‘ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆ
+    // Œ»İ‚ÌBinding‚ÌƒpƒX‚ğ•\¦‚·‚éƒeƒLƒXƒg
     [SerializeField] private TMP_Text _pathText;
 
-    // ãƒªãƒã‚¤ãƒ³ãƒ‰ä¸­ã®ãƒã‚¹ã‚¯ç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    // ƒŠƒoƒCƒ“ƒh’†‚Ìƒ}ƒXƒN—pƒIƒuƒWƒFƒNƒg
     [SerializeField] private GameObject _mask;
 
     private InputAction _action;
@@ -18,84 +18,84 @@ public class RebindUI : MonoBehaviour
 
     [SerializeField] private int bindingIndex = 0;
 
-    // åˆæœŸåŒ–
+    // ‰Šú‰»
     private void Awake()
     {
         if (_actionRef == null) return;
 
-        // InputActionã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä¿æŒã—ã¦ãŠã
+        // InputActionƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Û‚µ‚Ä‚¨‚­
         _action = _actionRef.action;
 
-        // ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰ã®è¡¨ç¤ºã‚’åæ˜ ã™ã‚‹
+        // ƒL[ƒoƒCƒ“ƒh‚Ì•\¦‚ğ”½‰f‚·‚é
         RefreshDisplay();
     }
 
-    // å¾Œå‡¦ç†
+    // Œãˆ—
     private void OnDestroy()
     {
-        // ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã¯å¿…ãšç ´æ£„ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
+        // ƒIƒyƒŒ[ƒVƒ‡ƒ“‚Í•K‚¸”jŠü‚·‚é•K—v‚ª‚ ‚é
         CleanUpOperation();
     }
 
-    // ãƒªãƒã‚¤ãƒ³ãƒ‰ã‚’é–‹å§‹ã™ã‚‹
+    // ƒŠƒoƒCƒ“ƒh‚ğŠJn‚·‚é
     public void StartRebinding()
     {
-        // ã‚‚ã—ActionãŒè¨­å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ã€ä½•ã‚‚ã—ãªã„
+        // ‚à‚µAction‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎA‰½‚à‚µ‚È‚¢
         if (_action == null) return;
 
-        // ã‚‚ã—ãƒªãƒã‚¤ãƒ³ãƒ‰ä¸­ãªã‚‰ã€å¼·åˆ¶çš„ã«ã‚­ãƒ£ãƒ³ã‚»ãƒ«
-        // Cancelãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã¨ã€OnCancelã‚¤ãƒ™ãƒ³ãƒˆãŒç™ºç«ã™ã‚‹
+        // ‚à‚µƒŠƒoƒCƒ“ƒh’†‚È‚çA‹­§“I‚ÉƒLƒƒƒ“ƒZƒ‹
+        // Cancelƒƒ\ƒbƒh‚ğÀs‚·‚é‚ÆAOnCancelƒCƒxƒ“ƒg‚ª”­‰Î‚·‚é
         _rebindOperation?.Cancel();
 
-        // ãƒªãƒã‚¤ãƒ³ãƒ‰å‰ã«Actionã‚’ç„¡åŠ¹åŒ–ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
+        // ƒŠƒoƒCƒ“ƒh‘O‚ÉAction‚ğ–³Œø‰»‚·‚é•K—v‚ª‚ ‚é
         _action.Disable();
 
-        // ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°ç”¨ãƒã‚¹ã‚¯ã‚’è¡¨ç¤º
+        // ƒuƒƒbƒLƒ“ƒO—pƒ}ƒXƒN‚ğ•\¦
         if (_mask != null)
             _mask.SetActive(true);
 
-        // ãƒªãƒã‚¤ãƒ³ãƒ‰ãŒçµ‚äº†ã—ãŸæ™‚ã®å‡¦ç†ã‚’è¡Œã†ãƒ­ãƒ¼ã‚«ãƒ«é–¢æ•°
+        // ƒŠƒoƒCƒ“ƒh‚ªI—¹‚µ‚½‚Ìˆ—‚ğs‚¤ƒ[ƒJƒ‹ŠÖ”
         void OnFinished()
         {
-            // ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¾Œå‡¦ç†
+            // ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÌŒãˆ—
             CleanUpOperation();
 
-            // ä¸€æ™‚çš„ã«ç„¡åŠ¹åŒ–ã—ãŸActionã‚’æœ‰åŠ¹åŒ–ã™ã‚‹
+            // ˆê“I‚É–³Œø‰»‚µ‚½Action‚ğ—LŒø‰»‚·‚é
             _action.Enable();
 
-            // ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°ç”¨ãƒã‚¹ã‚¯ã‚’éè¡¨ç¤º
+            // ƒuƒƒbƒLƒ“ƒO—pƒ}ƒXƒN‚ğ”ñ•\¦
             if (_mask != null)
                 _mask.SetActive(false);
         }
 
-        // ãƒªãƒã‚¤ãƒ³ãƒ‰ã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã—ã€
-        // å„ç¨®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã®è¨­å®šã‚’å®Ÿæ–½ã—ã€
-        // é–‹å§‹ã™ã‚‹
+        // ƒŠƒoƒCƒ“ƒh‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğì¬‚µA
+        // ŠeíƒR[ƒ‹ƒoƒbƒN‚Ìİ’è‚ğÀ{‚µA
+        // ŠJn‚·‚é
         _rebindOperation = _action
             .PerformInteractiveRebinding(bindingIndex)
             .OnComplete(_ =>
             {
-                // ãƒªãƒã‚¤ãƒ³ãƒ‰ãŒå®Œäº†ã—ãŸæ™‚ã®å‡¦ç†
+                // ƒŠƒoƒCƒ“ƒh‚ªŠ®—¹‚µ‚½‚Ìˆ—
                 RefreshDisplay();
                 OnFinished();
             })
             .OnCancel(_ =>
             {
-                // ãƒªãƒã‚¤ãƒ³ãƒ‰ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
+                // ƒŠƒoƒCƒ“ƒh‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½‚Ìˆ—
                 OnFinished();
             })
-            .Start(); // ã“ã“ã§ãƒªãƒã‚¤ãƒ³ãƒ‰ã‚’é–‹å§‹ã™ã‚‹
+            .Start(); // ‚±‚±‚ÅƒŠƒoƒCƒ“ƒh‚ğŠJn‚·‚é
     }
 
-    // ä¸Šæ›¸ãã•ã‚ŒãŸæƒ…å ±ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
+    // ã‘‚«‚³‚ê‚½î•ñ‚ğƒŠƒZƒbƒg‚·‚é
     public void ResetOverrides()
     {
-        // Bindingã®ä¸Šæ›¸ãã‚’å…¨ã¦è§£é™¤ã™ã‚‹
+        // Binding‚Ìã‘‚«‚ğ‘S‚Ä‰ğœ‚·‚é
         _action?.RemoveAllBindingOverrides();
         RefreshDisplay();
     }
 
-    // ç¾åœ¨ã®ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰è¡¨ç¤ºã‚’æ›´æ–°
+    // Œ»İ‚ÌƒL[ƒoƒCƒ“ƒh•\¦‚ğXV
     public void RefreshDisplay()
     {
         if (_action == null || _pathText == null) return;
@@ -103,10 +103,10 @@ public class RebindUI : MonoBehaviour
         _pathText.text = _action.GetBindingDisplayString(bindingIndex);
     }
 
-    // ãƒªãƒã‚¤ãƒ³ãƒ‰ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç ´æ£„ã™ã‚‹
+    // ƒŠƒoƒCƒ“ƒhƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğ”jŠü‚·‚é
     private void CleanUpOperation()
     {
-        // ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã—ãŸã‚‰ã€Disposeã—ãªã„ã¨ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ã™ã‚‹
+        // ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğì¬‚µ‚½‚çADispose‚µ‚È‚¢‚Æƒƒ‚ƒŠƒŠ[ƒN‚·‚é
         _rebindOperation?.Dispose();
         _rebindOperation = null;
     }

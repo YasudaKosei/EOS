@@ -6,52 +6,52 @@ using System.Text;
 
 public class RebindSaveManager : MonoBehaviour
 {
-    // å¯¾è±¡ã¨ãªã‚‹InputActionAsset
+    // ‘ÎÛ‚Æ‚È‚éInputActionAsset
     [SerializeField] private InputActionAsset _actionAsset;
 
-    // ä¸Šæ›¸ãæƒ…å ±ã®ä¿å­˜
+    // ã‘‚«î•ñ‚Ì•Û‘¶
     public void Save()
     {
         if (_actionAsset == null) return;
 
 #if UNITY_EDITOR
-        //UnityEditorä¸Šãªã‚‰
-        //Assetãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã®Saveãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //UnityEditorã‚È‚ç
+        //Assetƒtƒ@ƒCƒ‹‚Ì’†‚ÌSaveƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğ“ü‚ê‚é
         string path = Application.dataPath + "/Save";
 
 #else
-        //ãã†ã§ãªã‘ã‚Œã°
-        //.exeãŒã‚ã‚‹ã¨ã“ã‚ã«Saveãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãã“ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //‚»‚¤‚Å‚È‚¯‚ê‚Î
+        //.exe‚ª‚ ‚é‚Æ‚±‚ë‚ÉSaveƒtƒ@ƒCƒ‹‚ğì¬‚µ‚»‚±‚ÌƒpƒX‚ğ“ü‚ê‚é
         Directory.CreateDirectory("Save");
         string path = Directory.GetCurrentDirectory() + "/Save";
 
 #endif
 
-        //ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®š
+        //ƒZ[ƒuƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è
         string SaveFilePath = path + "/InputActionOverrides.bytes";
 
-        // InputActionAssetã®ä¸Šæ›¸ãæƒ…å ±ã®ä¿å­˜
+        // InputActionAsset‚Ìã‘‚«î•ñ‚Ì•Û‘¶
         var json = _actionAsset.SaveBindingOverridesAsJson();
 
-        // æ–‡å­—åˆ—ã‚’byteé…åˆ—ã«å¤‰æ›
+        // •¶š—ñ‚ğbyte”z—ñ‚É•ÏŠ·
         byte[] bytes = Encoding.UTF8.GetBytes(json);
 
-        // AESæš—å·åŒ–
+        // AESˆÃ†‰»
         byte[] arrEncrypted = AesEncrypt(bytes);
 
-        // æŒ‡å®šã—ãŸãƒ‘ã‚¹ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆ
+        // w’è‚µ‚½ƒpƒX‚Éƒtƒ@ƒCƒ‹‚ğì¬
         FileStream file = new FileStream(SaveFilePath, FileMode.Create, FileAccess.Write);
 
-        // ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜
+        // ƒtƒ@ƒCƒ‹‚É•Û‘¶
         try
         {
-            // ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜
+            // ƒtƒ@ƒCƒ‹‚É•Û‘¶
             file.Write(arrEncrypted, 0, arrEncrypted.Length);
 
         }
         finally
         {
-            // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
+            // ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
             if (file != null)
             {
                 file.Close();
@@ -61,49 +61,49 @@ public class RebindSaveManager : MonoBehaviour
         Load();
     }
 
-    // ä¸Šæ›¸ãæƒ…å ±ã®èª­ã¿è¾¼ã¿
+    // ã‘‚«î•ñ‚Ì“Ç‚İ‚İ
     public void Load()
     {
         if (_actionAsset == null) return;
 
 #if UNITY_EDITOR
-        //UnityEditorä¸Šãªã‚‰
-        //Assetãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã®Saveãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //UnityEditorã‚È‚ç
+        //Assetƒtƒ@ƒCƒ‹‚Ì’†‚ÌSaveƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğ“ü‚ê‚é
         string path = Application.dataPath + "/Save";
 
 #else
-        //ãã†ã§ãªã‘ã‚Œã°
-        //.exeãŒã‚ã‚‹ã¨ã“ã‚ã«Saveãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãã“ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //‚»‚¤‚Å‚È‚¯‚ê‚Î
+        //.exe‚ª‚ ‚é‚Æ‚±‚ë‚ÉSaveƒtƒ@ƒCƒ‹‚ğì¬‚µ‚»‚±‚ÌƒpƒX‚ğ“ü‚ê‚é
         Directory.CreateDirectory("Save");
         string path = Directory.GetCurrentDirectory() + "/Save";
 
 #endif
-        //ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®š
+        //ƒZ[ƒuƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è
         string SaveFilePath = path + "/InputActionOverrides.bytes";
 
-        //ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚‹ã‹
+        //ƒZ[ƒuƒtƒ@ƒCƒ‹‚ª‚ ‚é‚©
         if (File.Exists(SaveFilePath))
         {
-            //ãƒ•ã‚¡ã‚¤ãƒ«ãƒ¢ãƒ¼ãƒ‰ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã«ã™ã‚‹
+            //ƒtƒ@ƒCƒ‹ƒ‚[ƒh‚ğƒI[ƒvƒ“‚É‚·‚é
             FileStream file = new FileStream(SaveFilePath, FileMode.Open, FileAccess.Read);
             try
             {
-                // ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
+                // ƒtƒ@ƒCƒ‹“Ç‚İ‚İ
                 byte[] arrRead = File.ReadAllBytes(SaveFilePath);
 
-                // å¾©å·åŒ–
+                // •œ†‰»
                 byte[] arrDecrypt = AesDecrypt(arrRead);
 
-                // byteé…åˆ—ã‚’æ–‡å­—åˆ—ã«å¤‰æ›
+                // byte”z—ñ‚ğ•¶š—ñ‚É•ÏŠ·
                 string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
 
-                // InputActionAssetã®ä¸Šæ›¸ãæƒ…å ±ã‚’è¨­å®š
+                // InputActionAsset‚Ìã‘‚«î•ñ‚ğİ’è
                 _actionAsset.LoadBindingOverridesFromJson(decryptStr);
 
             }
             finally
             {
-                // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
+                // ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
                 if (file != null)
                 {
                     file.Close();
@@ -112,18 +112,18 @@ public class RebindSaveManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("KeyConfigã®ã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“");
+            Debug.Log("KeyConfig‚ÌƒZ[ƒuƒtƒ@ƒCƒ‹‚ª‚ ‚è‚Ü‚¹‚ñ");
         }
     }
 
 
     /// <summary>
-    ///  AesManagedãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚’å–å¾—
+    ///  AesManagedƒ}ƒl[ƒWƒƒ[‚ğæ“¾
     /// </summary>
     /// <returns></returns>
     private AesManaged GetAesManager()
     {
-        //ä»»æ„ã®åŠè§’è‹±æ•°16æ–‡å­—(Read.csã¨åŒã˜ã‚„ã¤ã«)
+        //”CˆÓ‚Ì”¼Šp‰p”16•¶š(Read.cs‚Æ“¯‚¶‚â‚Â‚É)
         string aesIv = "6325424674315321";
         string aesKey = "4328689359652135";
 
@@ -138,57 +138,57 @@ public class RebindSaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// AESæš—å·åŒ–
+    /// AESˆÃ†‰»
     /// </summary>
     /// <param name="byteText"></param>
     /// <returns></returns>
     public byte[] AesEncrypt(byte[] byteText)
     {
-        // AESãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã®å–å¾—
+        // AESƒ}ƒl[ƒWƒƒ[‚Ìæ“¾
         AesManaged aes = GetAesManager();
-        // æš—å·åŒ–
+        // ˆÃ†‰»
         byte[] encryptText = aes.CreateEncryptor().TransformFinalBlock(byteText, 0, byteText.Length);
 
         return encryptText;
     }
 
     /// <summary>
-    /// AESå¾©å·åŒ–
+    /// AES•œ†‰»
     /// </summary>
     /// <param name="byteText"></param>
     /// <returns></returns>
     public byte[] AesDecrypt(byte[] byteText)
     {
-        // AESãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼å–å¾—
+        // AESƒ}ƒl[ƒWƒƒ[æ“¾
         var aes = GetAesManager();
-        // å¾©å·åŒ–
+        // •œ†‰»
         byte[] decryptText = aes.CreateDecryptor().TransformFinalBlock(byteText, 0, byteText.Length);
 
         return decryptText;
     }
 
-    //ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿å‰Šé™¤
+    //ƒZ[ƒuƒf[ƒ^íœ
     public void Init()
     {
 #if UNITY_EDITOR
-        //UnityEditorä¸Šãªã‚‰
-        //Assetãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã®Saveãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //UnityEditorã‚È‚ç
+        //Assetƒtƒ@ƒCƒ‹‚Ì’†‚ÌSaveƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğ“ü‚ê‚é
         string path = Application.dataPath + "/Save";
 
 #else
-        //ãã†ã§ãªã‘ã‚Œã°
-        //.exeãŒã‚ã‚‹ã¨ã“ã‚ã«Saveãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãã“ã®ãƒ‘ã‚¹ã‚’å…¥ã‚Œã‚‹
+        //‚»‚¤‚Å‚È‚¯‚ê‚Î
+        //.exe‚ª‚ ‚é‚Æ‚±‚ë‚ÉSaveƒtƒ@ƒCƒ‹‚ğì¬‚µ‚»‚±‚ÌƒpƒX‚ğ“ü‚ê‚é
         Directory.CreateDirectory("Save");
         string path = Directory.GetCurrentDirectory() + "/Save";
 
 #endif
 
-        //ãƒ•ã‚¡ã‚¤ãƒ«å‰Šé™¤
+        //ƒtƒ@ƒCƒ‹íœ
         File.Delete(path + "/InputActionOverrides.bytes");
 
-        //ãƒªãƒ­ãƒ¼ãƒ‰
+        //ƒŠƒ[ƒh
         Load();
 
-        Debug.Log("ãƒ‡ãƒ¼ã‚¿ã®å‰Šé™¤ãŒçµ‚ã‚ã‚Šã¾ã—ãŸ");
+        Debug.Log("ƒf[ƒ^‚Ìíœ‚ªI‚í‚è‚Ü‚µ‚½");
     }
 }

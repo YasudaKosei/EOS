@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ObjectRotation : MonoBehaviour
 {
-    [SerializeField, Header("å›è»¢é€Ÿåº¦")]
+    [SerializeField, Header("‰ñ“]‘¬“x")]
     private float rotationSpeed = 5f;
 
-    [SerializeField,Header("å›è»¢è»¸")]
+    [SerializeField,Header("‰ñ“]²")]
     private XYZ axis;
     
     public enum XYZ
@@ -19,25 +19,25 @@ public class ObjectRotation : MonoBehaviour
     {
         if (Stop.stopFlg) return;
 
-        //Xè»¸
+        //X²
         if ((int)axis == 0) transform.Rotate(Vector3.right * rotationSpeed);
 
-        //Yè»¸
+        //Y²
         else if ((int)axis == 1) transform.Rotate(Vector3.up * rotationSpeed);
 
-        //Zè»¸
+        //Z²
         else transform.Rotate(Vector3.forward * rotationSpeed);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //è¦ªå­é–¢ä¿‚ã«ã™ã‚‹
+        //eqŠÖŒW‚É‚·‚é
         collision.gameObject.transform.parent = this.transform;
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        //è¦ªå­é–¢ä¿‚ç ´æ£„
+        //eqŠÖŒW”jŠü
         collision.gameObject.transform.parent = null;
     }
 }

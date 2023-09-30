@@ -3,16 +3,16 @@ using System.Linq;
 
 public class Elevator : MonoBehaviour
 {
-    [SerializeField, Header("ç§»å‹•å…ˆ")]
+    [SerializeField, Header("ˆÚ“®æ")]
     private Vector3[] movetPos;
 
-    [SerializeField,Header("ç§»å‹•é€Ÿåº¦")]
+    [SerializeField,Header("ˆÚ“®‘¬“x")]
     private float moveSpeed = 5f;
 
-    [SerializeField, Header("ãƒ«ãƒ¼ãƒ—")]
+    [SerializeField, Header("ƒ‹[ƒv")]
     private bool loopFlg = false;
 
-    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
+    [SerializeField, Header("ƒvƒŒƒCƒ„[w’è")]
     private PlayerType playerType;
 
     private bool moveFlg = false;
@@ -35,7 +35,7 @@ public class Elevator : MonoBehaviour
 
     private void Start()
     {
-        //åˆæœŸå€¤ã‚’é…åˆ—ã®å…ˆé ­ã«è¿½åŠ 
+        //‰Šú’l‚ğ”z—ñ‚Ìæ“ª‚É’Ç‰Á
         startPos = this.transform.position;
         movetPos = movetPos.Prepend<Vector3>(startPos).ToArray();
 
@@ -56,7 +56,7 @@ public class Elevator : MonoBehaviour
     }
 
     /// <summary>
-    /// åˆæœŸåœ°ã«æˆ»ã‚‹
+    /// ‰Šú’n‚É–ß‚é
     /// </summary>
     private void ReturnInit()
     {
@@ -66,13 +66,13 @@ public class Elevator : MonoBehaviour
     }
 
     /// <summary>
-    /// æ¬¡ã®ç§»å‹•å…ˆã«ç§»å‹•
+    /// Ÿ‚ÌˆÚ“®æ‚ÉˆÚ“®
     /// </summary>
     private void MoveNext()
     {
         Vector3 direction = (movetPos[nextMovePoint] - this.transform.position).normalized;
 
-        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½ç½®ãŒç›®æ¨™åº§æ¨™ã«ååˆ†è¿‘ã¥ã„ãŸã‚‰æ¬¡ã®ç§»å‹•å…ˆã¸ç§»å‹•ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
+        // ƒIƒuƒWƒFƒNƒg‚ÌˆÊ’u‚ª–Ú•WÀ•W‚É\•ª‹ß‚Ã‚¢‚½‚çŸ‚ÌˆÚ“®æ‚ÖˆÚ“®‚·‚é‚æ‚¤‚É‚·‚é
         if (Vector3.Distance(this.transform.position, movetPos[nextMovePoint]) <= 0.1f)
         {
             if (loopFlg)
@@ -87,7 +87,7 @@ public class Elevator : MonoBehaviour
             }
         }
 
-        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç§»å‹•
+        // ƒIƒuƒWƒFƒNƒg‚ğˆÚ“®
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
@@ -96,9 +96,9 @@ public class Elevator : MonoBehaviour
         Debug.Log("Oncoll");
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb) && collision.gameObject.tag == playerType.ToString())
         {
-            //è¦ªå­é–¢ä¿‚ã«ã™ã‚‹
+            //eqŠÖŒW‚É‚·‚é
             collision.transform.parent = this.transform;
-            //ç§»å‹•ã‚’é–‹å§‹
+            //ˆÚ“®‚ğŠJn
             moveFlg = true;
             if (nextMovePoint < movetPos.Length - 1) nextMovePoint++;
             back = 1;
@@ -107,12 +107,12 @@ public class Elevator : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        //è¦ªå­é–¢ä¿‚ç ´æ£„
+        //eqŠÖŒW”jŠü
         collision.transform.parent = null;
 
         if (playerType != PlayerType.none)
         {
-            //ç§»å‹•åœæ­¢åŠã³å¸°é‚„
+            //ˆÚ“®’â~‹y‚Ñ‹AŠÒ
             moveFlg = false;
             if (back < 0) return;
             back = -1;

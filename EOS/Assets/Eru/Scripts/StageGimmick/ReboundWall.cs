@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ReboundWall : MonoBehaviour
 {
-    [SerializeField,Header("åç™ºåŠ›")]
+    [SerializeField,Header("”½”­—Í")]
     private float reboundPower = 5f;
 
-    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
+    [SerializeField, Header("ƒvƒŒƒCƒ„[w’è")]
     private PlayerType playerType;
 
     private enum PlayerType
@@ -22,13 +22,13 @@ public class ReboundWall : MonoBehaviour
     {
         if (collision.gameObject.tag != playerType.ToString() && playerType != PlayerType.none) return;
 
-        //è·³ã­è¿”ã•ã‚Œã¦ã„ã‚‹æœ€ä¸­ã¯å‹•ã‘ãªã„ã‚ˆã†ã«ã™ã‚‹
+        //’µ‚Ë•Ô‚³‚ê‚Ä‚¢‚éÅ’†‚Í“®‚¯‚È‚¢‚æ‚¤‚É‚·‚é
         if (collision.gameObject.TryGetComponent<TomatoController>(out TomatoController tc)) tc.knockBackFlg = true;
         if (collision.gameObject.TryGetComponent<PotController>(out PotController po)) po.knockBackFlg = true;
 
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é€²è¡Œæ–¹å‘ã«å¿œã˜ã¦è·³ã­è¿”ã™å‘ãã‚’è¨ˆç®—
+            // ƒvƒŒƒCƒ„[‚Ìis•ûŒü‚É‰‚¶‚Ä’µ‚Ë•Ô‚·Œü‚«‚ğŒvZ
             Vector3 direction = (collision.contacts[0].point - this.transform.position).normalized;
             direction.y = 0f;
             rb.AddForce(direction * reboundPower, ForceMode.Impulse);
