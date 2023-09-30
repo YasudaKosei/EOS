@@ -49,7 +49,7 @@ public class Load : MonoBehaviour
 
 		else if (SL == 3)
 		{
-			async = SceneManager.LoadSceneAsync("GameScene");
+			async = SceneManager.LoadSceneAsync("CreamScene");
 		}
 
 

@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PC : MonoBehaviour
 {
+
     public int playerID = 0;
     public Transform startPos;
     public int coolDownTime = 5;
@@ -36,7 +37,7 @@ public class PC : MonoBehaviour
 
     void Awake()
     {
-        //—LŒø‰»
+        //æœ‰åŠ¹åŒ–
         change.action.Enable();
 
         nowPlayer = Instantiate(playerType[playerID], startPos.position, Quaternion.identity);
@@ -48,7 +49,7 @@ public class PC : MonoBehaviour
     {
         if (Stop.stopFlg && !nowStopFlg) return;
 
-        //F•ÏX
+        //è‰²å¤‰æ›´
         for (int i = 0; i < playerImage.Length; i++)
         {
             if (playerID == i) playerImage[i].color = Color.yellow;
@@ -57,7 +58,7 @@ public class PC : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[•ÏXˆ—
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å¤‰æ›´å‡¦ç†
     /// </summary>
     public void ChangePlayer()
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class KeyManager : MonoBehaviour
+public class OptionManager : MonoBehaviour
 {
     [SerializeField]
     private InputActionReference pause;

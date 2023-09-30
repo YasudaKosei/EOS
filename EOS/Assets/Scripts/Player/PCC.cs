@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PCC : MonoBehaviour
 {
+
     [SerializeField]
     private PC pc;
 
@@ -33,12 +34,13 @@ public class PCC : MonoBehaviour
 
     void Start()
     {
-        //—LŒø‰»
+        //æœ‰åŠ¹åŒ–
         move.action.Enable();
         change.action.Enable();
         pause.action.Enable();
         cL.action.Enable();
         cR.action.Enable();
+
 
         tChangeFlg = true;
         pChangeFlg = true;
@@ -63,7 +65,7 @@ public class PCC : MonoBehaviour
             }
         }
 
-        //ƒN[ƒ‹ƒ^ƒCƒ€ƒJƒEƒ“ƒg
+        //ã‚¯ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ ã‚«ã‚¦ãƒ³ãƒˆ
         if (time > 0)
         {
             time -= Time.deltaTime;
@@ -110,7 +112,7 @@ public class PCC : MonoBehaviour
     }
 
     /// <summary>
-    /// ‰E‘I‘ğ
+    /// å³é¸æŠ
     /// </summary>
     public void Right()
     {
@@ -119,7 +121,7 @@ public class PCC : MonoBehaviour
     }
 
     /// <summary>
-    /// ¶‘I‘ğ
+    /// å·¦é¸æŠ
     /// </summary>
     public void Left()
     {
@@ -128,7 +130,7 @@ public class PCC : MonoBehaviour
     }
 
     /// <summary>
-    /// ”š‘I‘ğ
+    /// æ•°å­—é¸æŠ
     /// </summary>
     public void num(int num)
     {
@@ -143,7 +145,7 @@ public class PCC : MonoBehaviour
     }
 
     /// <summary>
-    /// ‘I‘ğI—¹ˆ—
+    /// é¸æŠçµ‚äº†å‡¦ç†
     /// </summary>
     public void Fin()
     {

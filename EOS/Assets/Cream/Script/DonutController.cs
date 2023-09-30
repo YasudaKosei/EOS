@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DonutController : MonoBehaviour
 {
+
     public float moveSpeed = 5;
     public float jumpPower = 3;
     public float deceleration = 3;

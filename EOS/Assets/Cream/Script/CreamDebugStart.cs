@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class CreamDebugStart : MonoBehaviour
 {
+
     [SerializeField] Fade fade;
     
     public void MoveTitleScene()
