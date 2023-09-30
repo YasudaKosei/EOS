@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class InvisibleFloor : MonoBehaviour
 {
-    [SerializeField, Header("è¦‹ãˆãªã„æ™‚é–“")]
+    [SerializeField, Header("Œ©‚¦‚È‚¢ŠÔ")]
     private float invisivleTime = 2f;
 
-    [SerializeField,Header("è¦‹ãˆã¦ã‚‹æ™‚é–“")]
+    [SerializeField,Header("Œ©‚¦‚Ä‚éŠÔ")]
     private float visivleTime = 2f;
 
-    [SerializeField, Header("åºŠ")]
+    [SerializeField, Header("°")]
     private GameObject floorObj;
 
     private float inTime, viTime;
