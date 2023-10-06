@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2124396906306170232}
   - component: {fileID: 4731485517183856441}
   - component: {fileID: 4731485517183856446}
-  - component: {fileID: 4731485517183856440}
+  - component: {fileID: -4887176173783929008}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: Watermelon
@@ -116,7 +116,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3500872997411817233, guid: 87f1d3e1f881742479c0f30526ecf0e4, type: 3}
---- !u!114 &4731485517183856440
+--- !u!114 &-4887176173783929008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 467147079257345197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e1ddcd3ecbfab48b68c20a1f3061c7, type: 3}
+  m_Script: {fileID: 11500000, guid: edfdcfbbbec57cd458276ce5c64fe290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
@@ -133,9 +133,12 @@ MonoBehaviour:
   jumpPower: 3
   rollForce: 10
   deceleration: 3
+  skillTime: 5
   pc: {fileID: 0}
   knockBackFlg: 0
+  isJumping: 0
   jump: {fileID: 8324888889075417498, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   move: {fileID: -4387869940633876883, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   dash: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  skill: {fileID: 7877152187290047675, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   movementThreshold: 3

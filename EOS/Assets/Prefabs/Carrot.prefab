@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5449843256508066072}
   - component: {fileID: 4840687393626515660}
   - component: {fileID: 6712267908012308914}
-  - component: {fileID: 7010989830659768652}
+  - component: {fileID: -1614933983399817752}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Carrot
@@ -116,7 +116,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4970989848755135003, guid: 539003eed0bf20a4faf58b92584a662b, type: 3}
---- !u!114 &7010989830659768652
+--- !u!114 &-1614933983399817752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5810004026231032013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85587b7c86bc1584094a2a15ef28d939, type: 3}
+  m_Script: {fileID: 11500000, guid: f24b42317e8e3dc489308c74f94ed6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4.5
@@ -133,9 +133,12 @@ MonoBehaviour:
   jumpPower: 3
   rollForce: 10
   deceleration: 3
+  skillTime: 5
   pc: {fileID: 0}
   knockBackFlg: 0
+  isJumping: 0
   jump: {fileID: 8324888889075417498, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   move: {fileID: -4387869940633876883, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   dash: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  skill: {fileID: 7877152187290047675, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   movementThreshold: 3

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2395900043033464942}
   - component: {fileID: 4109818300456746703}
   - component: {fileID: 4046921138237306214}
-  - component: {fileID: -1238497312934569002}
+  - component: {fileID: 2278571158946181377}
   m_Layer: 0
   m_Name: Broccoli
   m_TagString: Broccoli
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-1238497312934569002
+--- !u!114 &2278571158946181377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,17 +125,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4197088861374247355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85587b7c86bc1584094a2a15ef28d939, type: 3}
+  m_Script: {fileID: 11500000, guid: 111c8e3103fbf6d4088fa8faf143b9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
   dashSpeed: 1.75
   jumpPower: 4
+  skilljumpPower: 200
   rollForce: 10
   deceleration: 3
   pc: {fileID: 0}
   knockBackFlg: 0
+  isJumping: 0
   jump: {fileID: 8324888889075417498, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   move: {fileID: -4387869940633876883, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   dash: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  skill: {fileID: 7877152187290047675, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   movementThreshold: 3

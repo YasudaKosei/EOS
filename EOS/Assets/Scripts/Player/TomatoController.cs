@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class TomatoController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class TomatoController : MonoBehaviour
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
+
+    public float skillTime = 5;
+    public float skillUpVal = 2;
 
     [HideInInspector]
     public PC pc;
@@ -28,10 +32,14 @@ public class TomatoController : MonoBehaviour
     private InputActionReference dash;
 
     [SerializeField]
+    private InputActionReference skill;
+
+    [SerializeField]
     private float movementThreshold = 3f;
 
     private Rigidbody rb;
     private bool jumpFlg = false;
+    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -39,6 +47,9 @@ public class TomatoController : MonoBehaviour
 
     void Start()
     {
+        //クールダウン追加するまでは
+        skillFlg = true;
+
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
@@ -47,6 +58,7 @@ public class TomatoController : MonoBehaviour
         jump.action.Enable();
         move.action.Enable();
         dash.action.Enable();
+        skill.action.Enable();
     }
 
     void Update()
@@ -75,6 +87,13 @@ public class TomatoController : MonoBehaviour
         moveDirection = moveDirection.normalized * moveSpeed * dashS;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
+        //Skill＼(^o^)／
+        if (skill.action.triggered && skillFlg)
+        {
+            skillFlg = false;
+            StartCoroutine(TomatoSkill());
+        }
+
         //ジャンプ
         if (jump.action.triggered && !isJumping)
         {
@@ -94,6 +113,15 @@ public class TomatoController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpPower * 0.1f, ForceMode.Impulse);
         }
+    }
+
+    IEnumerator TomatoSkill()
+    {
+        Debug.Log("トマトskill発動");
+        moveSpeed *= skillUpVal;
+        yield return new WaitForSeconds(skillTime);
+        moveSpeed /= skillUpVal;
+        Debug.Log("トマトskill終了");
     }
 
     void OnCollisionEnter(Collision collision)

@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill"",
+                    ""type"": ""Button"",
+                    ""id"": ""91108244-9ea3-4d7a-8965-d5ce940a7a54"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -329,6 +338,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""CharaChangeRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""682941a1-5141-4193-82a5-7b241b09e5a0"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Skill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -357,6 +377,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions_Dash = m_actions.FindAction("Dash", throwIfNotFound: true);
         m_actions_CharaChangeLeft = m_actions.FindAction("CharaChangeLeft", throwIfNotFound: true);
         m_actions_CharaChangeRight = m_actions.FindAction("CharaChangeRight", throwIfNotFound: true);
+        m_actions_Skill = m_actions.FindAction("Skill", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -427,6 +448,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_actions_Dash;
     private readonly InputAction m_actions_CharaChangeLeft;
     private readonly InputAction m_actions_CharaChangeRight;
+    private readonly InputAction m_actions_Skill;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -440,6 +462,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_actions_Dash;
         public InputAction @CharaChangeLeft => m_Wrapper.m_actions_CharaChangeLeft;
         public InputAction @CharaChangeRight => m_Wrapper.m_actions_CharaChangeRight;
+        public InputAction @Skill => m_Wrapper.m_actions_Skill;
         public InputActionMap Get() { return m_Wrapper.m_actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -476,6 +499,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CharaChangeRight.started += instance.OnCharaChangeRight;
             @CharaChangeRight.performed += instance.OnCharaChangeRight;
             @CharaChangeRight.canceled += instance.OnCharaChangeRight;
+            @Skill.started += instance.OnSkill;
+            @Skill.performed += instance.OnSkill;
+            @Skill.canceled += instance.OnSkill;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -507,6 +533,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CharaChangeRight.started -= instance.OnCharaChangeRight;
             @CharaChangeRight.performed -= instance.OnCharaChangeRight;
             @CharaChangeRight.canceled -= instance.OnCharaChangeRight;
+            @Skill.started -= instance.OnSkill;
+            @Skill.performed -= instance.OnSkill;
+            @Skill.canceled -= instance.OnSkill;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -553,5 +582,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnCharaChangeLeft(InputAction.CallbackContext context);
         void OnCharaChangeRight(InputAction.CallbackContext context);
+        void OnSkill(InputAction.CallbackContext context);
     }
 }

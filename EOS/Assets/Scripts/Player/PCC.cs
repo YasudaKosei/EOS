@@ -75,7 +75,7 @@ public class PCC : MonoBehaviour
             if (tChangeFlg && pChangeFlg && !pc.elevatorFlg) if (Input.GetKeyDown(KeyCode.F)) CP();
         }
 
-        if (pc.nowPlayer.TryGetComponent<TomatoController>(out TomatoController tomatoC))
+        if (pc.nowPlayer.TryGetComponent<CarrotController>(out CarrotController tomatoC))
         {
             if (tomatoC.isJumping)
             {

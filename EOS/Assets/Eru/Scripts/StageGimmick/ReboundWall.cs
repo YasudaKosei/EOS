@@ -23,7 +23,7 @@ public class ReboundWall : MonoBehaviour
         if (collision.gameObject.tag != playerType.ToString() && playerType != PlayerType.none) return;
 
         //íµÇÀï‘Ç≥ÇÍÇƒÇ¢ÇÈç≈íÜÇÕìÆÇØÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈ
-        if (collision.gameObject.TryGetComponent<TomatoController>(out TomatoController tc)) tc.knockBackFlg = true;
+        if (collision.gameObject.TryGetComponent<CarrotController>(out CarrotController tc)) tc.knockBackFlg = true;
         if (collision.gameObject.TryGetComponent<PotController>(out PotController po)) po.knockBackFlg = true;
 
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))

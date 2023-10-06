@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
-public class PotController : MonoBehaviour
+public class WatermelonController : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float dashSpeed = 1.5f;
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
+
+    public float skillTime = 5;
 
     [HideInInspector]
     public PC pc;
@@ -20,7 +23,7 @@ public class PotController : MonoBehaviour
 
     [SerializeField]
     private InputActionReference jump;
-
+    
     [SerializeField]
     private InputActionReference move;
 
@@ -28,10 +31,14 @@ public class PotController : MonoBehaviour
     private InputActionReference dash;
 
     [SerializeField]
+    private InputActionReference skill;
+
+    [SerializeField]
     private float movementThreshold = 3f;
 
     private Rigidbody rb;
     private bool jumpFlg = false;
+    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -39,6 +46,9 @@ public class PotController : MonoBehaviour
 
     void Start()
     {
+        //クールダウン追加するまでは
+        skillFlg = true;
+
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
@@ -47,6 +57,7 @@ public class PotController : MonoBehaviour
         jump.action.Enable();
         move.action.Enable();
         dash.action.Enable();
+        skill.action.Enable();
     }
 
     void Update()
@@ -73,8 +84,15 @@ public class PotController : MonoBehaviour
         if (dash.action.inProgress) dashS = dashSpeed;
         else dashS = 1f;
         moveDirection = moveDirection.normalized * moveSpeed * dashS;
-        moveDirection = moveDirection.normalized * moveSpeed;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
+
+        //Skill＼(^o^)／
+        if (skill.action.triggered && skillFlg)
+        {
+            skillFlg = false;
+            StartCoroutine(WatermelonSkill());
+        }
+
 
         //ジャンプ
         if (jump.action.triggered && !isJumping)
@@ -95,13 +113,14 @@ public class PotController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpPower * 0.1f, ForceMode.Impulse);
         }
-
-        // 回転
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rollForce * Time.deltaTime);
-        }
+    }
+    IEnumerator WatermelonSkill()
+    {
+        Debug.Log("スイカskill発動");
+        this.gameObject.transform.localScale = new Vector3(20, 20, 20);
+        yield return new WaitForSeconds(skillTime);
+        this.gameObject.transform.localScale = new Vector3(10, 10, 10);
+        Debug.Log("スイカskill終了");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -114,6 +133,8 @@ public class PotController : MonoBehaviour
             jumpTimeCount = 0f;
         }
         if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+
+        //エフェクト出す
     }
 
     private void OnCollisionExit(Collision collision)

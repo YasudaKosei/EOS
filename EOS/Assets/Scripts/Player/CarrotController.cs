@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
-public class PotController : MonoBehaviour
+public class CarrotController : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float dashSpeed = 1.5f;
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
+
+    public float skillTime = 5;
 
     [HideInInspector]
     public PC pc;
@@ -28,10 +31,14 @@ public class PotController : MonoBehaviour
     private InputActionReference dash;
 
     [SerializeField]
+    private InputActionReference skill;
+
+    [SerializeField]
     private float movementThreshold = 3f;
 
     private Rigidbody rb;
     private bool jumpFlg = false;
+    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -39,6 +46,9 @@ public class PotController : MonoBehaviour
 
     void Start()
     {
+        //クールダウン追加するまでは
+        skillFlg = true;
+
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
@@ -47,6 +57,7 @@ public class PotController : MonoBehaviour
         jump.action.Enable();
         move.action.Enable();
         dash.action.Enable();
+        skill.action.Enable();
     }
 
     void Update()
@@ -76,6 +87,13 @@ public class PotController : MonoBehaviour
         moveDirection = moveDirection.normalized * moveSpeed;
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
+        //Skill＼(^o^)／
+        if (skill.action.triggered && skillFlg)
+        {
+            skillFlg = false;
+            StartCoroutine(CarrotSkill());
+        }
+
         //ジャンプ
         if (jump.action.triggered && !isJumping)
         {
@@ -102,6 +120,14 @@ public class PotController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rollForce * Time.deltaTime);
         }
+    }
+    IEnumerator CarrotSkill()
+    {
+        Debug.Log("人参skill発動");
+        this.gameObject.transform.localScale = new Vector3(8, 20, 8);
+        yield return new WaitForSeconds(skillTime);
+        this.gameObject.transform.localScale = new Vector3(8, 8, 8);
+        Debug.Log("人参skill終了");
     }
 
     void OnCollisionEnter(Collision collision)
