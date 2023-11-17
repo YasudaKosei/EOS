@@ -107,7 +107,6 @@ public class PCC : MonoBehaviour, Skill
         else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
         else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
-        else if (Input.GetKeyDown(KeyCode.Alpha5)) num(4);
         
     }
 
@@ -116,7 +115,7 @@ public class PCC : MonoBehaviour, Skill
     /// </summary>
     public void Right()
     {
-        if (pc.playerID == 4) return;
+        if (pc.playerID == 3) return;
         pc.playerID++;
     }
 
