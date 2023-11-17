@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class TomatoController : MonoBehaviour
+public class TomatoController : MonoBehaviour, Skill
 {
     public float moveSpeed = 5;
     public float dashSpeed = 1.5f;
@@ -39,7 +39,6 @@ public class TomatoController : MonoBehaviour
 
     private Rigidbody rb;
     private bool jumpFlg = false;
-    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -47,9 +46,6 @@ public class TomatoController : MonoBehaviour
 
     void Start()
     {
-        //クールダウン追加するまでは
-        skillFlg = true;
-
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
@@ -88,11 +84,19 @@ public class TomatoController : MonoBehaviour
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //Skill＼(^o^)／
-        if (skill.action.triggered && skillFlg)
+        if (skill.action.triggered)
         {
-            skillFlg = false;
-            StartCoroutine(TomatoSkill());
+            if(Skill.skillFlg == true && Skill.nowSkill == false)
+            {
+                Skill.nowSkill = true;
+                StartCoroutine(TomatoSkill());
+            }
+             else
+            {
+                Debug.Log("スキルは現在使えません");
+            }
         }
+
 
         //ジャンプ
         if (jump.action.triggered && !isJumping)
@@ -122,6 +126,8 @@ public class TomatoController : MonoBehaviour
         yield return new WaitForSeconds(skillTime);
         moveSpeed /= skillUpVal;
         Debug.Log("トマトskill終了");
+        Skill.skillFlg = false;
+        Skill.nowSkill = false;
     }
 
     void OnCollisionEnter(Collision collision)

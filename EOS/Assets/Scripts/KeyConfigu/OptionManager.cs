@@ -1,107 +1,112 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class OptionManager : MonoBehaviour
 {
+    //設定のスクリプトです
+
+    //Pause
     [SerializeField]
     private InputActionReference pause;
 
+    //各設定キャンバスたち
     [SerializeField]
     private GameObject select,DisCan,keyCan,padCan,VolCan,OthCan;
 
-    [SerializeField] 
-    private RebindSaveManager rsm;
+    //ディスプレイのボタン
+    [SerializeField]
+    private Button DisButton;
 
-    private bool nowFlg = false;
 
     private void Awake()
     {
-        rsm.Load();
-        select.SetActive(false);
-        keyCan.SetActive(false);
-        padCan.SetActive(false);
-        DisCan.SetActive(false);
-        VolCan.SetActive(false);
-        OthCan.SetActive(false);
+        //設定を開くボタンを有効にする
         pause.action.Enable();
-        nowFlg = false;
     }
 
     void Update()
     {
         if (pause.action.triggered)
         {
-            if (Stop.stopFlg == false)
-            {
-                Set();
-            }
-            else if(nowFlg)
-            {
-                End();
-            }
+            OptionClick();
         }
     }
 
+    //設定を開く、閉じる
+    public void OptionClick()
+    {
+        if (Stop.stopFlg == false)
+        {
+            Debug.Log("オプション表示");
+            Set();
+        }
+        else
+        {
+            Debug.Log("オプション非表示");
+            End();
+        }
+    }
+
+    //設定画面を開く
     public void Set()
     {
         select.SetActive(true);
-        DisCan.SetActive(true);
+        DisButton.onClick.Invoke();
         Stop.stopFlg = true;
-        nowFlg = true;
     }
 
+    //設定画面を閉じる
     public void End()
     {
         select.SetActive(false);
-        keyCan.SetActive(false);
-        padCan.SetActive(false);
-        DisCan.SetActive(false);
-        VolCan.SetActive(false);
-        OthCan.SetActive(false);
+        CanvasSetFalse();
         Stop.stopFlg = false;
-        nowFlg = false;
     }
+
+    //ディスプレイ設定を開く
     public void DisplayCanvas()
     {
+        CanvasSetFalse();
         DisCan.SetActive(true);
-        keyCan.SetActive(false);
-        padCan.SetActive(false);
-        VolCan.SetActive(false);
-        OthCan.SetActive(false);
     }
+
+    //キーボードの設定を開く
     public void KeyBoardCanvas()
     {
+        CanvasSetFalse();
         keyCan.SetActive(true);
-        padCan.SetActive(false);
-        DisCan.SetActive(false);
-        VolCan.SetActive(false);
-        OthCan.SetActive(false);
     }
 
+    //ゲームパッドの設定を開く
     public void GamePadCanvas()
     {
+        CanvasSetFalse();
         padCan.SetActive(true);
-        keyCan.SetActive(false);
-        DisCan.SetActive(false);
-        VolCan.SetActive(false);
-        OthCan.SetActive(false);
     }
 
+    //音声の設定を開く
     public void VolumeCanvas()
     {
+        CanvasSetFalse();
         VolCan.SetActive(true);
-        keyCan.SetActive(false);
-        padCan.SetActive(false);
-        DisCan.SetActive(false);
-        OthCan.SetActive(false);
     }
 
+    //その他の設定を開く
     public void OthersCanvas()
     {
+        CanvasSetFalse();
         OthCan.SetActive(true);
-        VolCan.SetActive(false);
+    }
+
+    //各設定のキャンバスを非表示
+    private void CanvasSetFalse()
+    {
         keyCan.SetActive(false);
         padCan.SetActive(false);
         DisCan.SetActive(false);
+        VolCan.SetActive(false);
+        OthCan.SetActive(false);
     }
 }

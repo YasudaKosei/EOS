@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class BroccoliController : MonoBehaviour
+public class BroccoliController : MonoBehaviour, Skill
 {
     public float moveSpeed = 5;
     public float dashSpeed = 1.5f;
@@ -37,7 +37,6 @@ public class BroccoliController : MonoBehaviour
 
     private Rigidbody rb;
     private bool jumpFlg = false;
-    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -45,9 +44,6 @@ public class BroccoliController : MonoBehaviour
 
     void Start()
     {
-        //クールダウン追加するまでは
-        skillFlg = true;
-
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
@@ -87,10 +83,17 @@ public class BroccoliController : MonoBehaviour
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //Skill＼(^o^)／
-        if (skill.action.triggered && skillFlg && !isJumping)
+        if (skill.action.triggered)
         {
-            skillFlg = false;
-            BroccoliSkill();
+            if (Skill.skillFlg == true && Skill.nowSkill == false)
+            {
+                Skill.nowSkill = true;
+                BroccoliSkill();
+            }
+            else
+            {
+                Debug.Log("スキルは現在使えません");
+            }
         }
 
         //ジャンプ
@@ -124,9 +127,10 @@ public class BroccoliController : MonoBehaviour
     private void BroccoliSkill()
     {
         Debug.Log("ブロッコリーskill発動");
-        //ここのジャンプがなぜか弱い
         rb.AddForce(skilljumpPower * Vector3.up, ForceMode.Impulse);
         isJumping = true;
+        Skill.skillFlg = false;
+        Skill.nowSkill = false;
     }
 
     void OnCollisionEnter(Collision collision)

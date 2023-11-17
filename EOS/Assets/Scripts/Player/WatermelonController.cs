@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class WatermelonController : MonoBehaviour
+public class WatermelonController : MonoBehaviour, Skill
 {
     public float moveSpeed = 5;
     public float dashSpeed = 1.5f;
@@ -38,7 +38,6 @@ public class WatermelonController : MonoBehaviour
 
     private Rigidbody rb;
     private bool jumpFlg = false;
-    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -46,8 +45,6 @@ public class WatermelonController : MonoBehaviour
 
     void Start()
     {
-        //クールダウン追加するまでは
-        skillFlg = true;
 
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
@@ -87,10 +84,17 @@ public class WatermelonController : MonoBehaviour
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //Skill＼(^o^)／
-        if (skill.action.triggered && skillFlg)
+        if (skill.action.triggered)
         {
-            skillFlg = false;
-            StartCoroutine(WatermelonSkill());
+            if (Skill.skillFlg == true && Skill.nowSkill == false)
+            {
+                Skill.nowSkill = true;
+                StartCoroutine(WatermelonSkill());
+            }
+            else
+            {
+                Debug.Log("スキルは現在使えません");
+            }
         }
 
 
@@ -121,6 +125,8 @@ public class WatermelonController : MonoBehaviour
         yield return new WaitForSeconds(skillTime);
         this.gameObject.transform.localScale = new Vector3(10, 10, 10);
         Debug.Log("スイカskill終了");
+        Skill.skillFlg = false;
+        Skill.nowSkill = false;
     }
 
     void OnCollisionEnter(Collision collision)

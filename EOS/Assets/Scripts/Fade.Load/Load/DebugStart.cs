@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CreamDebugStart : MonoBehaviour
+public class DebugStart : MonoBehaviour
 {
-
+    //
     [SerializeField] Fade fade;
     
     public void MoveTitleScene()
@@ -12,13 +12,13 @@ public class CreamDebugStart : MonoBehaviour
         fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));
     }
 
-    public void MoveRankingScene()
+    public void MoveStageSelectScene()
     {
         Load.SL = 2;
         fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));
     }
 
-    public void MoveGameScene()
+    public void MoveStage01Scene()
     {
         Load.SL = 3;
         fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class CarrotController : MonoBehaviour
+public class CarrotController : MonoBehaviour, Skill
 {
     public float moveSpeed = 5;
     public float dashSpeed = 1.5f;
@@ -38,7 +38,6 @@ public class CarrotController : MonoBehaviour
 
     private Rigidbody rb;
     private bool jumpFlg = false;
-    private bool skillFlg = false;
     private float jumpTimeCount = 0f;
     private const float jumpTime = 0.3f;
     private Camera cam;
@@ -46,9 +45,6 @@ public class CarrotController : MonoBehaviour
 
     void Start()
     {
-        //クールダウン追加するまでは
-        skillFlg = true;
-
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
@@ -88,10 +84,17 @@ public class CarrotController : MonoBehaviour
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //Skill＼(^o^)／
-        if (skill.action.triggered && skillFlg)
+        if (skill.action.triggered)
         {
-            skillFlg = false;
-            StartCoroutine(CarrotSkill());
+            if (Skill.skillFlg == true && Skill.nowSkill == false)
+            {
+                Skill.nowSkill = true;
+                StartCoroutine(CarrotSkill());
+            }
+            else
+            {
+                Debug.Log("スキルは現在使えません");
+            }
         }
 
         //ジャンプ
@@ -128,6 +131,8 @@ public class CarrotController : MonoBehaviour
         yield return new WaitForSeconds(skillTime);
         this.gameObject.transform.localScale = new Vector3(8, 8, 8);
         Debug.Log("人参skill終了");
+        Skill.skillFlg = false;
+        Skill.nowSkill = false;
     }
 
     void OnCollisionEnter(Collision collision)

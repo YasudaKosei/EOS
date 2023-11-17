@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class PCC : MonoBehaviour
+public class PCC : MonoBehaviour, Skill
 {
 
     [SerializeField]
@@ -139,7 +139,7 @@ public class PCC : MonoBehaviour
 
     public void CP()
     {
-        if (pc.nowPlayerID == pc.playerID) return;
+        if (pc.nowPlayerID == pc.playerID || Skill.nowSkill) return;
         pc.ChangePlayer();
         Fin();
     }
