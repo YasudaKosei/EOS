@@ -9,19 +9,19 @@ public class DebugStart : MonoBehaviour
     public void MoveTitleScene()
     {
         Load.SL = 1;
-        fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));
+        fade.FadeIn(0.5f, () => SceneManager.LoadScene("LoadScene"));
     }
 
     public void MoveStageSelectScene()
     {
         Load.SL = 2;
-        fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));
+        fade.FadeIn(0.5f, () => SceneManager.LoadScene("LoadScene"));
     }
 
     public void MoveStage01Scene()
     {
         Load.SL = 3;
-        fade.FadeIn(1f, () => SceneManager.LoadScene("LoadScene"));
+        fade.FadeIn(0.5f, () => SceneManager.LoadScene("LoadScene"));
     }
 
 }
