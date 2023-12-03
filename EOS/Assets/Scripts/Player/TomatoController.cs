@@ -5,7 +5,7 @@ using System.Collections;
 public class TomatoController : MonoBehaviour, Skill
 {
     public float moveSpeed = 5;
-    public float dashSpeed = 1.5f;
+    public float downMoveSpeed = 3;
     public float jumpPower = 3;
     public float rollForce = 10f;
     public float deceleration = 3;
@@ -29,18 +29,13 @@ public class TomatoController : MonoBehaviour, Skill
     private InputActionReference move;
 
     [SerializeField]
-    private InputActionReference dash;
-
-    [SerializeField]
     private InputActionReference skill;
 
     [SerializeField]
     private float movementThreshold = 3f;
 
     private Rigidbody rb;
-    private bool jumpFlg = false;
-    private float jumpTimeCount = 0f;
-    private const float jumpTime = 0.3f;
+    private float lateralmoveSpeed;
     private Camera cam;
     private Transform cameraTransform;
 
@@ -50,10 +45,8 @@ public class TomatoController : MonoBehaviour, Skill
         cam = Camera.main;
         cameraTransform = cam.transform;
         cam.GetComponent<CameraController>().player = this.transform;
-        //cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();
-        dash.action.Enable();
         skill.action.Enable();
     }
 
@@ -72,15 +65,32 @@ public class TomatoController : MonoBehaviour, Skill
             return;
         }
 
-        //移動
+        //ジャンプ時の左右ストレイフ制御
+        if(!isJumping)
+        {
+            lateralmoveSpeed = moveSpeed;
+        }
+        else 
+        {
+            lateralmoveSpeed = moveSpeed/ downMoveSpeed;
+        }
+
+        // 移動
+
+
         Vector2 moveInput = move.action.ReadValue<Vector2>();
-        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-        moveDirection = cameraTransform.TransformDirection(moveDirection);
-        moveDirection.y = 0;
-        float dashS;
-        if (dash.action.inProgress) dashS = dashSpeed;
-        else dashS = 1f;
-        moveDirection = moveDirection.normalized * moveSpeed * dashS;
+
+        // 横移動はジャンプ時は減速
+        Vector3 lateralMove = new Vector3(moveInput.x, 0, 0) * lateralmoveSpeed;
+
+        // 前後移動はジャンプ時も常の移動速度を使用
+        Vector3 forwardMove = new Vector3(0, 0, moveInput.y) * moveSpeed;
+
+        // カメラの向きに基づいて移動方向を調整
+        Vector3 moveDirection = cameraTransform.TransformDirection(lateralMove + forwardMove);
+        moveDirection.y = 0; // y軸方向（上下）の移動は無視
+
+        // 合成された移動ベクトルでRigidbodyの速度を設定
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
         //Skill＼(^o^)／
@@ -104,19 +114,7 @@ public class TomatoController : MonoBehaviour, Skill
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
         }
-        if (jump.action.ReadValue<float>() > 0 && !jumpFlg)
-        {
-            jumpTimeCount += Time.deltaTime;
-        }
-        else if (isJumping)
-        {
-            jumpTimeCount = 0;
-            jumpFlg = true;
-        }
-        if (jumpTimeCount <= jumpTime && !jumpFlg && isJumping)
-        {
-            rb.AddForce(Vector3.up * jumpPower * 0.1f, ForceMode.Impulse);
-        }
+         
     }
 
     IEnumerator TomatoSkill()
@@ -136,8 +134,6 @@ public class TomatoController : MonoBehaviour, Skill
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
         {
             isJumping = false;
-            jumpFlg = false;
-            jumpTimeCount = 0f;
         }
         if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
 
