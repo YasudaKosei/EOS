@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
 
         //マウス用
         float mouseX = _cameraX.action.ReadValue<float>();
-        float mouseY = _cameraY.action.ReadValue<float>();
+        float mouseY = -_cameraY.action.ReadValue<float>();
 
         transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed);
         transform.RotateAround(player.position, Vector3.right, mouseY * rotationSpeed);
