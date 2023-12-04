@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class OptionManager : MonoBehaviour
 {
@@ -19,16 +20,18 @@ public class OptionManager : MonoBehaviour
     [SerializeField]
     private Button DisButton;
 
+    private string sceneName;
 
     private void Awake()
     {
         //設定を開くボタンを有効にする
         pause.action.Enable();
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
     void Update()
     {
-        if (pause.action.triggered)
+        if (pause.action.triggered && !sceneName.Contains("Stage"))
         {
             OptionClick();
         }
