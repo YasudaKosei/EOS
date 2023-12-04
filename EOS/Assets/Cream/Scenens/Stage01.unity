@@ -23156,9 +23156,10 @@ MonoBehaviour:
   rotationSpeed: 0.1
   padRotationSpeed: 1.5
   targetFps: 60
-  offset: {x: 0, y: 4, z: -6}
-  _camera: {fileID: 1449215134108560251, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
-  _padCamera: {fileID: 3368374410900292050, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  _cameraX: {fileID: 1449215134108560251, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  _cameraY: {fileID: 3368374410900292050, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  _cameraPadX: {fileID: -7954060908776369838, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  _cameraPadY: {fileID: 496925796964604309, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
 --- !u!81 &2057771842
 AudioListener:
   m_ObjectHideFlags: 0
