@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MouseCamera",
+                    "name": "CameraMouseX",
                     "type": "Value",
                     "id": "3aa508c7-8491-47e5-ab87-34babaacad24",
                     "expectedControlType": "Axis",
@@ -33,9 +33,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PadCamera",
+                    "name": "CameraPadX",
+                    "type": "Value",
+                    "id": "3c697382-3bd7-4300-a9c1-32c6e055b062",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CameraMouseY",
                     "type": "Value",
                     "id": "c15d3931-32a8-4a56-93cf-0024cbe5d715",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CameraPadY",
+                    "type": "Value",
+                    "id": "af6d40df-b1ad-4dbc-bc1d-3013b9cb5d47",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -198,17 +216,6 @@
                 },
                 {
                     "name": "",
-                    "id": "834b1c71-bea1-4b36-a449-37b8ab5e1ecc",
-                    "path": "<Mouse>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "MouseCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f11791f1-8848-4975-a489-192224f8ad64",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -248,28 +255,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7f8e18ef-185a-40b5-b591-04bff0379e7d",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PadCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5521ea8b-de52-46d0-9551-3dbc1e9abce8",
-                    "path": "<HID::JC-U3613M - DirectXInput Mode>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PadCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -325,6 +310,50 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "834b1c71-bea1-4b36-a449-37b8ab5e1ecc",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CameraMouseX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68fabdff-3cd9-43e9-b119-e1339c2f2493",
+                    "path": "<Mouse>/delta/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CameraMouseY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a82f6ad-e5da-42c3-9547-2517cf3280e0",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CameraPadX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71942766-f3f4-48e2-8edc-4d90ddd9c80e",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CameraPadY",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

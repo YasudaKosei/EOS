@@ -46,7 +46,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MouseCamera"",
+                    ""name"": ""CameraMouseX"",
                     ""type"": ""Value"",
                     ""id"": ""3aa508c7-8491-47e5-ab87-34babaacad24"",
                     ""expectedControlType"": ""Axis"",
@@ -55,9 +55,27 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PadCamera"",
+                    ""name"": ""CameraPadX"",
+                    ""type"": ""Value"",
+                    ""id"": ""3c697382-3bd7-4300-a9c1-32c6e055b062"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraMouseY"",
                     ""type"": ""Value"",
                     ""id"": ""c15d3931-32a8-4a56-93cf-0024cbe5d715"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraPadY"",
+                    ""type"": ""Value"",
+                    ""id"": ""af6d40df-b1ad-4dbc-bc1d-3013b9cb5d47"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -220,17 +238,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""834b1c71-bea1-4b36-a449-37b8ab5e1ecc"",
-                    ""path"": ""<Mouse>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""MouseCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f11791f1-8848-4975-a489-192224f8ad64"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -270,28 +277,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7f8e18ef-185a-40b5-b591-04bff0379e7d"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""PadCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5521ea8b-de52-46d0-9551-3dbc1e9abce8"",
-                    ""path"": ""<HID::JC-U3613M - DirectXInput Mode>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""PadCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -349,6 +334,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""834b1c71-bea1-4b36-a449-37b8ab5e1ecc"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CameraMouseX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68fabdff-3cd9-43e9-b119-e1339c2f2493"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CameraMouseY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a82f6ad-e5da-42c3-9547-2517cf3280e0"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CameraPadX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71942766-f3f4-48e2-8edc-4d90ddd9c80e"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CameraPadY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -370,8 +399,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions = asset.FindActionMap("actions", throwIfNotFound: true);
         m_actions_Move = m_actions.FindAction("Move", throwIfNotFound: true);
         m_actions_Jump = m_actions.FindAction("Jump", throwIfNotFound: true);
-        m_actions_MouseCamera = m_actions.FindAction("MouseCamera", throwIfNotFound: true);
-        m_actions_PadCamera = m_actions.FindAction("PadCamera", throwIfNotFound: true);
+        m_actions_CameraMouseX = m_actions.FindAction("CameraMouseX", throwIfNotFound: true);
+        m_actions_CameraPadX = m_actions.FindAction("CameraPadX", throwIfNotFound: true);
+        m_actions_CameraMouseY = m_actions.FindAction("CameraMouseY", throwIfNotFound: true);
+        m_actions_CameraPadY = m_actions.FindAction("CameraPadY", throwIfNotFound: true);
         m_actions_Change = m_actions.FindAction("Change", throwIfNotFound: true);
         m_actions_Pause = m_actions.FindAction("Pause", throwIfNotFound: true);
         m_actions_Dash = m_actions.FindAction("Dash", throwIfNotFound: true);
@@ -441,8 +472,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
     private readonly InputAction m_actions_Move;
     private readonly InputAction m_actions_Jump;
-    private readonly InputAction m_actions_MouseCamera;
-    private readonly InputAction m_actions_PadCamera;
+    private readonly InputAction m_actions_CameraMouseX;
+    private readonly InputAction m_actions_CameraPadX;
+    private readonly InputAction m_actions_CameraMouseY;
+    private readonly InputAction m_actions_CameraPadY;
     private readonly InputAction m_actions_Change;
     private readonly InputAction m_actions_Pause;
     private readonly InputAction m_actions_Dash;
@@ -455,8 +488,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public ActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_actions_Move;
         public InputAction @Jump => m_Wrapper.m_actions_Jump;
-        public InputAction @MouseCamera => m_Wrapper.m_actions_MouseCamera;
-        public InputAction @PadCamera => m_Wrapper.m_actions_PadCamera;
+        public InputAction @CameraMouseX => m_Wrapper.m_actions_CameraMouseX;
+        public InputAction @CameraPadX => m_Wrapper.m_actions_CameraPadX;
+        public InputAction @CameraMouseY => m_Wrapper.m_actions_CameraMouseY;
+        public InputAction @CameraPadY => m_Wrapper.m_actions_CameraPadY;
         public InputAction @Change => m_Wrapper.m_actions_Change;
         public InputAction @Pause => m_Wrapper.m_actions_Pause;
         public InputAction @Dash => m_Wrapper.m_actions_Dash;
@@ -478,12 +513,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @MouseCamera.started += instance.OnMouseCamera;
-            @MouseCamera.performed += instance.OnMouseCamera;
-            @MouseCamera.canceled += instance.OnMouseCamera;
-            @PadCamera.started += instance.OnPadCamera;
-            @PadCamera.performed += instance.OnPadCamera;
-            @PadCamera.canceled += instance.OnPadCamera;
+            @CameraMouseX.started += instance.OnCameraMouseX;
+            @CameraMouseX.performed += instance.OnCameraMouseX;
+            @CameraMouseX.canceled += instance.OnCameraMouseX;
+            @CameraPadX.started += instance.OnCameraPadX;
+            @CameraPadX.performed += instance.OnCameraPadX;
+            @CameraPadX.canceled += instance.OnCameraPadX;
+            @CameraMouseY.started += instance.OnCameraMouseY;
+            @CameraMouseY.performed += instance.OnCameraMouseY;
+            @CameraMouseY.canceled += instance.OnCameraMouseY;
+            @CameraPadY.started += instance.OnCameraPadY;
+            @CameraPadY.performed += instance.OnCameraPadY;
+            @CameraPadY.canceled += instance.OnCameraPadY;
             @Change.started += instance.OnChange;
             @Change.performed += instance.OnChange;
             @Change.canceled += instance.OnChange;
@@ -512,12 +553,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @MouseCamera.started -= instance.OnMouseCamera;
-            @MouseCamera.performed -= instance.OnMouseCamera;
-            @MouseCamera.canceled -= instance.OnMouseCamera;
-            @PadCamera.started -= instance.OnPadCamera;
-            @PadCamera.performed -= instance.OnPadCamera;
-            @PadCamera.canceled -= instance.OnPadCamera;
+            @CameraMouseX.started -= instance.OnCameraMouseX;
+            @CameraMouseX.performed -= instance.OnCameraMouseX;
+            @CameraMouseX.canceled -= instance.OnCameraMouseX;
+            @CameraPadX.started -= instance.OnCameraPadX;
+            @CameraPadX.performed -= instance.OnCameraPadX;
+            @CameraPadX.canceled -= instance.OnCameraPadX;
+            @CameraMouseY.started -= instance.OnCameraMouseY;
+            @CameraMouseY.performed -= instance.OnCameraMouseY;
+            @CameraMouseY.canceled -= instance.OnCameraMouseY;
+            @CameraPadY.started -= instance.OnCameraPadY;
+            @CameraPadY.performed -= instance.OnCameraPadY;
+            @CameraPadY.canceled -= instance.OnCameraPadY;
             @Change.started -= instance.OnChange;
             @Change.performed -= instance.OnChange;
             @Change.canceled -= instance.OnChange;
@@ -575,8 +622,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnMouseCamera(InputAction.CallbackContext context);
-        void OnPadCamera(InputAction.CallbackContext context);
+        void OnCameraMouseX(InputAction.CallbackContext context);
+        void OnCameraPadX(InputAction.CallbackContext context);
+        void OnCameraMouseY(InputAction.CallbackContext context);
+        void OnCameraPadY(InputAction.CallbackContext context);
         void OnChange(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
