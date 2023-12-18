@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8788165600270948522}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Tomato
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e1ddcd3ecbfab48b68c20a1f3061c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 20
   downMoveSpeed: 3
-  jumpPower: 20
+  jumpPower: 40
   rollForce: 10
   deceleration: 3
   skillTime: 5
