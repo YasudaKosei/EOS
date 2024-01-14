@@ -20,7 +20,7 @@ public class TomatoController : MonoBehaviour, Skill
     public bool knockBackFlg = false;
 
     [HideInInspector]
-    public bool isJumping = false;
+    public static bool isJumping = false;
 
     [SerializeField]
     private InputActionReference jump;
@@ -128,20 +128,18 @@ public class TomatoController : MonoBehaviour, Skill
         Skill.nowSkill = false;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        //地面着地判定
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
-        {
-            isJumping = false;
-        }
-        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    //地面着地判定
+    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
+    //    {
+    //        isJumping = false;
+    //    }
+    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+    //}
 
-        //エフェクト出す
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
+    //}
 }
