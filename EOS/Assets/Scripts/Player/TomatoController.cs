@@ -20,7 +20,7 @@ public class TomatoController : MonoBehaviour, Skill
     public bool knockBackFlg = false;
 
     [HideInInspector]
-    public static bool isJumping = false;
+    public bool isJumping = false;
 
     [SerializeField]
     private InputActionReference jump;
@@ -66,14 +66,15 @@ public class TomatoController : MonoBehaviour, Skill
         }
 
         //ジャンプ時の左右ストレイフ制御
-        if(!isJumping)
-        {
-            lateralmoveSpeed = moveSpeed;
-        }
-        else 
-        {
-            lateralmoveSpeed = moveSpeed/ downMoveSpeed;
-        }
+        //if(!isJumping)
+        //{
+        //    lateralmoveSpeed = moveSpeed;
+        //}
+        //else 
+        //{
+        //    lateralmoveSpeed = moveSpeed/ downMoveSpeed;
+        //}
+        lateralmoveSpeed = moveSpeed;
 
         // 移動
 

@@ -3,16 +3,16 @@ using System.Linq;
 
 public class Elevator : MonoBehaviour
 {
-    [SerializeField, Header("ˆÚ“®æ")]
+    [SerializeField, Header("ç§»å‹•å…ˆ")]
     private Vector3[] movetPos;
 
-    [SerializeField,Header("ˆÚ“®‘¬“x")]
+    [SerializeField,Header("ç§»å‹•é€Ÿåº¦")]
     private float moveSpeed = 5f;
 
-    [SerializeField, Header("ƒ‹[ƒv")]
+    [SerializeField, Header("ãƒ«ãƒ¼ãƒ—")]
     private bool loopFlg = false;
 
-    [SerializeField, Header("ƒvƒŒƒCƒ„[w’è")]
+    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
     private PlayerType playerType;
 
     private bool moveFlg = false;
@@ -35,7 +35,7 @@ public class Elevator : MonoBehaviour
 
     private void Start()
     {
-        //‰Šú’l‚ğ”z—ñ‚Ìæ“ª‚É’Ç‰Á
+        //åˆæœŸå€¤ã‚’é…åˆ—ã®å…ˆé ­ã«è¿½åŠ 
         startPos = this.transform.position;
         movetPos = movetPos.Prepend<Vector3>(startPos).ToArray();
 
@@ -56,7 +56,7 @@ public class Elevator : MonoBehaviour
     }
 
     /// <summary>
-    /// ‰Šú’n‚É–ß‚é
+    /// åˆæœŸåœ°ã«æˆ»ã‚‹
     /// </summary>
     private void ReturnInit()
     {
@@ -66,13 +66,13 @@ public class Elevator : MonoBehaviour
     }
 
     /// <summary>
-    /// Ÿ‚ÌˆÚ“®æ‚ÉˆÚ“®
+    /// æ¬¡ã®ç§»å‹•å…ˆã«ç§»å‹•
     /// </summary>
     private void MoveNext()
     {
         Vector3 direction = (movetPos[nextMovePoint] - this.transform.position).normalized;
 
-        // ƒIƒuƒWƒFƒNƒg‚ÌˆÊ’u‚ª–Ú•WÀ•W‚É\•ª‹ß‚Ã‚¢‚½‚çŸ‚ÌˆÚ“®æ‚ÖˆÚ“®‚·‚é‚æ‚¤‚É‚·‚é
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½ç½®ãŒç›®æ¨™åº§æ¨™ã«ååˆ†è¿‘ã¥ã„ãŸã‚‰æ¬¡ã®ç§»å‹•å…ˆã¸ç§»å‹•ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
         if (Vector3.Distance(this.transform.position, movetPos[nextMovePoint]) <= 0.1f)
         {
             if (loopFlg)
@@ -87,32 +87,36 @@ public class Elevator : MonoBehaviour
             }
         }
 
-        // ƒIƒuƒWƒFƒNƒg‚ğˆÚ“®
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç§»å‹•
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Oncoll");
-        if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb) && collision.gameObject.tag == playerType.ToString())
+        if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            //eqŠÖŒW‚É‚·‚é
+            //è¦ªå­é–¢ä¿‚ã«ã™ã‚‹
             collision.transform.parent = this.transform;
-            //ˆÚ“®‚ğŠJn
-            moveFlg = true;
-            if (nextMovePoint < movetPos.Length - 1) nextMovePoint++;
-            back = 1;
+
+            if(collision.gameObject.tag == playerType.ToString())
+            {
+                //ç§»å‹•ã‚’é–‹å§‹
+                moveFlg = true;
+                if (nextMovePoint < movetPos.Length - 1) nextMovePoint++;
+                back = 1;
+            }
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        //eqŠÖŒW”jŠü
+        //è¦ªå­é–¢ä¿‚ç ´æ£„
         collision.transform.parent = null;
 
         if (playerType != PlayerType.none)
         {
-            //ˆÚ“®’â~‹y‚Ñ‹AŠÒ
+            //ç§»å‹•åœæ­¢åŠã³å¸°é‚„
             moveFlg = false;
             if (back < 0) return;
             back = -1;

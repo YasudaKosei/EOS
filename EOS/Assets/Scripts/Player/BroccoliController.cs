@@ -133,20 +133,20 @@ public class BroccoliController : MonoBehaviour, Skill
         Skill.nowSkill = false;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        //地面着地判定
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
-        {
-            isJumping = false;
-            jumpFlg = false;
-            jumpTimeCount = 0f;
-        }
-        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
-    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    //地面着地判定
+    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
+    //    {
+    //        isJumping = false;
+    //        jumpFlg = false;
+    //        jumpTimeCount = 0f;
+    //    }
+    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
+    //}
 }

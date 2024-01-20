@@ -101,7 +101,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!64 &5615999058309480339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e1ddcd3ecbfab48b68c20a1f3061c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 14
   downMoveSpeed: 3
-  jumpPower: 40
+  jumpPower: 35
   rollForce: 10
   deceleration: 3
   skillTime: 5
