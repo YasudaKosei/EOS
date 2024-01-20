@@ -46,6 +46,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""CameraXY"",
+                    ""type"": ""Value"",
+                    ""id"": ""ec2a9328-1a6b-494f-9ac2-4ed03422556c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""CameraMouseX"",
                     ""type"": ""Value"",
                     ""id"": ""3aa508c7-8491-47e5-ab87-34babaacad24"",
@@ -378,6 +387,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""CameraPadY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6b57093-2321-4e7a-853b-f6321f99b5f9"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=0.1,y=0.1)"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CameraXY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5104f3ee-29cb-48bb-a681-46f6c6c10fd8"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CameraXY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -399,6 +430,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions = asset.FindActionMap("actions", throwIfNotFound: true);
         m_actions_Move = m_actions.FindAction("Move", throwIfNotFound: true);
         m_actions_Jump = m_actions.FindAction("Jump", throwIfNotFound: true);
+        m_actions_CameraXY = m_actions.FindAction("CameraXY", throwIfNotFound: true);
         m_actions_CameraMouseX = m_actions.FindAction("CameraMouseX", throwIfNotFound: true);
         m_actions_CameraPadX = m_actions.FindAction("CameraPadX", throwIfNotFound: true);
         m_actions_CameraMouseY = m_actions.FindAction("CameraMouseY", throwIfNotFound: true);
@@ -472,6 +504,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
     private readonly InputAction m_actions_Move;
     private readonly InputAction m_actions_Jump;
+    private readonly InputAction m_actions_CameraXY;
     private readonly InputAction m_actions_CameraMouseX;
     private readonly InputAction m_actions_CameraPadX;
     private readonly InputAction m_actions_CameraMouseY;
@@ -488,6 +521,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public ActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_actions_Move;
         public InputAction @Jump => m_Wrapper.m_actions_Jump;
+        public InputAction @CameraXY => m_Wrapper.m_actions_CameraXY;
         public InputAction @CameraMouseX => m_Wrapper.m_actions_CameraMouseX;
         public InputAction @CameraPadX => m_Wrapper.m_actions_CameraPadX;
         public InputAction @CameraMouseY => m_Wrapper.m_actions_CameraMouseY;
@@ -513,6 +547,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @CameraXY.started += instance.OnCameraXY;
+            @CameraXY.performed += instance.OnCameraXY;
+            @CameraXY.canceled += instance.OnCameraXY;
             @CameraMouseX.started += instance.OnCameraMouseX;
             @CameraMouseX.performed += instance.OnCameraMouseX;
             @CameraMouseX.canceled += instance.OnCameraMouseX;
@@ -553,6 +590,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @CameraXY.started -= instance.OnCameraXY;
+            @CameraXY.performed -= instance.OnCameraXY;
+            @CameraXY.canceled -= instance.OnCameraXY;
             @CameraMouseX.started -= instance.OnCameraMouseX;
             @CameraMouseX.performed -= instance.OnCameraMouseX;
             @CameraMouseX.canceled -= instance.OnCameraMouseX;
@@ -622,6 +662,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnCameraXY(InputAction.CallbackContext context);
         void OnCameraMouseX(InputAction.CallbackContext context);
         void OnCameraPadX(InputAction.CallbackContext context);
         void OnCameraMouseY(InputAction.CallbackContext context);

@@ -47,7 +47,7 @@ public class BroccoliController : MonoBehaviour, Skill
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
-        cam.GetComponent<CameraController>().player = this.transform;
+        cam.GetComponent<FrameRate>().player = this.transform;
         //cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();

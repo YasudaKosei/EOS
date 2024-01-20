@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CameraXY",
+                    "type": "Value",
+                    "id": "ec2a9328-1a6b-494f-9ac2-4ed03422556c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "CameraMouseX",
                     "type": "Value",
                     "id": "3aa508c7-8491-47e5-ab87-34babaacad24",
@@ -354,6 +363,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "CameraPadY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6b57093-2321-4e7a-853b-f6321f99b5f9",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
+                    "groups": "Keyboard",
+                    "action": "CameraXY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5104f3ee-29cb-48bb-a681-46f6c6c10fd8",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CameraXY",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
