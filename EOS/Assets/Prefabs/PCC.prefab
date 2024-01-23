@@ -209,12 +209,12 @@ MonoBehaviour:
   - {fileID: 4197088861374247355, guid: 276c888a04ca0a542b17074b7b96596e, type: 3}
   - {fileID: 5810004026231032013, guid: 470d1db1c9a607148ab19cf5f8d016c4, type: 3}
   - {fileID: 467147079257345197, guid: a275d319e44d6ea46a83e70fd3856626, type: 3}
-  can: {fileID: 0}
+  can: {fileID: 6329475902805685167}
   playerImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6329475901351402486}
+  - {fileID: 6329475902959484404}
+  - {fileID: 6329475902600896923}
+  - {fileID: 6329475902063907276}
   change: {fileID: -6126877187433577426, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   TomatoOffsetY: 0.4
   TomatoCPsize: {x: 0.4, y: 0.4, z: 0.4}

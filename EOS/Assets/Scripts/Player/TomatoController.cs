@@ -39,6 +39,12 @@ public class TomatoController : MonoBehaviour, Skill
     private Camera cam;
     private Transform cameraTransform;
 
+    [SerializeField]
+    private float groundOffsetY = 0.6f;
+
+    [SerializeField]
+    private LayerMask layerMask;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -115,7 +121,8 @@ public class TomatoController : MonoBehaviour, Skill
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
         }
-         
+
+        GroundCheck();
     }
 
     IEnumerator TomatoSkill()
@@ -127,6 +134,14 @@ public class TomatoController : MonoBehaviour, Skill
         Debug.Log("トマトskill終了");
         Skill.skillFlg = false;
         Skill.nowSkill = false;
+    }
+
+    private void GroundCheck()
+    {
+        if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask)) isJumping = false;
+
+        // 可視化用のデバッグラインを描画
+        Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
     }
 
     //void OnCollisionEnter(Collision collision)
