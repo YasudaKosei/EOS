@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
   dashSpeed: 1.5
-  jumpPower: 3
+  jumpPower: 30
   rollForce: 10
   deceleration: 3
   skillTime: 5
@@ -142,3 +142,7 @@ MonoBehaviour:
   dash: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   skill: {fileID: 7877152187290047675, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   movementThreshold: 3
+  groundOffsetY: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128

@@ -77,8 +77,8 @@ public class PC : MonoBehaviour
         if (nowPlayer.TryGetComponent<CarrotController>(out CarrotController tc)) tc.pc = this.gameObject.GetComponent<PC>();
         if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
 
-        followTaggedObject = GameObject.FindWithTag("FTO").GetComponent<FollowTaggedObject>();
-        followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
+        //followTaggedObject = GameObject.FindWithTag("FTO").GetComponent<FollowTaggedObject>();
+        //followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
     }
 
     void Update()
@@ -110,21 +110,21 @@ public class PC : MonoBehaviour
         if (nowPlayer.TryGetComponent<CarrotController>(out CarrotController tc)) tc.pc = this.gameObject.GetComponent<PC>();
         if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
 
-        if(nowPlayerID == 0)
-        {
-            followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
-        }
-        else if (nowPlayerID == 1)
-        {
-            followTaggedObject.BroccoliSerect(BroccoliOffsetY, nowPlayer, BroccoliCPsize);
-        }
-        else if (nowPlayerID == 2)
-        {
-            followTaggedObject.CarrotSerect(CarrotOffsetY, nowPlayer, CarrotCPsize);
-        }
-        else
-        {
-            followTaggedObject.WatermelonSerect(WatermelonOffsetY, nowPlayer, WatermelonCPsize);
-        }
+        //if(nowPlayerID == 0)
+        //{
+        //    followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
+        //}
+        //else if (nowPlayerID == 1)
+        //{
+        //    followTaggedObject.BroccoliSerect(BroccoliOffsetY, nowPlayer, BroccoliCPsize);
+        //}
+        //else if (nowPlayerID == 2)
+        //{
+        //    followTaggedObject.CarrotSerect(CarrotOffsetY, nowPlayer, CarrotCPsize);
+        //}
+        //else
+        //{
+        //    followTaggedObject.WatermelonSerect(WatermelonOffsetY, nowPlayer, WatermelonCPsize);
+        //}
     }
 }

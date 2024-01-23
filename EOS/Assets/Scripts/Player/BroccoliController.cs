@@ -35,6 +35,12 @@ public class BroccoliController : MonoBehaviour, Skill
     [SerializeField]
     private float movementThreshold = 3f;
 
+    [SerializeField]
+    private float groundOffsetY = 0.6f;
+
+    [SerializeField]
+    private LayerMask layerMask;
+
     private Rigidbody rb;
     private bool jumpFlg = false;
     private float jumpTimeCount = 0f;
@@ -47,7 +53,6 @@ public class BroccoliController : MonoBehaviour, Skill
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
-        cam.GetComponent<FrameRate>().player = this.transform;
         //cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();
@@ -122,6 +127,8 @@ public class BroccoliController : MonoBehaviour, Skill
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rollForce * Time.deltaTime);
         }
+
+        GroundCheck();
     }
 
     private void BroccoliSkill()
@@ -131,6 +138,14 @@ public class BroccoliController : MonoBehaviour, Skill
         isJumping = true;
         Skill.skillFlg = false;
         Skill.nowSkill = false;
+    }
+
+    private void GroundCheck()
+    {
+        if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask)) isJumping = false;
+
+        // 可視化用のデバッグラインを描画
+        Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
     }
 
     //void OnCollisionEnter(Collision collision)

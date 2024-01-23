@@ -50,7 +50,6 @@ public class testTomato : MonoBehaviour, Skill
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
-        cam.GetComponent<FrameRate>().player = this.transform;
         jump.action.Enable();
         move.action.Enable();
         skill.action.Enable();

@@ -30,6 +30,12 @@ public class PotController : MonoBehaviour
     [SerializeField]
     private float movementThreshold = 3f;
 
+    [SerializeField]
+    private float groundOffsetY = 0.5f;
+
+    [SerializeField]
+    private LayerMask layerMask;
+
     private Rigidbody rb;
     private bool jumpFlg = false;
     private float jumpTimeCount = 0f;
@@ -42,7 +48,6 @@ public class PotController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         cameraTransform = cam.transform;
-        cam.GetComponent<FrameRate>().player = this.transform;
         //cam.GetComponent<CameraController>().offset = cam.transform.position - this.transform.position;
         jump.action.Enable();
         move.action.Enable();
@@ -102,22 +107,32 @@ public class PotController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rollForce * Time.deltaTime);
         }
+
+        GroundCheck();
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void GroundCheck()
     {
-        //地面着地判定
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
-        {
-            isJumping = false;
-            jumpFlg = false;
-            jumpTimeCount = 0f;
-        }
-        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+        if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask)) isJumping = false;
+
+        // 可視化用のデバッグラインを描画
+        Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
-    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    //地面着地判定
+    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
+    //    {
+    //        isJumping = false;
+    //        jumpFlg = false;
+    //        jumpTimeCount = 0f;
+    //    }
+    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
+    //}
 }
