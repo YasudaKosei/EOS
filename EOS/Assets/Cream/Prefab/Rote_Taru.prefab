@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 6290191673451515984}
   - component: {fileID: 3480423466360459890}
   - component: {fileID: 5881493004139817162}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 5919971354684332670}
   - component: {fileID: 8675747597595527941}
   - component: {fileID: 6002211019602527877}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 9220758031468345891}
   - component: {fileID: 5328734854602097952}
   - component: {fileID: 4955481607145526237}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 1872374129635202985}
   - component: {fileID: 1467712446113350752}
   - component: {fileID: 2296232007284694983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrel_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 8004959393724395231}
   - component: {fileID: 8394229325319504883}
   - component: {fileID: 2248906541128095034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 5684001892479170638}
   - component: {fileID: 883572249217052552}
   - component: {fileID: 2296232007284694981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrel_01_LOD2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 6299509906130721675}
   - component: {fileID: 5111723766774141032}
   - component: {fileID: 8786655154003689849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 1930861347301098088}
   - component: {fileID: 3723573432839111069}
   - component: {fileID: 5411979600567604364}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 2278117266345861707}
   - component: {fileID: 3842687768649214142}
   - component: {fileID: 9009046289749000911}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1107,7 +1107,7 @@ GameObject:
   - component: {fileID: 6768668637200639994}
   - component: {fileID: 4750734081346356740}
   - component: {fileID: 6347437953839357213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1359,7 +1359,7 @@ GameObject:
   - component: {fileID: 6456875063928877731}
   - component: {fileID: 4925053658158276189}
   - component: {fileID: 4663413200488447174}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 1837700247274782670}
   - component: {fileID: 1576632666064839857}
   - component: {fileID: 7861232825429048440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1754,7 +1754,7 @@ GameObject:
   - component: {fileID: 51054116042719297}
   - component: {fileID: 3253814200679422684}
   - component: {fileID: 543529059797452340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1865,7 +1865,7 @@ GameObject:
   - component: {fileID: 9162757857053507071}
   - component: {fileID: 8357135714937185192}
   - component: {fileID: 2296232007284694980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrel_01_LOD1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1964,7 +1964,7 @@ GameObject:
   - component: {fileID: 4513855373230685856}
   - component: {fileID: 4889678705476376458}
   - component: {fileID: 6661932158978938640}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock_01_LOD0
   m_TagString: Ground
   m_Icon: {fileID: 0}

@@ -19,7 +19,6 @@ public class TomatoController : MonoBehaviour, Skill
     [HideInInspector]
     public bool knockBackFlg = false;
 
-    [HideInInspector]
     public bool isJumping = false;
 
     [SerializeField]
@@ -121,7 +120,7 @@ public class TomatoController : MonoBehaviour, Skill
             isJumping = true;
         }
 
-        GroundCheck();
+        if(isJumping) StartCoroutine(GroundCheck());
     }
 
     IEnumerator TomatoSkill()
@@ -135,9 +134,12 @@ public class TomatoController : MonoBehaviour, Skill
         Skill.nowSkill = false;
     }
 
-    private void GroundCheck()
+    private IEnumerator GroundCheck()
     {
+        yield return new WaitForSeconds(0.2f);
+
         if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask)) isJumping = false;
+        else isJumping = true;
 
         // 可視化用のデバッグラインを描画
         Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
