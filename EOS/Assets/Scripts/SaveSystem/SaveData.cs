@@ -3,8 +3,10 @@
 [System.Serializable]
 public class SaveData
 {
-    public int testInt;
-    public float testFloat;
-    public string testString;
-    public bool testBool;
+    public int[] StageStarCount;
+
+    public int[] StageClearTime;
+
+    public StageStarManager.StageStar stageStar;
+
 }

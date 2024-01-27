@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour,ITime
     //ゲームの時間を管理するスクリプトです
 
     // ITime プロパティを読み込むたびに timer フィールドの値が返される
-    public int ITime => timer;
+    public int ITimer => timer;
 
     //画面に表示する時間テキスト
     [SerializeField]

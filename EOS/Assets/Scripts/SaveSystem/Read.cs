@@ -28,7 +28,7 @@ public class Read : MonoBehaviour
 #endif
 
         //セーブファイルのパスを設定
-        string SaveFilePath = path + "/save" + DataManager.saveFile + ".bytes";
+        string SaveFilePath = path + "/save.bytes";
 
         //セーブファイルがあるか
         if (File.Exists(SaveFilePath))
@@ -36,7 +36,7 @@ public class Read : MonoBehaviour
             DataManager.saveData = true;
 
             //ファイルモードをオープンにする
-            FileStream file = new FileStream(SaveFilePath, FileMode.Open, FileAccess.Read);
+            FileStream file = new(SaveFilePath, FileMode.Open, FileAccess.Read);
             try
             {
                 // ファイル読み込み
@@ -77,10 +77,12 @@ public class Read : MonoBehaviour
     //データの読み込み（反映）
     private void ReadData(SaveData saveData)
     {
-        GameData.testInt = saveData.testInt;
-        GameData.testFloat = saveData.testFloat;
-        GameData.testString = saveData.testString;
-        GameData.testBool = saveData.testBool;
+        for (int i = 0; i < 5; i++) {
+            GameData.StageStarCount[i] = saveData.StageStarCount[i];
+
+            GameData.StageClearTime[i] = saveData.StageClearTime[i];
+        }
+        GameData.stageStar = saveData.stageStar;
     }
 
 
@@ -88,16 +90,18 @@ public class Read : MonoBehaviour
     private AesManaged GetAesManager()
     {
         //任意の半角英数16文字(Save.csと同じやつに)
-        string aesIv = "0987654321098765";
-        string aesKey = "1234567890123456";
+        string aesIv = "d87fgw8uq43n08fr";
+        string aesKey = "54nuiug23tf8y34r";
 
-        AesManaged aes = new AesManaged();
-        aes.KeySize = 128;
-        aes.BlockSize = 128;
-        aes.Mode = CipherMode.CBC;
-        aes.IV = Encoding.UTF8.GetBytes(aesIv);
-        aes.Key = Encoding.UTF8.GetBytes(aesKey);
-        aes.Padding = PaddingMode.PKCS7;
+        AesManaged aes = new()
+        {
+            KeySize = 128,
+            BlockSize = 128,
+            Mode = CipherMode.CBC,
+            IV = Encoding.UTF8.GetBytes(aesIv),
+            Key = Encoding.UTF8.GetBytes(aesKey),
+            Padding = PaddingMode.PKCS7
+        };
         return aes;
     }
 

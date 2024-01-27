@@ -9,13 +9,10 @@ public class DataManager : MonoBehaviour
     public Save saveClass;
     public Read readClass;
 
-    //セーブファイル指定変数
-    public static int saveFile = 1;
-
     //セーブデータがあるかの判定変数
     public static bool saveData = false;
 
-    void Start()
+    void Awake()
     {
         Read();
     }
@@ -52,32 +49,11 @@ public class DataManager : MonoBehaviour
 #endif
 
         //ファイル削除
-        File.Delete(path + "/save" + saveFile + ".bytes");
+        File.Delete(path + "/save.bytes");
 
         //リロード
         readClass.enabled = true;
 
         Debug.Log("データの削除が終わりました");
-    }
-
-    //ファイル１
-    public void File1()
-    {
-        saveFile = 1;
-        Read();
-    }
-
-    //ファイル2
-    public void File2()
-    {
-        saveFile = 2;
-        Read();
-    }
-
-    //ファイル3
-    public void File3()
-    {
-        saveFile = 3;
-        Read();
     }
 }

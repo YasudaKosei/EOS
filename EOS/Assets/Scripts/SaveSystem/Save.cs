@@ -28,7 +28,7 @@ public class Save : MonoBehaviour
 #endif
 
         //セーブファイルのパスを設定
-        string SaveFilePath = path + "/save" + DataManager.saveFile + ".bytes";
+        string SaveFilePath = path + "/save.bytes";
 
         // セーブデータの作成
         SaveData saveData = CreateSaveData();
@@ -43,7 +43,7 @@ public class Save : MonoBehaviour
         byte[] arrEncrypted = AesEncrypt(bytes);
 
         // 指定したパスにファイルを作成
-        FileStream file = new FileStream(SaveFilePath, FileMode.Create, FileAccess.Write);
+        FileStream file = new(SaveFilePath, FileMode.Create, FileAccess.Write);
 
         //ファイルに保存する
         try
@@ -67,13 +67,16 @@ public class Save : MonoBehaviour
     private SaveData CreateSaveData()
     {
         //セーブデータのインスタンス化
-        SaveData saveData = new SaveData();
+        SaveData saveData = new();
 
         //ゲームデータの値をセーブデータに代入
-        saveData.testInt = GameData.testInt;
-        saveData.testFloat = GameData.testFloat;
-        saveData.testString = GameData.testString;
-        saveData.testBool = GameData.testBool;
+        for (int i = 0; i < 5; i++)
+        {
+            saveData.StageStarCount[i] = GameData.StageStarCount[i];
+
+            saveData.StageClearTime[i] = GameData.StageClearTime[i];
+        }
+        saveData.stageStar = GameData.stageStar;
 
         return saveData;
     }
@@ -84,16 +87,18 @@ public class Save : MonoBehaviour
     private AesManaged GetAesManager()
     {
         //任意の半角英数16文字(Read.csと同じやつに)
-        string aesIv = "0987654321098765";
-        string aesKey = "1234567890123456";
+        string aesIv = "d87fgw8uq43n08fr";
+        string aesKey = "54nuiug23tf8y34r";
 
-        AesManaged aes = new AesManaged();
-        aes.KeySize = 128;
-        aes.BlockSize = 128;
-        aes.Mode = CipherMode.CBC;
-        aes.IV = Encoding.UTF8.GetBytes(aesIv);
-        aes.Key = Encoding.UTF8.GetBytes(aesKey);
-        aes.Padding = PaddingMode.PKCS7;
+        AesManaged aes = new()
+        {
+            KeySize = 128,
+            BlockSize = 128,
+            Mode = CipherMode.CBC,
+            IV = Encoding.UTF8.GetBytes(aesIv),
+            Key = Encoding.UTF8.GetBytes(aesKey),
+            Padding = PaddingMode.PKCS7
+        };
         return aes;
     }
 
