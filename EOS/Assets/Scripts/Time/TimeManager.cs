@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeManager : MonoBehaviour,ITime
+public class TimeManager : MonoBehaviour, ITime
 {
     //ゲームの時間を管理するスクリプトです
 
@@ -19,6 +19,8 @@ public class TimeManager : MonoBehaviour,ITime
     private int timer = 0;
     private float time = 0;
 
+    private bool limitFlg = false;
+
     void Start()
     {
         //時間の初期化
@@ -27,18 +29,19 @@ public class TimeManager : MonoBehaviour,ITime
         second = 0;
         minute = 0;
         hour = 0;
+        limitFlg = false;
     }
 
     void Update()
     {
         //ゲームが止まっている時はここから先は進まない
-        if (Stop.stopFlg) return;
+        if (Stop.stopFlg || limitFlg) return;
 
         //時間を増やす
         time += Time.deltaTime;
 
         //秒
-        if(time >= 1f)
+        if (time >= 1f)
         {
             time = 0;
             second++;
@@ -46,20 +49,21 @@ public class TimeManager : MonoBehaviour,ITime
         }
 
         //分
-        if(second >= 60)
+        if (second >= 60)
         {
+            if (minute >= 59)
+            {
+                timeText.text = "59:59";
+                limitFlg = true;
+                return;
+            }
+
             second = 0;
             minute++;
         }
 
-        //時
-        if(minute >= 60)
-        {
-            minute = 0;
-            hour++;
-        }
 
         //テキスト更新
-        timeText.text = hour.ToString("d2") + ":" + minute.ToString("d2") + ":" + second.ToString("d2");
+        timeText.text = minute.ToString("d2") + ":" + second.ToString("d2");
     }
 }
