@@ -11,4 +11,9 @@ public class SceneSelectManager : MonoBehaviour
         Load.SL = value;
         fade.FadeIn(0.5f, () => SceneManager.LoadScene("LoadScene"));
     }
+
+    public void RetryLoad()
+    {
+        fade.FadeIn(0.5f, () => SceneManager.LoadScene("LoadScene"));
+    }
 }

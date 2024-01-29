@@ -18,8 +18,8 @@ public class StarCoin : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Stage05") stageNum = 4;
         starFlgsNum = (stageNum * 3) + starNum;
 
-        if ((GameData.stageStar & (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), starFlgsNum)) ==
-            (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), starFlgsNum))
+        if ((GameData.stageStar & (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), starFlgsNum + 1)) ==
+            (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), starFlgsNum + 1))
         {
             getFlg = true;
             //半透明にする
