@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class OptionManager : MonoBehaviour
+public class SettingManager : MonoBehaviour
 {
     [SerializeField]
     private InputActionReference pause;
@@ -11,14 +11,9 @@ public class OptionManager : MonoBehaviour
     private InputActionReference move;
 
     [SerializeField]
-    private DataManager dm;
+    private GameObject optionCan, disCan, souCan, keyCan, padCan, quitMenu;
 
-    [SerializeField]
-    private GameObject settingCan,optionCan, disCan, souCan, keyCan, padCan, quitMenu;
-
-    private bool settingOpenFlg = false;
     private bool optionOpenFlg = false;
-    private bool achvOpenFlg = false;
 
     private int nowOpution = 1;
 
@@ -44,10 +39,7 @@ public class OptionManager : MonoBehaviour
 
         PanelUpdata();
 
-        settingOpenFlg = false;
         optionOpenFlg = false;
-        achvOpenFlg = false;
-        settingCan.SetActive(settingOpenFlg);
         optionCan.SetActive(optionOpenFlg);
 
         quitMenu.SetActive(false);
@@ -58,12 +50,7 @@ public class OptionManager : MonoBehaviour
         //pauseキーが押されたら
         if (pause.action.triggered)
         {
-            if (!optionOpenFlg && !achvOpenFlg)
-            {
-                settingOpenFlg = !settingOpenFlg;
-                settingCan.SetActive(settingOpenFlg);
-            }
-            else if(optionOpenFlg && !achvOpenFlg)
+            if (optionOpenFlg)
             {
                 optionOpenFlg = false;
                 optionCan.SetActive(optionOpenFlg);
@@ -86,8 +73,6 @@ public class OptionManager : MonoBehaviour
         }
 
         if (moveInput.x >= -0.25f && moveInput.x <= 0.25f && rebindFlg) rebindFlg = false;
-
-        Stop.stopFlg = settingOpenFlg;
     }
 
     private void PanelUpdata()
@@ -123,12 +108,6 @@ public class OptionManager : MonoBehaviour
         }
     }
 
-    public void GameBackButton()
-    {
-        settingOpenFlg = false;
-        settingCan.SetActive(settingOpenFlg);
-    }
-
     public void OptionOpenButton()
     {
         optionOpenFlg = true;
@@ -139,12 +118,6 @@ public class OptionManager : MonoBehaviour
     {
         optionOpenFlg = false;
         optionCan.SetActive(optionOpenFlg);
-    }
-
-    public void TitleBackButton()
-    {
-        dm.Save();
-        SceneManager.LoadScene("TitleScene");
     }
 
     public void QuitMenuOpenButton()

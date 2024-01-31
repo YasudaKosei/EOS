@@ -33,42 +33,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CameraMouseX",
-                    "type": "Value",
-                    "id": "3aa508c7-8491-47e5-ab87-34babaacad24",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CameraPadX",
-                    "type": "Value",
-                    "id": "3c697382-3bd7-4300-a9c1-32c6e055b062",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CameraMouseY",
-                    "type": "Value",
-                    "id": "c15d3931-32a8-4a56-93cf-0024cbe5d715",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CameraPadY",
-                    "type": "Value",
-                    "id": "af6d40df-b1ad-4dbc-bc1d-3013b9cb5d47",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Change",
                     "type": "Button",
                     "id": "25cfa733-2acf-46cc-9aa4-de3d13d63256",
@@ -302,11 +266,33 @@
                 },
                 {
                     "name": "",
+                    "id": "057fb130-c9aa-465a-a1f3-37e0c9ceaeb4",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CharaChangeLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "23c72aa8-3226-4789-a43c-05d668ea9523",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "CharaChangeRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9281fcb-dc75-4fa6-99e8-859bd102f9c0",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "CharaChangeRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -324,45 +310,12 @@
                 },
                 {
                     "name": "",
-                    "id": "834b1c71-bea1-4b36-a449-37b8ab5e1ecc",
-                    "path": "<Mouse>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "CameraMouseX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "68fabdff-3cd9-43e9-b119-e1339c2f2493",
-                    "path": "<Mouse>/delta/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "CameraMouseY",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0a82f6ad-e5da-42c3-9547-2517cf3280e0",
-                    "path": "<Gamepad>/rightStick/x",
+                    "id": "7b8c9d8c-148b-4c28-ac80-98c3b19ede42",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "CameraPadX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "71942766-f3f4-48e2-8edc-4d90ddd9c80e",
-                    "path": "<Gamepad>/rightStick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "CameraPadY",
+                    "action": "Skill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -30,7 +30,7 @@ public class RebindUI : MonoBehaviour
 
         // InputActionインスタンスを保持しておく
         _action = _actionRef.action;
-
+        
         // キーバインドの表示を反映する
         RefreshDisplay();
     }
