@@ -3,9 +3,9 @@
 [System.Serializable]
 public class SaveData
 {
-    public int[] StageStarCount;
+    public int[] StageStarCount = new int[5];
 
-    public int[] StageClearTime;
+    public int[] StageClearTime = new int[5];
 
     public StageStarManager.StageStar stageStar;
 

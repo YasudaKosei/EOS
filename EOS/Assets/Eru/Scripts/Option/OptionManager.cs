@@ -18,7 +18,6 @@ public class OptionManager : MonoBehaviour
 
     private bool settingOpenFlg = false;
     private bool optionOpenFlg = false;
-    private bool achvOpenFlg = false;
 
     private int nowOpution = 1;
 
@@ -46,7 +45,6 @@ public class OptionManager : MonoBehaviour
 
         settingOpenFlg = false;
         optionOpenFlg = false;
-        achvOpenFlg = false;
         settingCan.SetActive(settingOpenFlg);
         optionCan.SetActive(optionOpenFlg);
 
@@ -58,16 +56,17 @@ public class OptionManager : MonoBehaviour
         //pauseキーが押されたら
         if (pause.action.triggered)
         {
-            if (!optionOpenFlg && !achvOpenFlg)
+            if (!optionOpenFlg)
             {
                 settingOpenFlg = !settingOpenFlg;
                 settingCan.SetActive(settingOpenFlg);
             }
-            else if(optionOpenFlg && !achvOpenFlg)
+            else if(optionOpenFlg)
             {
                 optionOpenFlg = false;
                 optionCan.SetActive(optionOpenFlg);
             }
+            Stop.stopFlg = settingOpenFlg;
         }
 
         Vector2 moveInput = move.action.ReadValue<Vector2>();
@@ -87,7 +86,6 @@ public class OptionManager : MonoBehaviour
 
         if (moveInput.x >= -0.25f && moveInput.x <= 0.25f && rebindFlg) rebindFlg = false;
 
-        Stop.stopFlg = settingOpenFlg;
     }
 
     private void PanelUpdata()
@@ -126,6 +124,7 @@ public class OptionManager : MonoBehaviour
     public void GameBackButton()
     {
         settingOpenFlg = false;
+        Stop.stopFlg = settingOpenFlg;
         settingCan.SetActive(settingOpenFlg);
     }
 

@@ -88,25 +88,12 @@ public class PCC : MonoBehaviour, Skill
             else tChangeFlg = true;
         }
 
-        if (pc.nowPlayer.TryGetComponent<PotController>(out PotController potC))
-        {
-            if (potC.isJumping)
-            {
-                for (int i = 0; i < timeGage.Length; i++)
-                {
-                    timeGage[i].fillAmount = 1;
-                }
-                pChangeFlg = false;
-            }
-            else pChangeFlg = true;
-        }
-
         if (cR.action.triggered) Right();
         else if (cL.action.triggered) Left();
-        else if (Input.GetKeyDown(KeyCode.Alpha1)) num(0);
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) num(1);
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) num(2);
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) num(3);
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) Num(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) Num(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) Num(2);
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) Num(3);
         
     }
 
@@ -131,7 +118,7 @@ public class PCC : MonoBehaviour, Skill
     /// <summary>
     /// 数字選択
     /// </summary>
-    public void num(int num)
+    public void Num(int num)
     {
         pc.playerID = num;
     }

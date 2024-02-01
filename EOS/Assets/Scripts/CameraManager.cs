@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
     void Awake()
     {
         Application.targetFrameRate = targetFps;
+        Stop.stopFlg = true;
         cb = GetComponent<CinemachineBrain>();
     }
 

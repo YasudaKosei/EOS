@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class ResultManager : MonoBehaviour
 {
     [SerializeField]
+    private DataManager dm;
+
+    [SerializeField]
     private Text timeText;
 
     [SerializeField]
@@ -25,6 +28,7 @@ public class ResultManager : MonoBehaviour
         resultTimeText.enabled = false;
         for (int i = 0; i < starCoinImage.Length; i++) starCoinImage[i].enabled = false;
         button.SetActive(false);
+        dm.Save();
 
         StartCoroutine(Show());
     }
@@ -42,8 +46,8 @@ public class ResultManager : MonoBehaviour
         for (int i = 0; i < starCoinImage.Length; i++)
         {
             starCoinImage[i].enabled = true;
-            if ((GameData.stageStar & (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), i + 1)) ==
-            (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), i + 1))
+            if ((GameData.stageStar & (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), i)) ==
+            (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), i))
             {
                 starCoinImage[i].sprite = starSprite;
                 //SE

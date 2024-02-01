@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField, Header("ƒeƒŒƒ|[ƒgæ")]
-    private Vector3 teleportPos = new Vector3();
+    [SerializeField, Header("ãƒ†ãƒ¬ãƒãƒ¼ãƒˆå…ˆ")]
+    private Vector3 teleportPos = new();
 
-    [SerializeField, Header("ƒvƒŒƒCƒ„[w’è")]
+    [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æŒ‡å®š")]
     private PlayerType playerType;
 
     private enum PlayerType
@@ -20,7 +20,7 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //‘ÎÛ‚ÌƒvƒŒƒCƒ„[‚©ŒŸ’m
+        //å¯¾è±¡ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹æ¤œçŸ¥
         if (playerType != PlayerType.none && other.gameObject.tag != playerType.ToString()) return;
         if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb)) other.gameObject.transform.position = teleportPos;
     }

@@ -75,7 +75,6 @@ public class PC : MonoBehaviour
         freeLook.LookAt = nowPlayer.transform;
 
         if (nowPlayer.TryGetComponent<CarrotController>(out CarrotController tc)) tc.pc = this.gameObject.GetComponent<PC>();
-        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
 
         //followTaggedObject = GameObject.FindWithTag("FTO").GetComponent<FollowTaggedObject>();
         //followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
@@ -108,7 +107,6 @@ public class PC : MonoBehaviour
         freeLook.LookAt = nowPlayer.transform;
 
         if (nowPlayer.TryGetComponent<CarrotController>(out CarrotController tc)) tc.pc = this.gameObject.GetComponent<PC>();
-        if (nowPlayer.TryGetComponent<PotController>(out PotController po)) po.pc = this.gameObject.GetComponent<PC>();
 
         //if(nowPlayerID == 0)
         //{
