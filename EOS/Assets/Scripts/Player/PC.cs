@@ -36,8 +36,6 @@ public class PC : MonoBehaviour
 
     private Vector3 nowPos;
 
-    FollowTaggedObject followTaggedObject;
-
     [SerializeField]
     private float TomatoOffsetY;
     [SerializeField]

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class ResultManager : MonoBehaviour
     private DataManager dm;
 
     [SerializeField]
-    private Text timeText;
+    private TimeManager tm;
 
     [SerializeField]
     private Text resultTimeText;
@@ -28,6 +29,15 @@ public class ResultManager : MonoBehaviour
         resultTimeText.enabled = false;
         for (int i = 0; i < starCoinImage.Length; i++) starCoinImage[i].enabled = false;
         button.SetActive(false);
+
+        int stageNum = 0;
+        if (SceneManager.GetActiveScene().name == "Stage01") stageNum = 0;
+        else if (SceneManager.GetActiveScene().name == "Stage02") stageNum = 1;
+        else if (SceneManager.GetActiveScene().name == "Stage03") stageNum = 2;
+        else if (SceneManager.GetActiveScene().name == "Stage04") stageNum = 3;
+        else if (SceneManager.GetActiveScene().name == "Stage05") stageNum = 4;
+        if(GameData.StageClearTime[stageNum] == 0 || GameData.StageClearTime[stageNum] > tm.ITimer) GameData.StageClearTime[stageNum] = tm.ITimer;
+
         dm.Save();
 
         StartCoroutine(Show());
@@ -37,7 +47,7 @@ public class ResultManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        resultTimeText.text = timeText.text;
+        resultTimeText.text = tm.timeText.text;
         resultTimeText.enabled = true;
         //SE
 

@@ -9,13 +9,11 @@ public class TimeManager : MonoBehaviour, ITime
     public int ITimer => timer;
 
     //画面に表示する時間テキスト
-    [SerializeField]
-    private Text timeText;
+    public Text timeText;
 
     //時間の単位
     private int second = 0;
     private int minute = 0;
-    private int hour = 0;
     private int timer = 0;
     private float time = 0;
 
@@ -28,7 +26,6 @@ public class TimeManager : MonoBehaviour, ITime
         timer = 0;
         second = 0;
         minute = 0;
-        hour = 0;
         limitFlg = false;
     }
 
