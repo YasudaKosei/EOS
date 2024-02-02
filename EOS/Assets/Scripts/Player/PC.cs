@@ -81,4 +81,9 @@ public class PC : MonoBehaviour
         freeLook.LookAt = nowPlayer.transform;
 
     }
+
+    public void PlayerRespawn()
+    {
+        nowPlayer.transform.position = startPos.position;
+    }
 }

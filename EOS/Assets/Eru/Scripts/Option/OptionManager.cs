@@ -11,10 +11,16 @@ public class OptionManager : MonoBehaviour
     private InputActionReference move;
 
     [SerializeField]
+    private InputActionReference res;
+
+    [SerializeField]
     private DataManager dm;
 
     [SerializeField]
-    private GameObject settingCan,optionCan, disCan, souCan, keyCan, padCan, quitMenu;
+    private PC pc;
+
+    [SerializeField]
+    private GameObject settingCan, optionCan, disCan, souCan, keyCan, padCan, quitMenu;
 
     private bool settingOpenFlg = false;
     private bool optionOpenFlg = false;
@@ -40,6 +46,7 @@ public class OptionManager : MonoBehaviour
         //キーの有効化
         pause.action.Enable();
         move.action.Enable();
+        res.action.Enable();
 
         PanelUpdata();
 
@@ -61,13 +68,15 @@ public class OptionManager : MonoBehaviour
                 settingOpenFlg = !settingOpenFlg;
                 settingCan.SetActive(settingOpenFlg);
             }
-            else if(optionOpenFlg)
+            else if (optionOpenFlg)
             {
                 optionOpenFlg = false;
                 optionCan.SetActive(optionOpenFlg);
             }
             Stop.stopFlg = settingOpenFlg;
         }
+
+        if (!optionOpenFlg && res.action.triggered) Retry();
 
         Vector2 moveInput = move.action.ReadValue<Vector2>();
 
@@ -154,6 +163,12 @@ public class OptionManager : MonoBehaviour
     public void QuitMenuClauseButton()
     {
         quitMenu.SetActive(false);
+    }
+
+    public void Retry()
+    {
+        pc.PlayerRespawn();
+        GameBackButton();
     }
 
     public void QuitGameButton()

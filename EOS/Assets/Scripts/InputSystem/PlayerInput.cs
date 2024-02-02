@@ -107,6 +107,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8c62873-2cf4-4ac9-94a8-e7e40381149f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -362,6 +371,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""CameraXY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f027ea32-48e9-46b7-885d-9ea7a8bb7033"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1918a031-1b05-4476-aa51-b4e8a69735bf"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -390,6 +421,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions_CharaChangeLeft = m_actions.FindAction("CharaChangeLeft", throwIfNotFound: true);
         m_actions_CharaChangeRight = m_actions.FindAction("CharaChangeRight", throwIfNotFound: true);
         m_actions_Skill = m_actions.FindAction("Skill", throwIfNotFound: true);
+        m_actions_Respawn = m_actions.FindAction("Respawn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -460,6 +492,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_actions_CharaChangeLeft;
     private readonly InputAction m_actions_CharaChangeRight;
     private readonly InputAction m_actions_Skill;
+    private readonly InputAction m_actions_Respawn;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -473,6 +506,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @CharaChangeLeft => m_Wrapper.m_actions_CharaChangeLeft;
         public InputAction @CharaChangeRight => m_Wrapper.m_actions_CharaChangeRight;
         public InputAction @Skill => m_Wrapper.m_actions_Skill;
+        public InputAction @Respawn => m_Wrapper.m_actions_Respawn;
         public InputActionMap Get() { return m_Wrapper.m_actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -509,6 +543,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Skill.started += instance.OnSkill;
             @Skill.performed += instance.OnSkill;
             @Skill.canceled += instance.OnSkill;
+            @Respawn.started += instance.OnRespawn;
+            @Respawn.performed += instance.OnRespawn;
+            @Respawn.canceled += instance.OnRespawn;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -540,6 +577,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Skill.started -= instance.OnSkill;
             @Skill.performed -= instance.OnSkill;
             @Skill.canceled -= instance.OnSkill;
+            @Respawn.started -= instance.OnRespawn;
+            @Respawn.performed -= instance.OnRespawn;
+            @Respawn.canceled -= instance.OnRespawn;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -586,5 +626,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnCharaChangeLeft(InputAction.CallbackContext context);
         void OnCharaChangeRight(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
     }
 }

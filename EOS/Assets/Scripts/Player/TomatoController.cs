@@ -44,6 +44,11 @@ public class TomatoController : MonoBehaviour, Skill
     [SerializeField]
     private LayerMask layerMask;
 
+    private bool jumpDelayFlg = false;
+
+    [SerializeField]
+    private float jumpDelayTime = 0.1f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -52,6 +57,8 @@ public class TomatoController : MonoBehaviour, Skill
         jump.action.Enable();
         move.action.Enable();
         skill.action.Enable();
+        isJumping = false;
+        jumpDelayFlg = false;
     }
 
     void Update()
@@ -118,9 +125,11 @@ public class TomatoController : MonoBehaviour, Skill
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJumping = true;
+            jumpDelayFlg = true;
+            StartCoroutine(JumpDalay());
         }
 
-        if(isJumping) StartCoroutine(GroundCheck());
+        if(isJumping && !jumpDelayFlg) StartCoroutine(GroundCheck());
     }
 
     IEnumerator TomatoSkill()
@@ -132,6 +141,13 @@ public class TomatoController : MonoBehaviour, Skill
         Debug.Log("トマトskill終了");
         Skill.skillFlg = false;
         Skill.nowSkill = false;
+    }
+
+    private IEnumerator JumpDalay()
+    {
+        yield return new WaitForSeconds(jumpDelayTime);
+        jumpDelayFlg = false;
+        yield break;
     }
 
     private IEnumerator GroundCheck()
