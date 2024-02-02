@@ -104,7 +104,7 @@ public class TomatoController : MonoBehaviour, Skill
             if(Skill.skillFlg == true && Skill.nowSkill == false)
             {
                 Skill.nowSkill = true;
-                StartCoroutine(TomatoSkill());
+                //StartCoroutine(TomatoSkill());
             }
              else
             {
@@ -144,19 +144,4 @@ public class TomatoController : MonoBehaviour, Skill
         // 可視化用のデバッグラインを描画
         Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
     }
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    //地面着地判定
-    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
-    //    {
-    //        isJumping = false;
-    //    }
-    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = true;
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Elevator")) pc.elevatorFlg = false;
-    //}
 }
