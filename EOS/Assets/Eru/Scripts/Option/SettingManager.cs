@@ -26,12 +26,7 @@ public class SettingManager : MonoBehaviour
 
     private void Awake()
     {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(this.gameObject);
-        //}
-        //else Destroy(this.gameObject);
+        Stop.stopFlg = false;
 
         //キーの有効化
         pause.action.Enable();
