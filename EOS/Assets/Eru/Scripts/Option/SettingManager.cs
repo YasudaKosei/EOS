@@ -26,7 +26,7 @@ public class SettingManager : MonoBehaviour
 
     private void Awake()
     {
-        Stop.stopFlg = false;
+        Stop.stopFlg = true;
 
         //キーの有効化
         pause.action.Enable();

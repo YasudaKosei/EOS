@@ -23,7 +23,7 @@ public class StageSelectManager : MonoBehaviour
 
     private void Start()
     {
-        Stop.stopFlg = false;
+        Stop.stopFlg = true;
         int total = 0;
         for (int i = 0; i < 5; i++)
         {
