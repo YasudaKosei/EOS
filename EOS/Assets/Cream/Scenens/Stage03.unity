@@ -1011,6 +1011,10 @@ PrefabInstance:
       propertyPath: timeText
       value: 
       objectReference: {fileID: 340053621}
+    - target: {fileID: 3542623704238699199, guid: da84d5e527f94714481c527730f5c3dd, type: 3}
+      propertyPath: fade
+      value: 
+      objectReference: {fileID: 1365098987}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da84d5e527f94714481c527730f5c3dd, type: 3}
 --- !u!1 &96159845 stripped

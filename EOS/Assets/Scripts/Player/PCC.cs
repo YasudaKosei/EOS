@@ -126,7 +126,7 @@ public class PCC : MonoBehaviour, Skill
     public void CP()
     {
         if (pc.nowPlayerID == pc.playerID || Skill.nowSkill) return;
-        pc.ChangePlayer();
+        //pc.ChangePlayer();
         Fin();
     }
 

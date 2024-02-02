@@ -13,9 +13,6 @@ public class CarrotController : MonoBehaviour, Skill
     public float skillTime = 5;
 
     [HideInInspector]
-    public PC pc;
-
-    [HideInInspector]
     public bool knockBackFlg = false;
 
     [HideInInspector]

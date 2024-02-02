@@ -36,26 +36,6 @@ public class PC : MonoBehaviour
 
     private Vector3 nowPos;
 
-    [SerializeField]
-    private float TomatoOffsetY;
-    [SerializeField]
-    private Vector3 TomatoCPsize;
-
-    [SerializeField]
-    private float BroccoliOffsetY;
-    [SerializeField]
-    private Vector3 BroccoliCPsize;
-
-    [SerializeField]
-    private float CarrotOffsetY;
-    [SerializeField]
-    private Vector3 CarrotCPsize;
-
-    [SerializeField]
-    private float WatermelonOffsetY;
-    [SerializeField]
-    private Vector3 WatermelonCPsize;
-
     private GameObject CMFreeLook;
     private CinemachineFreeLook freeLook;
 
@@ -72,10 +52,6 @@ public class PC : MonoBehaviour
         freeLook.Follow = nowPlayer.transform;
         freeLook.LookAt = nowPlayer.transform;
 
-        if (nowPlayer.TryGetComponent<CarrotController>(out CarrotController tc)) tc.pc = this.gameObject.GetComponent<PC>();
-
-        //followTaggedObject = GameObject.FindWithTag("FTO").GetComponent<FollowTaggedObject>();
-        //followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
     }
 
     void Update()
@@ -104,23 +80,5 @@ public class PC : MonoBehaviour
         freeLook.Follow = nowPlayer.transform;
         freeLook.LookAt = nowPlayer.transform;
 
-        if (nowPlayer.TryGetComponent<CarrotController>(out CarrotController tc)) tc.pc = this.gameObject.GetComponent<PC>();
-
-        //if(nowPlayerID == 0)
-        //{
-        //    followTaggedObject.TomatoSerect(TomatoOffsetY, nowPlayer, TomatoCPsize);
-        //}
-        //else if (nowPlayerID == 1)
-        //{
-        //    followTaggedObject.BroccoliSerect(BroccoliOffsetY, nowPlayer, BroccoliCPsize);
-        //}
-        //else if (nowPlayerID == 2)
-        //{
-        //    followTaggedObject.CarrotSerect(CarrotOffsetY, nowPlayer, CarrotCPsize);
-        //}
-        //else
-        //{
-        //    followTaggedObject.WatermelonSerect(WatermelonOffsetY, nowPlayer, WatermelonCPsize);
-        //}
     }
 }
