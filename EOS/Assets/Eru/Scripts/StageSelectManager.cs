@@ -29,7 +29,7 @@ public class StageSelectManager : MonoBehaviour
         {
             total += GameData.StageStarCount[i];
 
-            getStageStarText[i].text = "★3/" + GameData.StageStarCount[i].ToString();
+            getStageStarText[i].text = "★" + GameData.StageStarCount[i].ToString() + "/3";
             if (GameData.StageClearTime[i] == 0) clearStageTimeText[i].text = "Clear Time\n-- : --";
             else clearStageTimeText[i].text = "Clear Time\n" + (GameData.StageClearTime[i] / 60).ToString("d2") + " : " + (GameData.StageClearTime[i] % 60).ToString("d2");
         }
