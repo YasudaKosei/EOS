@@ -84,6 +84,8 @@ public class PC : MonoBehaviour
 
     public void PlayerRespawn()
     {
-        nowPlayer.transform.position = startPos.position;
+        nowPlayer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        nowPlayer.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        nowPlayer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }
