@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5615999058309480338}
   - component: {fileID: 5615999058309480339}
   - component: {fileID: 8788165600270948522}
+  - component: {fileID: 4049397614237247181}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Player
@@ -111,7 +112,7 @@ MeshCollider:
   m_GameObject: {fileID: 7130652301535656318}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -146,3 +147,17 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  jumpDelayTime: 0.1
+--- !u!135 &4049397614237247181
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130652301535656318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.054
+  m_Center: {x: 0, y: 0, z: 0}
