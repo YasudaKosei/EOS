@@ -4292,7 +4292,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u30C0\u30C3\u30B7\u30E5"
+  m_Text: "\u30EA\u30C8\u30E9\u30A4"
 --- !u!1 &4032388266400193843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,7 +5321,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u30C0\u30C3\u30B7\u30E5"
+  m_Text: "\u30EA\u30C8\u30E9\u30A4"
 --- !u!1 &4032388266630658362
 GameObject:
   m_ObjectHideFlags: 0
@@ -8236,7 +8236,7 @@ GameObject:
   - component: {fileID: 4032388267091192097}
   - component: {fileID: 4032388267091192096}
   m_Layer: 5
-  m_Name: DashAction
+  m_Name: RetryAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8278,7 +8278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd20a6075c79984ca20f6cb7a716ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionRef: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  _actionRef: {fileID: -1578555938454791807, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   _pathText: {fileID: 4032388266450465267}
   _mask: {fileID: 4821512130262193304}
   bindingIndex: 0
@@ -9933,7 +9933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd20a6075c79984ca20f6cb7a716ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionRef: {fileID: 4419416704501198529, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  _actionRef: {fileID: -1578555938454791807, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   _pathText: {fileID: 4032388266707166320}
   _mask: {fileID: 4821512130262193304}
   bindingIndex: 1
