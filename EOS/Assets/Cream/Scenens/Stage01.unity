@@ -1328,6 +1328,7 @@ GameObject:
   - component: {fileID: 469153512}
   - component: {fileID: 469153511}
   - component: {fileID: 469153510}
+  - component: {fileID: 469153513}
   m_Layer: 0
   m_Name: CM FreeLook1
   m_TagString: Untagged
@@ -1473,6 +1474,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &469153513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469153509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14f06e3678501d42b8fcd1d70b4f061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 2747739056584121274, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
 --- !u!4 &487319069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6283187738200027264, guid: ca12e4d3b8ba552408c001532eecb3ac, type: 3}

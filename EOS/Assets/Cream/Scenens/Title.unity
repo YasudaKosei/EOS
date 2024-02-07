@@ -850,7 +850,7 @@ PrefabInstance:
     - target: {fileID: 11486218, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: maskTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 754a8796a710dcd4cba7eff4e6ab2f09, type: 3}
+      objectReference: {fileID: 2800000, guid: 04188480cff816441876584ae608b8b8, type: 3}
     - target: {fileID: 11491604, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: startFade
       value: 0

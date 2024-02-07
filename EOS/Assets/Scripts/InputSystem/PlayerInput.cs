@@ -366,7 +366,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""5104f3ee-29cb-48bb-a681-46f6c6c10fd8"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""CameraXY"",
                     ""isComposite"": false,
