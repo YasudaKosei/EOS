@@ -9,6 +9,8 @@ public class StarCoin : MonoBehaviour
 
     private bool getFlg = false;
 
+    public GameObject coinAudioObject;
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "Stage01") stageNum = 0;
@@ -32,6 +34,10 @@ public class StarCoin : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("コインゲット");
+
+            //コイン獲得の効果音
+            GameObject obj =  Instantiate(coinAudioObject);
+            Destroy(obj, 3.0f);
 
             //未獲得だったら
             if (!getFlg)

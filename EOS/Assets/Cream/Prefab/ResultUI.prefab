@@ -569,7 +569,7 @@ MonoBehaviour:
   - {fileID: 3542623704460209792}
   button: {fileID: 3542623704238699198}
   starSprite: {fileID: 21300000, guid: f507865c1871f3345b8090a5fa883230, type: 3}
-  noStarSprite: {fileID: 21300000, guid: 34099f8006e2c7344a2ad287e3f26427, type: 3}
+  noStarSprite: {fileID: 21300000, guid: 6c6507e8c14446544b4084bcdf305696, type: 3}
 --- !u!1 &3542623704043190639
 GameObject:
   m_ObjectHideFlags: 0
