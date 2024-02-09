@@ -468,8 +468,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304913405}
-  - component: {fileID: 304913406}
   - component: {fileID: 304913404}
+  - component: {fileID: 304913406}
   m_Layer: 0
   m_Name: TitleManager
   m_TagString: Untagged
@@ -514,9 +514,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 304913403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734e683411fd59344add2c313e97bec4, type: 3}
+  m_Script: {fileID: 11500000, guid: b94147f55b57ccf4e8ad64cfeb69defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneBGM: TitleBGM
 --- !u!1 &339264429
 GameObject:
   m_ObjectHideFlags: 0
