@@ -38,6 +38,6 @@ public class StageSelectManager : MonoBehaviour
 
         if (total >= unlockNum) stage5Button.interactable = true;
         else stage5Button.interactable = false;
-        unlockText.enabled = stage5Button.interactable;
+        unlockText.enabled = !stage5Button.interactable;
     }
 }

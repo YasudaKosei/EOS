@@ -58,7 +58,8 @@ public class Load : MonoBehaviour
 
 		else if (SL == 6)
 		{
-			async = SceneManager.LoadSceneAsync("Stage05");
+			//async = SceneManager.LoadSceneAsync("Stage05");
+			async = SceneManager.LoadSceneAsync("aaa");
 		}
 
 		async.allowSceneActivation = false;
