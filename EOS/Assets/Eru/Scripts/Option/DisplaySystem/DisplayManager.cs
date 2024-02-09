@@ -15,9 +15,31 @@ public class DisplayManager : MonoBehaviour
     [SerializeField, Header("解像度テキスト")]
     private Text resolutionText;
 
+    [SerializeField, Header("X軸感度スライダー")]
+    private Slider sliderX;
+
+    [SerializeField, Header("X軸感度インプットフィールド")]
+    private InputField inputFieldX;
+
+    [SerializeField, Header("X軸感度トグル")]
+    private Toggle toggleX;
+
+    [SerializeField, Header("Y軸感度スライダー")]
+    private Slider sliderY;
+
+    [SerializeField, Header("Y軸感度インプットフィールド")]
+    private InputField inputFieldY;
+
+    [SerializeField, Header("Y軸感度トグル")]
+    private Toggle toggleY;
+
     private int width = 1920;
     private int height = 1080;
     private bool screenModeFlg = true;
+    public static float sensitivityX = 3.0f;
+    public static float sensitivityY = 2.0f;
+    public static bool inversionX = false;
+    public static bool inversionY = true;
 
     void Awake()
     {
@@ -131,6 +153,81 @@ public class DisplayManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// X軸感度設定(スライダー用)
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeSensitivityX(float value)
+    {
+        sensitivityX = value;
+        SensitivityUpdate();
+    }
+
+    /// <summary>
+    /// X軸感度設定(インプットフィールド用)
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeSensitivityXIF(string value)
+    {
+        sensitivityX = float.Parse(value);
+        SensitivityUpdate();
+    }
+
+    /// <summary>
+    /// Y軸感度設定(スライダー用)
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeSensitivityY(float value)
+    {
+        sensitivityY = value;
+        SensitivityUpdate();
+    }
+
+    /// <summary>
+    /// Y軸感度設定(インプットフィールド用)
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeSensitivityYIF(string value)
+    {
+        sensitivityY = float.Parse(value);
+        SensitivityUpdate();
+    }
+
+    /// <summary>
+    /// X軸反転
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeInversionX(bool value)
+    {
+        inversionX = value;
+        SensitivityUpdate();
+    }
+
+    /// <summary>
+    /// Y軸反転
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeInversionY(bool value)
+    {
+        inversionY = value;
+        SensitivityUpdate();
+    }
+
+    /// <summary>
+    /// 感度設定更新
+    /// </summary>
+    private void SensitivityUpdate()
+    {
+        inputFieldX.text = sensitivityX.ToString("F1");
+        sliderX.value = sensitivityX;
+
+        inputFieldY.text = sensitivityY.ToString("F1");
+        sliderY.value = sensitivityY;
+
+        toggleX.isOn = inversionX;
+        toggleY.isOn = inversionY;
+    }
+
 
     public void Save()
     {
@@ -236,11 +333,16 @@ public class DisplayManager : MonoBehaviour
         {
             screenDropDown.value = 0;
             resolutionDropDown.value = 0;
+            sensitivityX = 3.0f;
+            sensitivityY = 2.0f;
+            inversionX = false;
+            inversionY = true;
         }
 
         //更新
         ChangeScreenMode();
         ChangeResolution();
+        SensitivityUpdate();
     }
 
 
@@ -253,6 +355,10 @@ public class DisplayManager : MonoBehaviour
 
         saveData.screenMode = screenDropDown.value;
         saveData.resolution = resolutionDropDown.value;
+        saveData.sensitivityX = sensitivityX;
+        saveData.sensitivityY = sensitivityY;
+        saveData.inversionX = inversionX;
+        saveData.inversionY = inversionY;
 
         return saveData;
     }
@@ -262,6 +368,10 @@ public class DisplayManager : MonoBehaviour
     {
         screenDropDown.value = saveData.screenMode;
         resolutionDropDown.value = saveData.resolution;
+        sensitivityX = saveData.sensitivityX;
+        sensitivityY = saveData.sensitivityY;
+        inversionX = saveData.inversionX;
+        inversionY = saveData.inversionY;
     }
 
 
@@ -346,4 +456,8 @@ public class DisplaySaveData
 {
     public int resolution;
     public int screenMode;
+    public float sensitivityX;
+    public float sensitivityY;
+    public bool inversionX;
+    public bool inversionY;
 }
