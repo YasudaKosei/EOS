@@ -115,6 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starNum: 0
   coinAudioObject: {fileID: 1423707166480679320, guid: b37a952c0e6d0b541869daf1f33af5f7, type: 3}
+  translucent: {fileID: 2100000, guid: e7a49b016072e0447b7d81f07166d6db, type: 2}
+  effect: {fileID: 7472098988628083508}
 --- !u!114 &4554148658069926225
 MonoBehaviour:
   m_ObjectHideFlags: 0

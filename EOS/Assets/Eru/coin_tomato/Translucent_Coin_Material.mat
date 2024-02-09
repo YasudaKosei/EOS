@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: coin_material
-  m_Shader: {fileID: 4800000, guid: df12117ecd77c31469c224178886498e, type: 3}
+  m_Name: Translucent_Coin_Material
+  m_Shader: {fileID: 4800000, guid: 165365ab7100a044ca85fc8c33548a62, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 0
@@ -387,7 +387,7 @@ Material:
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
     - _DitherMaxValue: 255
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _DstBlendAlphaFA: 1
     - _DstBlendFA: 1
@@ -496,7 +496,7 @@ Material:
     - _IgnoreEncryption: 0
     - _Invisible: 0
     - _LightMaxLimit: 1
-    - _LightMinLimit: 0.05
+    - _LightMinLimit: 1
     - _LightingEnabled: 0
     - _Main2ndDissolveNoiseStrength: 0.1
     - _Main2ndEnableLighting: 1
@@ -571,7 +571,7 @@ Material:
     - _OutlineCull: 1
     - _OutlineDeleteMesh: 0
     - _OutlineDisableInVR: 0
-    - _OutlineDstBlend: 0
+    - _OutlineDstBlend: 10
     - _OutlineDstBlendAlpha: 10
     - _OutlineDstBlendAlphaFA: 1
     - _OutlineDstBlendFA: 1
@@ -583,7 +583,7 @@ Material:
     - _OutlineLitShadowReceive: 0
     - _OutlineOffsetFactor: 0
     - _OutlineOffsetUnits: 0
-    - _OutlineSrcBlend: 1
+    - _OutlineSrcBlend: 5
     - _OutlineSrcBlendAlpha: 1
     - _OutlineSrcBlendAlphaFA: 0
     - _OutlineSrcBlendFA: 1
@@ -749,9 +749,9 @@ Material:
     - _UsePOM: 0
     - _UseParallax: 0
     - _UseReflection: 0
-    - _UseRim: 1
+    - _UseRim: 0
     - _UseRimShade: 0
-    - _UseShadow: 1
+    - _UseShadow: 0
     - _VertexColor2FurVector: 0
     - _VertexLightStrength: 0
     - _ZClip: 1
@@ -775,9 +775,9 @@ Material:
     - _AudioLinkVertexUVParams: {r: 0.25, g: 0, b: 0, a: 0.125}
     - _BackfaceColor: {r: 0, g: 0, b: 0, a: 0}
     - _BacklightColor: {r: 0.85, g: 0.8, b: 0.7, a: 1}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 0.31764707}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.31764707}
     - _Color2nd: {r: 1, g: 1, b: 1, a: 1}
     - _Color3rd: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
@@ -825,8 +825,8 @@ Material:
     - _MatCap2ndBlendUV1: {r: 0, g: 0, b: 0, a: 0}
     - _MatCap2ndColor: {r: 1, g: 1, b: 1, a: 1}
     - _MatCapBlendUV1: {r: 0, g: 0, b: 0, a: 0}
-    - _MatCapColor: {r: 1.0717734, g: 1.0717734, b: 1.0717734, a: 1}
-    - _OutlineColor: {r: 0.6, g: 0.56, b: 0.73, a: 1}
+    - _MatCapColor: {r: 1, g: 1, b: 1, a: 0.43137255}
+    - _OutlineColor: {r: 0.6, g: 0.56, b: 0.45882353, a: 1}
     - _OutlineLitColor: {r: 1, g: 0.19999996, b: 0, a: 0}
     - _OutlineTexHSVG: {r: 0, g: 1, b: 1, a: 1}
     - _OutlineTex_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}

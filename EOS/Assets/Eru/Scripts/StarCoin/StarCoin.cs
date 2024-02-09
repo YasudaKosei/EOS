@@ -11,6 +11,12 @@ public class StarCoin : MonoBehaviour
 
     public GameObject coinAudioObject;
 
+    [SerializeField]
+    private Material translucent;
+
+    [SerializeField]
+    private GameObject effect;
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "Stage01") stageNum = 0;
@@ -23,8 +29,9 @@ public class StarCoin : MonoBehaviour
             (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), (int)Mathf.Pow(2, starFlgsNum)))
         {
             getFlg = true;
-            //半透明にする
 
+            GetComponent<MeshRenderer>().material = translucent;
+            effect.SetActive(false);
         }
         else getFlg = false;
     }
