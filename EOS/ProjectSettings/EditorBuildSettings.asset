@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Cream/Scenens/Stage03.unity
     guid: 2332090ab17d8df4eb45a874b9c64a37
   - enabled: 1
+    path: Assets/Cream/Scenens/Stage04.unity
+    guid: 398ad0c8d78042642a2877381843d277
+  - enabled: 1
     path: Assets/Eru/Scenes/aaa.unity
     guid: 129b693923747d246acd2457fe38fdfb
   m_configObjects: {}
