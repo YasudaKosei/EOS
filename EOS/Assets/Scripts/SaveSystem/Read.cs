@@ -83,8 +83,9 @@ public class Read : MonoBehaviour
             GameData.StageClearTime[i] = saveData.StageClearTime[i];
         }
         GameData.stageStar = saveData.stageStar;
-    }
 
+        GameData.easyModeFlg = saveData.easyModeFlg;
+    }
 
     /// AesManagedマネージャーを取得
     private AesManaged GetAesManager()

@@ -7,4 +7,6 @@ public class GameData
     public static int[] StageClearTime = new int[5];
 
     public static StageStarManager.StageStar stageStar;
+
+    public static bool easyModeFlg = false;
 }

@@ -9,4 +9,5 @@ public class SaveData
 
     public StageStarManager.StageStar stageStar;
 
+    public bool easyModeFlg = false;
 }

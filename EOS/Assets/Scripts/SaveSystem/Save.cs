@@ -78,12 +78,12 @@ public class Save : MonoBehaviour
         }
         saveData.stageStar = GameData.stageStar;
 
+        saveData.easyModeFlg = GameData.easyModeFlg;
+
         return saveData;
     }
 
-
     /// AesManagedマネージャーを取得
-
     private AesManaged GetAesManager()
     {
         //任意の半角英数16文字(Read.csと同じやつに)

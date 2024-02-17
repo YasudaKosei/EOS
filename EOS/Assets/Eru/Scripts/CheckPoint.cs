@@ -5,6 +5,11 @@ public class CheckPoint : MonoBehaviour
     [SerializeField]
     private PC pc;
 
+    private void Awake()
+    {
+        this.gameObject.SetActive(GameData.easyModeFlg);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

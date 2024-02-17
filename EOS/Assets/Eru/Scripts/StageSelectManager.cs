@@ -21,9 +21,19 @@ public class StageSelectManager : MonoBehaviour
     [SerializeField]
     private int unlockNum = 9;
 
+    [SerializeField]
+    private GameObject modeObj;
+
+    private int stageNum = 0;
+
+    private SceneSelectManager sceneSelect;
+
     private void Start()
     {
         Stop.stopFlg = true;
+        modeObj.SetActive(false);
+        sceneSelect = this.gameObject.GetComponent<SceneSelectManager>();
+
         int total = 0;
         for (int i = 0; i < 5; i++)
         {
@@ -39,5 +49,17 @@ public class StageSelectManager : MonoBehaviour
         if (total >= unlockNum) stage5Button.interactable = true;
         else stage5Button.interactable = false;
         unlockText.enabled = !stage5Button.interactable;
+    }
+
+    public void StageSelectButton(int value)
+    {
+        stageNum = value;
+        modeObj.SetActive(true);
+    }
+
+    public void ModeButton(bool value)
+    {
+        GameData.easyModeFlg = value;
+        sceneSelect.SceneLoad(stageNum);
     }
 }
