@@ -442,6 +442,7 @@ MonoBehaviour:
   unlockText: {fileID: 1736674140}
   unlockNum: 9
   modeObj: {fileID: 1745443442}
+  pause: {fileID: 7216284742402948041, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
 --- !u!1 &212035216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1254075531159222631, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
@@ -775,7 +776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 902a6ea2b9834154789eab421ef3ac95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9325e26a1478874f99d454639a6e2d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -918,7 +919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: abeaef720dcad2041bd83e3f4f871239, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13fb4d1875e9b2c4e8fd50e6750f4f52, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2229,7 +2230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3edb7b17cc22c6e43826feb37e953253, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f90895a03af7a146b3b3dfb104b3bc3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

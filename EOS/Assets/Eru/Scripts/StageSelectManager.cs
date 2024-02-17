@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class StageSelectManager : MonoBehaviour
@@ -23,6 +24,9 @@ public class StageSelectManager : MonoBehaviour
 
     [SerializeField]
     private GameObject modeObj;
+
+    [SerializeField]
+    private InputActionReference pause;
 
     private int stageNum = 0;
 
@@ -49,6 +53,13 @@ public class StageSelectManager : MonoBehaviour
         if (total >= unlockNum) stage5Button.interactable = true;
         else stage5Button.interactable = false;
         unlockText.enabled = !stage5Button.interactable;
+
+        pause.action.Enable();
+    }
+
+    private void Update()
+    {
+        if(pause.action.triggered) modeObj.SetActive(false);
     }
 
     public void StageSelectButton(int value)
