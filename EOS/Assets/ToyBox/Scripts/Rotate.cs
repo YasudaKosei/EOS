@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Rotate : MonoBehaviour {
@@ -11,7 +11,9 @@ public class Rotate : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+		if (Stop.stopFlg) return;
 		transform.Rotate(Vector3.up * Time.deltaTime * speed * 10);
 	}
 }

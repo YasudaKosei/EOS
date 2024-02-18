@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FlipPad : MonoBehaviour {
@@ -20,7 +20,9 @@ public class FlipPad : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		if (Stop.stopFlg) return;
+
 		timer += Time.deltaTime;
 		if (timer >= flipTime) {
 			if (state == false) {

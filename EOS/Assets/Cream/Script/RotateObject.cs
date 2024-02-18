@@ -10,6 +10,8 @@ public class RotateObject : MonoBehaviour
 
     void Update()
     {
+        if (Stop.stopFlg) return;
+
         // オブジェクトを回転させる
         transform.Rotate(rotationDirection * rotationSpeed * Time.deltaTime);
     }
