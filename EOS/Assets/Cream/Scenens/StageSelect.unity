@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245e6c56da5138b48a7d2d39ca6ee84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 663258309}
   stage5Button: {fileID: 1444855841}
   getStageStarText:
   - {fileID: 1254075530825848524}
@@ -804,6 +805,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1254075531159222628, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
   m_PrefabInstance: {fileID: 1254075530825848522}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &663258309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 489544511813352340, guid: dbaf0eb52205c62438786f9086e73602, type: 3}
+  m_PrefabInstance: {fileID: 489544511307013477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a829ace38fb2dd47b282197dc08d911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &711526880
 GameObject:
   m_ObjectHideFlags: 0

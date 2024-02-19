@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class StageSelectManager : MonoBehaviour
 {
     [SerializeField]
+    private DataManager data;
+
+    [SerializeField]
     private Button stage5Button;
 
     [SerializeField]
@@ -71,6 +74,7 @@ public class StageSelectManager : MonoBehaviour
     public void ModeButton(bool value)
     {
         GameData.easyModeFlg = value;
+        data.Save();
         sceneSelect.SceneLoad(stageNum);
     }
 }
