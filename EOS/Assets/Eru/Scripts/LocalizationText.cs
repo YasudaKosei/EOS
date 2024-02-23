@@ -1,0 +1,88 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class LocalizationText : MonoBehaviour
+{
+    [SerializeField, Header("ディスプレイ")]
+    private Text screenMode;
+
+    [SerializeField]
+    private Text screenModeLabel, resolution, x_sensitivity, y_sensitivity;
+
+    [SerializeField]
+    private Dropdown dis;
+
+    [SerializeField, Header("キーボード")]
+    private Text k_up;
+
+    [SerializeField]
+    private Text k_down, k_right, k_left, k_jump, k_retry, k_pause;
+
+    [SerializeField, Header("ゲームパッド")]
+    private Text p_jump;
+
+    [SerializeField]
+    private Text p_retry, p_pause;
+
+
+    void Update()
+    {
+        Debug.Log(DisplayManager.JapaneseFlg);
+        if (DisplayManager.JapaneseFlg) Japanese();
+        else English();
+    }
+
+    private void Japanese()
+    {
+        //ディスプレイ設定
+        screenMode.text = "スクリーンモード";
+        resolution.text = "解像度";
+        x_sensitivity.text = "X軸(左右)感度";
+        y_sensitivity.text = "Y軸(上下)感度";
+        dis.options[0].text = "フルスクリーン";
+        dis.options[1].text = "ウィンドウ";
+        if (dis.value == 0) screenModeLabel.text = "フルスクリーン";
+        else screenModeLabel.text = "ウィンドウ";
+
+        //キーボード設定
+        k_up.text = "上移動";
+        k_down.text = "下移動";
+        k_right.text = "右移動";
+        k_left.text = "左移動";
+        k_jump.text = "ジャンプ";
+        k_retry.text = "リトライ";
+        k_pause.text = "ポーズ";
+
+        //ゲームパッド
+        p_jump.text = "ジャンプ";
+        p_retry.text = "リトライ";
+        p_pause.text = "ポーズ";
+    }
+
+    private void English()
+    {
+        //ディスプレイ設定
+        screenMode.text = "ScreenMode";
+        resolution.text = "Resolution";
+        x_sensitivity.text = "SensitivityX";
+        y_sensitivity.text = "SensitivityY";
+        dis.options[0].text = "FullScreen";
+        dis.options[1].text = "Window";
+        if (dis.value == 0) screenModeLabel.text = "FullScreen";
+        else screenModeLabel.text = "Window";
+
+        //キーボード設定
+        k_up.text = "Up";
+        k_down.text = "Down";
+        k_right.text = "Right";
+        k_left.text = "Left";
+        k_jump.text = "Jump";
+        k_retry.text = "Retry";
+        k_pause.text = "Pause";
+
+        //ゲームパッド
+        p_jump.text = "Jump";
+        p_retry.text = "Retry";
+        p_pause.text = "Pause";
+    }
+}

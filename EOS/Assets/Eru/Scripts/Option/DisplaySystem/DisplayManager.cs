@@ -12,6 +12,9 @@ public class DisplayManager : MonoBehaviour
     [SerializeField, Header("解像度ドロップダウン")]
     private Dropdown resolutionDropDown;
 
+    [SerializeField, Header("言語ドロップダウン")]
+    private Dropdown languageDropDown;
+
     [SerializeField, Header("解像度テキスト")]
     private Text resolutionText;
 
@@ -40,8 +43,9 @@ public class DisplayManager : MonoBehaviour
     public static float sensitivityY = 2.0f;
     public static bool inversionX = false;
     public static bool inversionY = true;
+    public static bool JapaneseFlg = true;
 
-    void Awake()
+    void Start()
     {
         Load();
     }
@@ -151,6 +155,27 @@ public class DisplayManager : MonoBehaviour
             resolutionDropDown.value = 0;
             ChangeResolution();
         }
+    }
+
+    /// <summary>
+    /// 言語設定変更
+    /// </summary>
+    /// <param name="value"></param>
+    public void LanguageChange()
+    {
+        if (languageDropDown.value == 0) JapaneseFlg = true;
+        else JapaneseFlg = false;
+
+        LanguageUpdate();
+    }
+
+    /// <summary>
+    /// 言語更新
+    /// </summary>
+    private void LanguageUpdate()
+    {
+        if (JapaneseFlg) languageDropDown.value = 0;
+        else languageDropDown.value = 1;
     }
 
     /// <summary>
@@ -343,6 +368,7 @@ public class DisplayManager : MonoBehaviour
         ChangeScreenMode();
         ChangeResolution();
         SensitivityUpdate();
+        LanguageUpdate();
     }
 
 
@@ -359,6 +385,7 @@ public class DisplayManager : MonoBehaviour
         saveData.sensitivityY = sensitivityY;
         saveData.inversionX = inversionX;
         saveData.inversionY = inversionY;
+        saveData.JapaneseFlg = JapaneseFlg;
 
         return saveData;
     }
@@ -372,6 +399,7 @@ public class DisplayManager : MonoBehaviour
         sensitivityY = saveData.sensitivityY;
         inversionX = saveData.inversionX;
         inversionY = saveData.inversionY;
+        JapaneseFlg = saveData.JapaneseFlg;
     }
 
 
@@ -460,4 +488,5 @@ public class DisplaySaveData
     public float sensitivityY;
     public bool inversionX;
     public bool inversionY;
+    public bool JapaneseFlg;
 }
