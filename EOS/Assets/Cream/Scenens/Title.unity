@@ -8906,9 +8906,12 @@ MonoBehaviour:
   screenMode: {fileID: 9031515216085937270}
   screenModeLabel: {fileID: 9031515216271116845}
   resolution: {fileID: 9031515215576898924}
+  language: {fileID: 2036949341}
+  languageLabel: {fileID: 827181097}
   x_sensitivity: {fileID: 4115006118382871391}
   y_sensitivity: {fileID: 7917379877998699211}
-  dis: {fileID: 9031515215890820264}
+  screenDD: {fileID: 9031515215890820264}
+  languageDD: {fileID: 561605503}
   k_up: {fileID: 7963823714662752689}
   k_down: {fileID: 7963823713335478250}
   k_right: {fileID: 7963823714798321722}

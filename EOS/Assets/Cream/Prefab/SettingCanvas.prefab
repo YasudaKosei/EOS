@@ -21286,7 +21286,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9035535068532892750}
         m_TargetAssemblyTypeName: DisplayManager, Assembly-CSharp
-        m_MethodName: ChangeScreenMode
+        m_MethodName: LanguageChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23343,9 +23343,12 @@ MonoBehaviour:
   screenMode: {fileID: 2604953628778169712}
   screenModeLabel: {fileID: 2604953628523782955}
   resolution: {fileID: 2604953629288395882}
+  language: {fileID: 1605085000665107876}
+  languageLabel: {fileID: 7394679974774661621}
   x_sensitivity: {fileID: 5091784496893696666}
   y_sensitivity: {fileID: 1320390645655116558}
-  dis: {fileID: 2604953628973417902}
+  screenDD: {fileID: 2604953628973417902}
+  languageDD: {fileID: 6460583958267928096}
   k_up: {fileID: 4032388266608576695}
   k_down: {fileID: 4032388267937099500}
   k_right: {fileID: 4032388266472024380}
