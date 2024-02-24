@@ -10920,10 +10920,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7619803398037250307}
-  - component: {fileID: 8788165599244900973}
   - component: {fileID: 6778235494009155238}
   - component: {fileID: 8788165599244900972}
   - component: {fileID: 5615999059296730452}
+  - component: {fileID: 8788165599244900974}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Tomato
@@ -22109,7 +22109,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8788165599244900973
+--- !u!114 &8788165599244900974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22118,11 +22118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7130652302257650617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ef88e329bd93e40bd637271f0e732b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a4d6e35982d440458388e87cba856b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDirection: {x: 0, y: 1, z: 0}
-  rotationSpeed: 10
+  rotationSpeed: 0.25
+  axis: 1
 --- !u!1 &9031515214415810164
 GameObject:
   m_ObjectHideFlags: 0

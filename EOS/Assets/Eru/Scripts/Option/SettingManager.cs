@@ -25,6 +25,8 @@ public class SettingManager : MonoBehaviour
 
     private void Awake()
     {
+        Stop.stopFlg = true;
+
         //キーの有効化
         pause.action.Enable();
         move.action.Enable();
@@ -65,8 +67,6 @@ public class SettingManager : MonoBehaviour
         }
 
         if (moveInput.x >= -0.25f && moveInput.x <= 0.25f && rebindFlg) rebindFlg = false;
-
-        Stop.stopFlg = optionOpenFlg;
     }
 
     private void PanelUpdata()
