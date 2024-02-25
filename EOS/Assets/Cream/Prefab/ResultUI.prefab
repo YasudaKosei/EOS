@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3542623703420408261}
   - component: {fileID: 3542623703420408263}
   - component: {fileID: 3542623703420408262}
+  - component: {fileID: 3541539294488211481}
   m_Layer: 5
   m_Name: ClearTimeText
   m_TagString: Untagged
@@ -156,6 +157,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ClearTime
+--- !u!114 &3541539294488211481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542623703420408260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.64705884, g: 0.4431373, b: 0.29411766, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3542623703514336873
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +724,7 @@ GameObject:
   - component: {fileID: 3542623704489244402}
   - component: {fileID: 3542623704489244404}
   - component: {fileID: 3542623704489244403}
+  - component: {fileID: 4582835767737937148}
   m_Layer: 5
   m_Name: ResultTimeText
   m_TagString: Untagged
@@ -777,6 +794,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 00:00
+--- !u!114 &4582835767737937148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542623704489244401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.64705884, g: 0.4431373, b: 0.29411766, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3542623704556848120
 GameObject:
   m_ObjectHideFlags: 0
