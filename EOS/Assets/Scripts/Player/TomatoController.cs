@@ -28,9 +28,6 @@ public class TomatoController : MonoBehaviour, Skill
     private InputActionReference move;
 
     [SerializeField]
-    private InputActionReference skill;
-
-    [SerializeField]
     private float movementThreshold = 3f;
 
     private Rigidbody rb;
@@ -49,14 +46,19 @@ public class TomatoController : MonoBehaviour, Skill
     [SerializeField]
     private float jumpDelayTime = 0.1f;
 
+    [SerializeField]
+    private AudioClip audioClipJump;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         cam = Camera.main;
         cameraTransform = cam.transform;
         jump.action.Enable();
         move.action.Enable();
-        skill.action.Enable();
         isJumping = false;
         jumpDelayFlg = false;
     }
@@ -88,8 +90,6 @@ public class TomatoController : MonoBehaviour, Skill
         lateralmoveSpeed = moveSpeed;
 
         // 移動
-
-
         Vector2 moveInput = move.action.ReadValue<Vector2>();
 
         // 横移動はジャンプ時は減速
@@ -105,21 +105,6 @@ public class TomatoController : MonoBehaviour, Skill
         // 合成された移動ベクトルでRigidbodyの速度を設定
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
 
-        //Skill＼(^o^)／
-        if (skill.action.triggered)
-        {
-            if(Skill.skillFlg == true && Skill.nowSkill == false)
-            {
-                Skill.nowSkill = true;
-                //StartCoroutine(TomatoSkill());
-            }
-             else
-            {
-                Debug.Log("スキルは現在使えません");
-            }
-        }
-
-
         //ジャンプ
         if (jump.action.triggered && !isJumping)
         {
@@ -127,20 +112,11 @@ public class TomatoController : MonoBehaviour, Skill
             isJumping = true;
             jumpDelayFlg = true;
             StartCoroutine(JumpDalay());
+            audioSource.clip = audioClipJump;
+            audioSource.Play();
         }
 
         if(isJumping && !jumpDelayFlg) StartCoroutine(GroundCheck());
-    }
-
-    IEnumerator TomatoSkill()
-    {
-        Debug.Log("トマトskill発動");
-        moveSpeed *= skillUpVal;
-        yield return new WaitForSeconds(skillTime);
-        moveSpeed /= skillUpVal;
-        Debug.Log("トマトskill終了");
-        Skill.skillFlg = false;
-        Skill.nowSkill = false;
     }
 
     private IEnumerator JumpDalay()
