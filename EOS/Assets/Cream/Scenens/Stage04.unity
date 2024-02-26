@@ -6766,7 +6766,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 276862708071736384, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_Name
-      value: StarCoin1
+      value: StarCoin2
       objectReference: {fileID: 0}
     - target: {fileID: 276862708071736384, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_IsActive
@@ -6774,7 +6774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6818,7 +6818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4554148658069926224, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: starNum
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
@@ -25366,7 +25366,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 276862708071736384, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_Name
-      value: StarCoin
+      value: StarCoin1
       objectReference: {fileID: 0}
     - target: {fileID: 276862708071736384, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_IsActive
@@ -25374,7 +25374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25415,6 +25415,10 @@ PrefabInstance:
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554148658069926224, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
+      propertyPath: starNum
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
@@ -32051,7 +32055,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 276862708071736384, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_Name
-      value: StarCoin2
+      value: StarCoin
       objectReference: {fileID: 0}
     - target: {fileID: 276862708071736384, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_IsActive
@@ -32059,7 +32063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 620456087071194874, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32103,7 +32107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4554148658069926224, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
       propertyPath: starNum
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41dbeea8538d4324f983457b5970e77d, type: 3}
@@ -38495,9 +38499,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1689345916}
   - {fileID: 1280869913}
   - {fileID: 307394857}
-  - {fileID: 1689345916}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
