@@ -596,6 +596,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage3Button
       objectReference: {fileID: 0}
+    - target: {fileID: 1254075531543300797, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc5579daa2679604ba161bd7866415f7, type: 3}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
 --- !u!224 &257504339 stripped
@@ -1577,6 +1601,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4Button
       objectReference: {fileID: 0}
+    - target: {fileID: 1254075531543300797, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3be0fc855fbc3e442adab5ffb50d3cd5, type: 3}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
 --- !u!224 &1426859498 stripped
@@ -1756,6 +1804,34 @@ PrefabInstance:
     - target: {fileID: 1254075531159222631, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
       propertyPath: m_Name
       value: Stage5Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075531543300787, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075531543300797, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7da8b248f835bc242821352b6815ea94, type: 3}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
@@ -2407,6 +2483,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage2Button
       objectReference: {fileID: 0}
+    - target: {fileID: 1254075531543300797, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f5ef692386f7df845aa74c296162a6f4, type: 3}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
 --- !u!224 &1640080563 stripped
@@ -3051,6 +3151,30 @@ PrefabInstance:
     - target: {fileID: 1254075531159222631, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
       propertyPath: m_Name
       value: Stage1Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075531543300797, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e35d785ed887e445aa16843d81cb491, type: 3}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254075532582467352, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
