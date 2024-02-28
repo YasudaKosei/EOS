@@ -80,6 +80,8 @@ public class Save : MonoBehaviour
 
         saveData.easyModeFlg = GameData.easyModeFlg;
 
+        saveData.tutorialFlg = GameData.tutorialFlg;
+
         return saveData;
     }
 

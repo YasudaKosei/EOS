@@ -9,4 +9,6 @@ public class GameData
     public static StageStarManager.StageStar stageStar;
 
     public static bool easyModeFlg = false;
+
+    public static bool tutorialFlg = false;
 }

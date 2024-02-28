@@ -449,7 +449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 603, y: -246.13983}
+  m_AnchoredPosition: {x: 603, y: -290}
   m_SizeDelta: {x: 500, y: 167.7202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2236885791249713695
@@ -482,10 +482,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 37878db9c1f3c6447b5590eed844f60c, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
+    m_FontSize: 35
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 115
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -493,8 +493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.8
-  m_Text: "\u30DD\u30C3\u30C8\u306B\u306F\u3044\u3063\u305F\u3089\u30B4\u30FC\u30EB\uFF01\nIf
-    it goes into the pot, you score a goal!"
+  m_Text: "\u30DD\u30C3\u30C8\u306B\u306F\u3044\u3063\u305F\u3089\u30B4\u30FC\u30EB\uFF01"
 --- !u!1 &2236885791450423652
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +586,7 @@ GameObject:
   - component: {fileID: 2236885791488523963}
   - component: {fileID: 2236885791488523962}
   - component: {fileID: 2236885791488523845}
+  - component: {fileID: 3530111858693886940}
   m_Layer: 5
   m_Name: GameDescription
   m_TagString: Untagged
@@ -676,6 +676,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3530111858693886940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236885791488523844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959c6f4db5db6040a70498bdf31f162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainText:
+  - {fileID: 2236885792010691689}
+  - {fileID: 2236885791508231856}
+  - {fileID: 2236885792060557557}
+  - {fileID: 2236885791249713694}
+  textJP:
+  - "\u30B2\u30FC\u30E0\u8AAC\u660E"
+  - "\u30C8\u30DE\u30C8\u3092\u64CD\u4F5C\u3057\u3066\u9032\u3082\u3046\uFF01"
+  - "\u9032\u3081\u306A\u3044\u6642\u306F\u30EA\u30BB\u30C3\u30C8\uFF01"
+  - "\u30DD\u30C3\u30C8\u306B\u5165\u3063\u305F\u3089\u30B4\u30FC\u30EB\uFF01"
+  textEN:
+  - GameDescription
+  - Manipulate the tomatoes to advance!
+  - Reset when you can't proceed!
+  - If it goes in the pot, it is the goal!
 --- !u!1 &2236885791494695053
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -603, y: -246.13983}
+  m_AnchoredPosition: {x: -603, y: -290}
   m_SizeDelta: {x: 500, y: 167.7202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2236885791508231857
@@ -900,10 +927,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 37878db9c1f3c6447b5590eed844f60c, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
+    m_FontSize: 35
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 115
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -911,8 +938,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.8
-  m_Text: "\u30C8\u30DE\u30C8\u3092\u64CD\u4F5C\u3057\u3066\u9032\u3082\u3046\uFF01\nLet's
-    move forward by operating the tomato!"
+  m_Text: "\u30C8\u30DE\u30C8\u3092\u64CD\u4F5C\u3057\u3066\u9032\u3082\u3046\uFF01"
 --- !u!1 &2236885791516399283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,8 +1672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517, y: 394.8}
-  m_SizeDelta: {x: 1434.7722, y: 870}
+  m_AnchoredPosition: {x: 0, y: 430}
+  m_SizeDelta: {x: 400.1, y: 107.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2236885792010691694
 CanvasRenderer:
@@ -1679,8 +1705,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 580d0a614f64c9c4c93d447403f34dcd, type: 3}
-    m_FontSize: 64
-    m_FontStyle: 0
+    m_FontSize: 70
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 115
@@ -1690,7 +1716,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.38
-  m_Text: "Game description \u30B2\u30FC\u30E0\u8AAC\u660E\n"
+  m_Text: "\u30B2\u30FC\u30E0\u8AAC\u660E\n"
 --- !u!1 &2236885792019822085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,7 +1828,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -246.13983}
+  m_AnchoredPosition: {x: 0, y: -290}
   m_SizeDelta: {x: 500, y: 167.7202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2236885792060557546
@@ -1835,10 +1861,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 37878db9c1f3c6447b5590eed844f60c, type: 3}
-    m_FontSize: 32
-    m_FontStyle: 0
+    m_FontSize: 35
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 115
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -1846,8 +1872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.8
-  m_Text: "\u9032\u3081\u306A\u3044\u3068\u304D\u306F\u30EA\u30BB\u30C3\u30C8\uFF01\nReset
-    if you can't proceed!"
+  m_Text: "\u9032\u3081\u306A\u3044\u3068\u304D\u306F\u30EA\u30BB\u30C3\u30C8\uFF01"
 --- !u!1 &2236885792066763365
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,6 +85,8 @@ public class Read : MonoBehaviour
         GameData.stageStar = saveData.stageStar;
 
         GameData.easyModeFlg = saveData.easyModeFlg;
+
+        GameData.tutorialFlg = saveData.tutorialFlg;
     }
 
     /// AesManagedマネージャーを取得
