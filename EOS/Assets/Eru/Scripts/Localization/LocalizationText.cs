@@ -30,7 +30,6 @@ public class LocalizationText : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(DisplayManager.JapaneseFlg);
         if (DisplayManager.JapaneseFlg) Japanese();
         else English();
     }
