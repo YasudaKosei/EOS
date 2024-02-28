@@ -635,7 +635,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6d513798c03bd5c4ea5e12a7733228f4, type: 3}
   - name: Stage01BGM
     clip: {fileID: 8300000, guid: 215aa8e63e39a1340ba5bcd8c6c34aed, type: 3}
-  - name: Stage04BGM
+  - name: Stage05BGM
     clip: {fileID: 8300000, guid: afbe6f91afcaaa94cb13e35bf11e718a, type: 3}
 --- !u!82 &20484891
 AudioSource:
@@ -38375,7 +38375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94147f55b57ccf4e8ad64cfeb69defe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBGM: Stage04BGM
+  sceneBGM: Stage05BGM
 --- !u!4 &1972243545
 Transform:
   m_ObjectHideFlags: 0

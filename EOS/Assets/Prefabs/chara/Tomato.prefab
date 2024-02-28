@@ -148,7 +148,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   jumpDelayTime: 0.1
-  audioClipJump: {fileID: 8300000, guid: 3c22cdbde5ab71046a838ab0f9dd5d45, type: 3}
+  audioClipJump: {fileID: 8300000, guid: ecdf21e38774e774fa286909e9e19c0a, type: 3}
 --- !u!135 &4049397614237247181
 SphereCollider:
   m_ObjectHideFlags: 0

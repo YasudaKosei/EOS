@@ -78,7 +78,7 @@ public class Load : MonoBehaviour
 		loadingBar.value = async.progress;
 
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.1f);
 
 
 		loadingText.text = "100%";
