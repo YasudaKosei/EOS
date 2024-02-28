@@ -650,7 +650,7 @@ MonoBehaviour:
   spriteJP:
   - {fileID: 21300000, guid: e9325e26a1478874f99d454639a6e2d0, type: 3}
   spriteEN:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 3f615e041a2a5524f85dc597470daf21, type: 3}
 --- !u!1 &212035216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1254075531159222631, guid: e43730599ff352b4f8a972a1cb411168, type: 3}
