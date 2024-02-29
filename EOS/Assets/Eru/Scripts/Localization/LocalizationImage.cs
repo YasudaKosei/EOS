@@ -4,13 +4,13 @@ using UnityEngine.UI;
 public class LocalizationImage : MonoBehaviour
 {
     [SerializeField, Header("元画像")]
-    private Image[] image;
+    private Image[] image = new Image[31];
 
     [SerializeField, Header("日本語画像")]
-    private Sprite[] spriteJP;
+    private Sprite[] spriteJP = new Sprite[31];
 
     [SerializeField, Header("英語画像")]
-    private Sprite[] spriteEN;
+    private Sprite[] spriteEN = new Sprite[31];
 
     void Update()
     {

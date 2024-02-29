@@ -18348,24 +18348,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionAsset: {fileID: -944628639613478452, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   rebindUI:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 4032388267844482456}
   - {fileID: 4032388266400193844}
   - {fileID: 4032388267615257551}
   - {fileID: 4032388267216815988}
   - {fileID: 4032388266722845845}
   - {fileID: 4032388267091192103}
-  - {fileID: 0}
   - {fileID: 4032388266630658359}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 4032388266285920839}
   - {fileID: 4032388267467735823}
-  - {fileID: 0}
   - {fileID: 4032388267028660008}
-  - {fileID: 0}
 --- !u!114 &9035535068532892749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18555,10 +18547,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 30ad4ba26d4cb0642bb6a95d6f882d7c, type: 3}
   - {fileID: 21300000, guid: 16c7aa9abd8e6704e96d8a7d4acfc554, type: 3}
   - {fileID: 21300000, guid: 9d257f3c78f0f6a40846c9aecb2f96c7, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 7d6bc50f68c2006458858bd5fd4dcbc5, type: 3}
+  - {fileID: 21300000, guid: d0f1b91692e40244493e15d10b048b17, type: 3}
+  - {fileID: 21300000, guid: 9532e025139cccb46a309391474bbfd3, type: 3}
+  - {fileID: 21300000, guid: 2cbe482e15abe2b40930d9a9bd07ad68, type: 3}
 --- !u!1 &9054662217003498845
 GameObject:
   m_ObjectHideFlags: 0
