@@ -41,9 +41,9 @@ public class LocalizationText : MonoBehaviour
         resolution.text = "解像度";
         language.text = "言語";
         languageDD.options[0].text = "日本語";
-        languageDD.options[1].text = "英語";
+        languageDD.options[1].text = "English";
         if (languageDD.value == 0) languageLabel.text = "日本語";
-        else languageLabel.text = "英語";
+        else languageLabel.text = "English";
         x_sensitivity.text = "X軸(左右)感度";
         y_sensitivity.text = "Y軸(上下)感度";
         screenDD.options[0].text = "フルスクリーン";
@@ -72,9 +72,9 @@ public class LocalizationText : MonoBehaviour
         screenMode.text = "ScreenMode";
         resolution.text = "Resolution";
         language.text = "Language";
-        languageDD.options[0].text = "Japanese";
+        languageDD.options[0].text = "日本語";
         languageDD.options[1].text = "English";
-        if (languageDD.value == 0) languageLabel.text = "Japanese";
+        if (languageDD.value == 0) languageLabel.text = "日本語";
         else languageLabel.text = "English";
         x_sensitivity.text = "SensitivityX";
         y_sensitivity.text = "SensitivityY";
