@@ -18219,7 +18219,7 @@ GameObject:
   - component: {fileID: 642576729455638608}
   - component: {fileID: 6903655081620764915}
   m_Layer: 5
-  m_Name: SettingCanvas
+  m_Name: StageSettingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
