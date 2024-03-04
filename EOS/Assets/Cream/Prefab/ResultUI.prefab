@@ -506,6 +506,7 @@ MonoBehaviour:
   button: {fileID: 3542623704238699198}
   starSprite: {fileID: 21300000, guid: 6c6507e8c14446544b4084bcdf305696, type: 3}
   noStarSprite: {fileID: 21300000, guid: 63a4230e4ef847f45b5f0fa74956e582, type: 3}
+  audioClip: {fileID: 8300000, guid: b4ebd3b2099edc74f99958ed4c2e3465, type: 3}
 --- !u!82 &-3346456834835589040
 AudioSource:
   m_ObjectHideFlags: 0
