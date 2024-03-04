@@ -23,7 +23,12 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     private Sprite starSprite, noStarSprite;
 
+    [SerializeField]
+    private AudioClip audioClip;
+
     private int stageNum = 0;
+
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -31,8 +36,9 @@ public class ResultManager : MonoBehaviour
         resultTimeText.enabled = false;
         for (int i = 0; i < starCoinImage.Length; i++) starCoinImage[i].enabled = false;
         button.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
 
-        
+
         if (SceneManager.GetActiveScene().name == "Stage01") stageNum = 0;
         else if (SceneManager.GetActiveScene().name == "Stage02") stageNum = 1;
         else if (SceneManager.GetActiveScene().name == "Stage03") stageNum = 2;
@@ -52,6 +58,8 @@ public class ResultManager : MonoBehaviour
         resultTimeText.text = tm.timeText.text;
         resultTimeText.enabled = true;
         //SE
+        audioSource.clip = audioClip;
+        audioSource.Play();
 
         yield return new WaitForSeconds(0.5f);
 
@@ -65,6 +73,8 @@ public class ResultManager : MonoBehaviour
             {
                 starCoinImage[i].sprite = starSprite;
                 //SE
+                audioSource.clip = audioClip;
+                audioSource.Play();
             }
             else
             {
@@ -76,6 +86,8 @@ public class ResultManager : MonoBehaviour
         }
 
         button.SetActive(true);
+        audioSource.clip = audioClip;
+        audioSource.Play();
 
         yield break;
     }
