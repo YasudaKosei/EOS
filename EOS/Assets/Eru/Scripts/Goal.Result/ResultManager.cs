@@ -26,6 +26,9 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     private AudioClip audioClip;
 
+    [SerializeField]
+    private string sceneBGM;
+
     private int stageNum = 0;
 
     private AudioSource audioSource;
@@ -37,6 +40,8 @@ public class ResultManager : MonoBehaviour
         for (int i = 0; i < starCoinImage.Length; i++) starCoinImage[i].enabled = false;
         button.SetActive(false);
         audioSource = GetComponent<AudioSource>();
+
+        if (sceneBGM != null) BGMManager.instance.PlayBGM(sceneBGM);
 
 
         if (SceneManager.GetActiveScene().name == "Stage01") stageNum = 0;
@@ -58,8 +63,6 @@ public class ResultManager : MonoBehaviour
         resultTimeText.text = tm.timeText.text;
         resultTimeText.enabled = true;
         //SE
-        audioSource.clip = audioClip;
-        audioSource.Play();
 
         yield return new WaitForSeconds(0.5f);
 
@@ -73,8 +76,6 @@ public class ResultManager : MonoBehaviour
             {
                 starCoinImage[i].sprite = starSprite;
                 //SE
-                audioSource.clip = audioClip;
-                audioSource.Play();
             }
             else
             {
@@ -86,8 +87,6 @@ public class ResultManager : MonoBehaviour
         }
 
         button.SetActive(true);
-        audioSource.clip = audioClip;
-        audioSource.Play();
 
         yield break;
     }

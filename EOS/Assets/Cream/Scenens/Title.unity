@@ -1703,6 +1703,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 82f2add81a5a7e34bab98646140d787d, type: 3}
   - name: Stage05BGM
     clip: {fileID: 8300000, guid: afbe6f91afcaaa94cb13e35bf11e718a, type: 3}
+  - name: ResultBGM
+    clip: {fileID: 8300000, guid: 37c108f1a58a0774c839c50ff46236d7, type: 3}
 --- !u!82 &860497520
 AudioSource:
   m_ObjectHideFlags: 0

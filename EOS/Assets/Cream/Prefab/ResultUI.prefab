@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 3542623703541953605}
   - component: {fileID: 3542623703541953604}
   - component: {fileID: 3542623703541953603}
+  - component: {fileID: 9071762208454305345}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -381,6 +382,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9071762208454305345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542623703541953601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a40cfd073f90f419428976dbe139c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3542623704041899797
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +519,8 @@ MonoBehaviour:
   button: {fileID: 3542623704238699198}
   starSprite: {fileID: 21300000, guid: 6c6507e8c14446544b4084bcdf305696, type: 3}
   noStarSprite: {fileID: 21300000, guid: 63a4230e4ef847f45b5f0fa74956e582, type: 3}
-  audioClip: {fileID: 8300000, guid: b4ebd3b2099edc74f99958ed4c2e3465, type: 3}
+  audioClip: {fileID: 8300000, guid: 37c108f1a58a0774c839c50ff46236d7, type: 3}
+  sceneBGM: ResultBGM
 --- !u!82 &-3346456834835589040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -516,7 +530,7 @@ AudioSource:
   m_GameObject: {fileID: 3542623704041899797}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 6247800040480252936, guid: f9c21b88e2722144dbc9db7ee5d1c04d, type: 2}
+  OutputAudioMixerGroup: {fileID: 6919220806627760970, guid: f9c21b88e2722144dbc9db7ee5d1c04d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -958,6 +972,7 @@ GameObject:
   - component: {fileID: 3542623705116271847}
   - component: {fileID: 3542623705116271846}
   - component: {fileID: 3542623705116271845}
+  - component: {fileID: 3359576357112924242}
   m_Layer: 5
   m_Name: SelectButton
   m_TagString: Untagged
@@ -1079,3 +1094,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3359576357112924242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542623705116271843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a40cfd073f90f419428976dbe139c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
