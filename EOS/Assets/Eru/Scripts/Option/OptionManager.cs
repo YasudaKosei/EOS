@@ -76,7 +76,7 @@ public class OptionManager : MonoBehaviour
             Stop.stopFlg = settingOpenFlg;
         }
 
-        if (!optionOpenFlg && res.action.triggered) Retry();
+        if (!optionOpenFlg && res.action.triggered && !Stop.stopFlg) Retry();
 
         Vector2 moveInput = move.action.ReadValue<Vector2>();
 
