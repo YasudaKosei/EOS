@@ -93,7 +93,6 @@ public class Elevator : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Oncoll");
         if (collision.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             //親子関係にする

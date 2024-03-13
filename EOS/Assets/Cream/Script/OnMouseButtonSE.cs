@@ -16,7 +16,6 @@ public class OnMouseButtonSE : MonoBehaviour, IPointerEnterHandler
     {
         if (myButton.interactable)
         {
-            Debug.Log("mouseがボタンに重なりました");
             SEManager.instance.PlaySE("OMB");
         }
     }

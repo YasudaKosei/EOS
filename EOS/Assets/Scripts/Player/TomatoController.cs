@@ -116,7 +116,7 @@ public class TomatoController : MonoBehaviour, Skill
             audioSource.Play();
         }
 
-        if(isJumping && !jumpDelayFlg) StartCoroutine(GroundCheck());
+        if(!jumpDelayFlg) StartCoroutine(GroundCheck());
     }
 
     private IEnumerator JumpDalay()
@@ -128,12 +128,15 @@ public class TomatoController : MonoBehaviour, Skill
 
     private IEnumerator GroundCheck()
     {
-        yield return new WaitForSeconds(0.2f);
-
-        if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask)) isJumping = false;
+        if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask))
+        {
+            isJumping = false;
+        }
         else isJumping = true;
 
         // 可視化用のデバッグラインを描画
         Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
+
+        yield break;
     }
 }

@@ -1,3 +1,4 @@
+using Steamworks;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +32,14 @@ public class ResultManager : MonoBehaviour
 
     private int stageNum = 0;
 
-    private AudioSource audioSource;
+    [SerializeField]
+    private string[] easyAchv;
+
+    [SerializeField]
+    private string[] normalAchv;
+
+    [SerializeField]
+    private string[] starAchv;
 
     void Awake()
     {
@@ -39,7 +47,6 @@ public class ResultManager : MonoBehaviour
         resultTimeText.enabled = false;
         for (int i = 0; i < starCoinImage.Length; i++) starCoinImage[i].enabled = false;
         button.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
 
         if (sceneBGM != null) BGMManager.instance.PlayBGM(sceneBGM);
 
@@ -52,6 +59,7 @@ public class ResultManager : MonoBehaviour
         if (GameData.StageClearTime[stageNum] == 0 || GameData.StageClearTime[stageNum] > tm.ITimer) GameData.StageClearTime[stageNum] = tm.ITimer;
 
         dm.Save();
+        SteamAchv();
 
         StartCoroutine(Show());
     }
@@ -91,4 +99,92 @@ public class ResultManager : MonoBehaviour
         yield break;
     }
 
+    private void SteamAchv()
+    {
+        string[] achvAPI;
+        int starNum = 0;
+        int starCount = 0;
+        bool easyAchvFlg = true;
+        bool normalAchvFlg = true;
+        bool starAchvFlg = true;
+
+        if (GameData.easyModeFlg)
+        {
+            achvAPI = new string[easyAchv.Length];
+            for (int i = 0; i < easyAchv.Length; i++) achvAPI[i] = easyAchv[i];
+        }
+        else
+        {
+            achvAPI = new string[normalAchv.Length];
+            for (int i = 0; i < normalAchv.Length; i++) achvAPI[i] = normalAchv[i];
+        }
+
+        for (int i = 0; i < starCoinImage.Length; i++)
+        {
+            int starFlgsNum = (stageNum * 3) + i;
+            if ((GameData.stageStar & (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), (int)Mathf.Pow(2, starFlgsNum))) ==
+            (StageStarManager.StageStar)StageStarManager.StageStar.ToObject(typeof(StageStarManager.StageStar), (int)Mathf.Pow(2, starFlgsNum))) starNum++;
+        }
+
+        for (int i = 0; i < 5; i++) starCount += GameData.StageStarCount[i];
+
+        for(int i=0;i<easyAchv.Length;i++)
+        {
+            SteamUserStats.GetAchievement(easyAchv[i], out easyAchvFlg);
+            if (!easyAchvFlg) break;
+        }
+
+        for(int i=0;i< normalAchv.Length;i++)
+        {
+            SteamUserStats.GetAchievement(normalAchv[i], out normalAchvFlg);
+            if (!normalAchvFlg) break;
+        }
+
+        for(int i=0;i< starAchv.Length;i++)
+        {
+            SteamUserStats.GetAchievement(starAchv[i], out starAchvFlg);
+            if (!starAchvFlg) break;
+        }
+
+        if (SteamManager.Initialized)
+        {
+            // API初期化成功後（必須）
+
+            if (SteamUserStats.RequestCurrentStats())
+            {
+                // ユーザーの現在のデータと実績を非同期に要求後（必須）
+
+                // statsを更新
+                SteamUserStats.SetAchievement(achvAPI[stageNum]);
+
+                // 更新を反映
+                SteamUserStats.StoreStats();
+
+                if (starNum >= 3) SteamUserStats.SetAchievement(starAchv[stageNum]);
+
+                // 更新を反映
+                SteamUserStats.StoreStats();
+
+                if (starCount >= 9) SteamUserStats.SetAchievement("beginend");
+
+                // 更新を反映
+                SteamUserStats.StoreStats();
+
+                if (easyAchvFlg) SteamUserStats.SetAchievement("king");
+
+                // 更新を反映
+                SteamUserStats.StoreStats();
+
+                if (normalAchvFlg) SteamUserStats.SetAchievement("legend");
+
+                // 更新を反映
+                SteamUserStats.StoreStats();
+
+                if (easyAchvFlg && normalAchvFlg && starAchvFlg) SteamUserStats.SetAchievement("how");
+
+                // 更新を反映
+                SteamUserStats.StoreStats();
+            }
+        }
+    }
 }
