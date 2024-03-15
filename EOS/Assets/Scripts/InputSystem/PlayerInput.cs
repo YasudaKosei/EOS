@@ -116,6 +116,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""580d7bee-ac75-4ac6-8424-35e3bf6b8076"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""86c60f0d-234c-43e1-8b94-69a13d549f5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -393,6 +411,72 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Respawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1051eddd-baf9-4a11-b221-7a45404046c0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""757ea9f8-ee0e-43ea-befe-1b390bb556d2"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b323378a-f034-4c80-8c4d-8979e8468afb"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48861091-857f-42ae-9162-6bc26e57115e"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b0fad94-fc8d-470f-85c4-b29a2458493a"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""323d61fb-9028-43b6-b1d4-51399f8fd0e2"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -422,6 +506,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_actions_CharaChangeRight = m_actions.FindAction("CharaChangeRight", throwIfNotFound: true);
         m_actions_Skill = m_actions.FindAction("Skill", throwIfNotFound: true);
         m_actions_Respawn = m_actions.FindAction("Respawn", throwIfNotFound: true);
+        m_actions_Right = m_actions.FindAction("Right", throwIfNotFound: true);
+        m_actions_Left = m_actions.FindAction("Left", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -493,6 +579,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_actions_CharaChangeRight;
     private readonly InputAction m_actions_Skill;
     private readonly InputAction m_actions_Respawn;
+    private readonly InputAction m_actions_Right;
+    private readonly InputAction m_actions_Left;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -507,6 +595,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @CharaChangeRight => m_Wrapper.m_actions_CharaChangeRight;
         public InputAction @Skill => m_Wrapper.m_actions_Skill;
         public InputAction @Respawn => m_Wrapper.m_actions_Respawn;
+        public InputAction @Right => m_Wrapper.m_actions_Right;
+        public InputAction @Left => m_Wrapper.m_actions_Left;
         public InputActionMap Get() { return m_Wrapper.m_actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -546,6 +636,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Respawn.started += instance.OnRespawn;
             @Respawn.performed += instance.OnRespawn;
             @Respawn.canceled += instance.OnRespawn;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -580,6 +676,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Respawn.started -= instance.OnRespawn;
             @Respawn.performed -= instance.OnRespawn;
             @Respawn.canceled -= instance.OnRespawn;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -627,5 +729,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnCharaChangeRight(InputAction.CallbackContext context);
         void OnSkill(InputAction.CallbackContext context);
         void OnRespawn(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
     }
 }

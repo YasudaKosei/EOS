@@ -539,6 +539,7 @@ MonoBehaviour:
   - attack
   - place
   - demon
+  option: {fileID: 9035535068532892744, guid: 79fe50562032e6341b8ffa3870dcff81, type: 3}
 --- !u!82 &-3346456834835589040
 AudioSource:
   m_ObjectHideFlags: 0

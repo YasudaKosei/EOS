@@ -18323,7 +18323,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 7216284742402948041, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
-  move: {fileID: -1680190386980627800, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  right: {fileID: -7982452081725194373, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
+  left: {fileID: 9152651192754263632, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   res: {fileID: -1578555938454791807, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
   dm: {fileID: 0}
   pc: {fileID: 0}

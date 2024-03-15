@@ -41,8 +41,13 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     private string[] starAchv;
 
+    [SerializeField]
+    private OptionManager option;
+
     void Awake()
     {
+        option.goalFlg = true;
+
         //非表示
         resultTimeText.enabled = false;
         for (int i = 0; i < starCoinImage.Length; i++) starCoinImage[i].enabled = false;

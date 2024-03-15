@@ -8,7 +8,10 @@ public class OptionManager : MonoBehaviour
     private InputActionReference pause;
 
     [SerializeField]
-    private InputActionReference move;
+    private InputActionReference right;
+
+    [SerializeField]
+    private InputActionReference left;
 
     [SerializeField]
     private InputActionReference res;
@@ -27,10 +30,11 @@ public class OptionManager : MonoBehaviour
 
     private int nowOpution = 1;
 
-    private bool rebindFlg = false;
-
     private const int optionLeftBorder = 1;
     private const int optionRightBorder = 4;
+
+    [HideInInspector]
+    public bool goalFlg = false;
 
     //public static OptionManager instance;
 
@@ -45,13 +49,15 @@ public class OptionManager : MonoBehaviour
 
         //キーの有効化
         pause.action.Enable();
-        move.action.Enable();
+        right.action.Enable();
+        left.action.Enable();
         res.action.Enable();
 
         PanelUpdata();
 
         settingOpenFlg = false;
         optionOpenFlg = false;
+        goalFlg = false;
         settingCan.SetActive(settingOpenFlg);
         optionCan.SetActive(optionOpenFlg);
 
@@ -60,6 +66,8 @@ public class OptionManager : MonoBehaviour
 
     void Update()
     {
+        if (goalFlg) return;
+
         //pauseキーが押されたら
         if (pause.action.triggered)
         {
@@ -78,23 +86,16 @@ public class OptionManager : MonoBehaviour
 
         if (!optionOpenFlg && res.action.triggered && !Stop.stopFlg) Retry();
 
-        Vector2 moveInput = move.action.ReadValue<Vector2>();
-
-        if (moveInput.x >= 0.75f && nowOpution < optionRightBorder && optionOpenFlg && !rebindFlg)
+        if (right.action.triggered && nowOpution < optionRightBorder && optionOpenFlg)
         {
-            rebindFlg = true;
             nowOpution++;
             PanelUpdata();
         }
-        else if (moveInput.x <= -0.75f && nowOpution > optionLeftBorder && optionOpenFlg && !rebindFlg)
+        else if (left.action.triggered && nowOpution > optionLeftBorder && optionOpenFlg)
         {
-            rebindFlg = true;
             nowOpution--;
             PanelUpdata();
         }
-
-        if (moveInput.x >= -0.25f && moveInput.x <= 0.25f && rebindFlg) rebindFlg = false;
-
     }
 
     private void PanelUpdata()

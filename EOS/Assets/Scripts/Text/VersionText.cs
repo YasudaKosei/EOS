@@ -14,7 +14,6 @@ public class VersionText : MonoBehaviour
     void Start()
     {
         vText.text = "Version " + Application.version;
-        Debug.Log("Game Version: " + vText.text);
 
         if (SteamManager.Initialized)
         {
@@ -28,8 +27,6 @@ public class VersionText : MonoBehaviour
                 SteamUserStats.SetAchievement("begin");
                 // 更新を反映
                 bool bSuccess = SteamUserStats.StoreStats();
-
-                Debug.Log(bSuccess);
             }
         }
     }
