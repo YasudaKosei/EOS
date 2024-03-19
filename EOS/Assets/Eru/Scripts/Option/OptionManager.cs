@@ -71,6 +71,7 @@ public class OptionManager : MonoBehaviour
         //pauseキーが押されたら
         if (pause.action.triggered)
         {
+
             if (!optionOpenFlg)
             {
                 settingOpenFlg = !settingOpenFlg;
@@ -96,6 +97,19 @@ public class OptionManager : MonoBehaviour
             nowOpution--;
             PanelUpdata();
         }
+    }
+
+    public void SettingCanvas()
+    {
+        if (goalFlg) return;
+
+        settingOpenFlg = true;
+        settingCan.SetActive(settingOpenFlg);
+
+        optionOpenFlg = false;
+        optionCan.SetActive(optionOpenFlg);
+
+        Stop.stopFlg = settingOpenFlg;
     }
 
     private void PanelUpdata()
@@ -179,5 +193,12 @@ public class OptionManager : MonoBehaviour
 #elif UNITY_STANDALONE
                 UnityEngine.Application.Quit();
 #endif
+    }
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            SettingCanvas();
+        }
     }
 }

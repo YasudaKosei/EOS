@@ -7,7 +7,7 @@ public class PadCursor : MonoBehaviour
     private GameObject cursorCan;
 
     [SerializeField]
-    private GameObject menuUI;
+    private OptionManager optionManager;
 
     private bool currentFlg = false;
 
@@ -60,11 +60,8 @@ public class PadCursor : MonoBehaviour
         {
             if (change == InputDeviceChange.Added)
             {
-                if (menuUI != null)
-                {
-                    Stop.stopFlg = true;
-                    menuUI.SetActive(true);
-                }
+                if (optionManager != null) optionManager.SettingCanvas();
+
                 currentFlg = true;
 
                 Vector3 mp = Input.mousePosition;
@@ -75,11 +72,7 @@ public class PadCursor : MonoBehaviour
             }
             else if (change == InputDeviceChange.Removed)
             {
-                if (menuUI != null)
-                {
-                    Stop.stopFlg = true;
-                    menuUI.SetActive(true);
-                }
+                if (optionManager != null) optionManager.SettingCanvas();
             }
         }
     }
