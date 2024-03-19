@@ -137,7 +137,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 500
+  m_SortingOrder: 998
   m_TargetDisplay: 0
 --- !u!114 &140677577355092494
 MonoBehaviour:
@@ -389,5 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorCan: {fileID: 140677577355092492}
+  optionManager: {fileID: 0}
   TimeToHide: 5
   rectTransform: {fileID: 140677576843662298}
