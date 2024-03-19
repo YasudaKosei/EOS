@@ -8882,6 +8882,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299878e13735ee74697940b3fdcdeff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &822319062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8055848400591276049, guid: 79fe50562032e6341b8ffa3870dcff81, type: 3}
+  m_PrefabInstance: {fileID: 822319060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &823339431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15811,6 +15816,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6617127458018108515, guid: 292d4f1fb91ca8548a5ca31bdf5ca281, type: 3}
+      propertyPath: menuUI
+      value: 
+      objectReference: {fileID: 822319062}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292d4f1fb91ca8548a5ca31bdf5ca281, type: 3}
 --- !u!1001 &1554278742

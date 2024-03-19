@@ -6,6 +6,9 @@ public class PadCursor : MonoBehaviour
     [SerializeField]
     private GameObject cursorCan;
 
+    [SerializeField]
+    private GameObject menuUI;
+
     private bool currentFlg = false;
 
     [Range(0.0f, 15.0f)]
@@ -14,13 +17,11 @@ public class PadCursor : MonoBehaviour
     [SerializeField]
     private RectTransform rectTransform;
 
-    Vector2 previousMousePosition;
     Vector2 currentMousePosition;
 
     void Start()
     {
         Vector3 mp = Input.mousePosition;
-        previousMousePosition = currentMousePosition = new Vector2(mp.x, mp.y);
     }
 
     void Update()
@@ -29,18 +30,57 @@ public class PadCursor : MonoBehaviour
         {
             currentFlg = false;
         }
-        else if(Stop.stopFlg)
+        else if (Stop.stopFlg)
         {
             currentFlg = true;
 
             Vector3 mp = Input.mousePosition;
             currentMousePosition = new Vector2(mp.x, mp.y);
 
-            previousMousePosition = currentMousePosition;
-
             rectTransform.transform.position = new Vector2(Mathf.Clamp(rectTransform.transform.position.x, 50, 1920),
                                                            Mathf.Clamp(rectTransform.transform.position.y, 50, 1080));
         }
+
         cursorCan.SetActive(currentFlg);
+    }
+
+    private void OnEnable()
+    {
+        InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    private void OnDisable()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        if (device is Gamepad)
+        {
+            if (change == InputDeviceChange.Added)
+            {
+                if (menuUI != null)
+                {
+                    Stop.stopFlg = true;
+                    menuUI.SetActive(true);
+                }
+                currentFlg = true;
+
+                Vector3 mp = Input.mousePosition;
+                currentMousePosition = new Vector2(mp.x, mp.y);
+
+                rectTransform.transform.position = new Vector2(Mathf.Clamp(rectTransform.transform.position.x, 50, 1920),
+                                                               Mathf.Clamp(rectTransform.transform.position.y, 50, 1080));
+            }
+            else if (change == InputDeviceChange.Removed)
+            {
+                if (menuUI != null)
+                {
+                    Stop.stopFlg = true;
+                    menuUI.SetActive(true);
+                }
+            }
+        }
     }
 }
