@@ -51,8 +51,6 @@ public class TomatoController : MonoBehaviour, Skill
 
     private AudioSource audioSource;
 
-    private Vector3 offset = new(0f, 0.6f, -0.688f);
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -81,15 +79,6 @@ public class TomatoController : MonoBehaviour, Skill
             return;
         }
 
-        //ジャンプ時の左右ストレイフ制御
-        //if(!isJumping)
-        //{
-        //    lateralmoveSpeed = moveSpeed;
-        //}
-        //else 
-        //{
-        //    lateralmoveSpeed = moveSpeed/ downMoveSpeed;
-        //}
         lateralmoveSpeed = moveSpeed;
 
         // 移動
@@ -131,8 +120,6 @@ public class TomatoController : MonoBehaviour, Skill
 
     private IEnumerator GroundCheck()
     {
-        Debug.Log(this.transform.position + offset);
-        
         if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask))
             isJumping = false;
         else isJumping = true;
