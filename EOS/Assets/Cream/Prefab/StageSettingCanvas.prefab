@@ -13853,7 +13853,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d76ee42c738af1442979842223fabb2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a869a28ca37b35248a0641b7151102b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16585,7 +16585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f238a28bdca7c4187ee9a5f72709fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b05c9ec3b3b4d4d4698483831cacc8a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16814,7 +16814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f238a28bdca7c4187ee9a5f72709fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b05c9ec3b3b4d4d4698483831cacc8a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17041,7 +17041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f238a28bdca7c4187ee9a5f72709fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b05c9ec3b3b4d4d4698483831cacc8a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17545,7 +17545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f238a28bdca7c4187ee9a5f72709fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b05c9ec3b3b4d4d4698483831cacc8a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17692,7 +17692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f238a28bdca7c4187ee9a5f72709fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b05c9ec3b3b4d4d4698483831cacc8a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18335,6 +18335,7 @@ MonoBehaviour:
   keyCan: {fileID: 4821512129630629978}
   padCan: {fileID: 4821512130827237354}
   quitMenu: {fileID: 2604953629722246569}
+  goalFlg: 0
 --- !u!114 &9035535068532892748
 MonoBehaviour:
   m_ObjectHideFlags: 0
