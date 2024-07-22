@@ -205,7 +205,7 @@ MonoBehaviour:
   elevatorFlg: 0
   nowPlayer: {fileID: 0}
   playerType:
-  - {fileID: 7130652301535656318, guid: 4083b98822fa3c04483abe7d713e1423, type: 3}
+  - {fileID: 4227343970007076983, guid: 87354e229b693e446a9905cddf378429, type: 3}
   - {fileID: 4197088861374247355, guid: 276c888a04ca0a542b17074b7b96596e, type: 3}
   - {fileID: 5810004026231032013, guid: 470d1db1c9a607148ab19cf5f8d016c4, type: 3}
   - {fileID: 467147079257345197, guid: a275d319e44d6ea46a83e70fd3856626, type: 3}

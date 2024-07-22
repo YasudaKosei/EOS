@@ -5792,9 +5792,9 @@ GameObject:
   - component: {fileID: 2057771844}
   - component: {fileID: 2057771843}
   - component: {fileID: 2057771842}
-  - component: {fileID: 2057771846}
   - component: {fileID: 2057771845}
   - component: {fileID: 2057771847}
+  - component: {fileID: 2057771848}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5880,40 +5880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a735e28d89e5384ebf0ac949d53c816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2057771846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057771840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2057771847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5926,6 +5892,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c9984420769f14da0428078b6b3138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2057771848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057771840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412e08b6cc1ef7040b77e7033fe7f657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distance: 10
+  sensitivity: 5
+  maxYAngle: 80
+  cameraXY: {fileID: 2747739056584121274, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
 --- !u!1 &2074192419
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class TomatoController : MonoBehaviour, Skill
 
     [SerializeField]
     private InputActionReference jump;
-    
+
     [SerializeField]
     private InputActionReference move;
 
@@ -51,11 +51,14 @@ public class TomatoController : MonoBehaviour, Skill
 
     private AudioSource audioSource;
 
+    private Vector3 offset = new(0f, 0.6f, -0.688f);
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         cam = Camera.main;
+        cam.GetComponent<CameraController>().player = gameObject.transform;
         cameraTransform = cam.transform;
         jump.action.Enable();
         move.action.Enable();
@@ -116,7 +119,7 @@ public class TomatoController : MonoBehaviour, Skill
             audioSource.Play();
         }
 
-        if(!jumpDelayFlg) StartCoroutine(GroundCheck());
+        if (!jumpDelayFlg) StartCoroutine(GroundCheck());
     }
 
     private IEnumerator JumpDalay()
@@ -128,14 +131,14 @@ public class TomatoController : MonoBehaviour, Skill
 
     private IEnumerator GroundCheck()
     {
+        Debug.Log(this.transform.position + offset);
+        
         if (Physics.Raycast(this.transform.position, Vector3.down, out _, groundOffsetY, layerMask))
-        {
             isJumping = false;
-        }
         else isJumping = true;
 
         // 可視化用のデバッグラインを描画
-        Debug.DrawRay(transform.position, Vector3.down * groundOffsetY, Color.red);
+        Debug.DrawRay(this.transform.position, Vector3.down * groundOffsetY, Color.red);
 
         yield break;
     }
