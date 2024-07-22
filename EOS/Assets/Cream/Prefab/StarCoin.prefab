@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 276862708071736384}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 1.15, z: 1.15}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7473765148248369216}
   m_Father: {fileID: 0}
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276862708071736384}
-  m_Mesh: {fileID: -5400830876019117304, guid: ef2030b887691a7459a6851f0557938a, type: 3}
+  m_Mesh: {fileID: 6173938104336740281, guid: 77d0b00bd45ddc84eae1606b4748ffe4, type: 3}
 --- !u!23 &1790006419039487381
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02af422c27d1f8b4d89ba82d0d09b4e3, type: 2}
+  - {fileID: 2100000, guid: e6b6a92f3e5a2d841afe9169e545cba6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.10357377
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4554148658069926224
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starNum: 0
   coinAudioObject: {fileID: 1423707166480679320, guid: b37a952c0e6d0b541869daf1f33af5f7, type: 3}
-  translucent: {fileID: 2100000, guid: e7a49b016072e0447b7d81f07166d6db, type: 2}
+  translucent: {fileID: 2100000, guid: 065fb76aa1163f242a3110fe9e67f268, type: 2}
   effect: {fileID: 7472098988628083508}
 --- !u!114 &4554148658069926225
 MonoBehaviour:
