@@ -32,8 +32,11 @@ public class CameraController : MonoBehaviour
         // 入力がある場合のみカメラを回転させる
         if (input.magnitude > 0.1f)
         {
-            rotation.x += input.x * sensitivity;
-            rotation.y -= input.y * sensitivity;
+            int x = DisplayManager.inversionX ? -1 : 1;
+            int y = DisplayManager.inversionY ? 1 : -1;
+
+            rotation.x += input.x * DisplayManager.sensitivityX * x;
+            rotation.y -= input.y * DisplayManager.sensitivityY * y;
             rotation.y = Mathf.Clamp(rotation.y, -maxYAngle, maxYAngle); // 縦方向の制限
         }
 

@@ -93,9 +93,15 @@ public class ChangeSoundVolume : MonoBehaviour
         {
             //セーブファイルがない場合
             //初期化
+            masterSlider.value = -20f;
+            bgmSlider.value = -20f;
+            seSlider.value = -20f;
             masterToggle.isOn = true;
             bgmToggle.isOn = true;
             seToggle.isOn = true;
+            audioMixer.SetFloat("MasterVolume", masterSlider.value);
+            audioMixer.SetFloat("BgmVolume", bgmSlider.value);
+            audioMixer.SetFloat("SeVolume", seSlider.value);
         }
     }
 
@@ -275,12 +281,15 @@ public class ChangeSoundVolume : MonoBehaviour
         {
             //セーブファイルがない場合
             //初期化
-            masterSlider.value = 0;
-            bgmSlider.value = 0;
-            seSlider.value = 0;
+            masterSlider.value = -20;
+            bgmSlider.value = -20;
+            seSlider.value = -20;
             masterToggle.isOn = true;
             bgmToggle.isOn = true;
             seToggle.isOn = true;
+            audioMixer.SetFloat("MasterVolume", masterSlider.value);
+            audioMixer.SetFloat("BgmVolume", bgmSlider.value);
+            audioMixer.SetFloat("SeVolume", seSlider.value);
         }
     }
 
