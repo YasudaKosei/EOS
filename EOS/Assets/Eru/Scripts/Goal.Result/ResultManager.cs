@@ -1,7 +1,4 @@
-#if !DEBUG
 using Steamworks;
-#endif
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -109,7 +106,6 @@ public class ResultManager : MonoBehaviour
 
     private void SteamAchv()
     {
-#if !DEBUG
         string[] achvAPI;
         int starNum = 0;
         int starCount = 0;
@@ -195,6 +191,5 @@ public class ResultManager : MonoBehaviour
                 SteamUserStats.StoreStats();
             }
         }
-#endif
     }
 }
