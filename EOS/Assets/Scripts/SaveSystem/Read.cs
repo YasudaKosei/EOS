@@ -87,6 +87,8 @@ public class Read : MonoBehaviour
         GameData.easyModeFlg = saveData.easyModeFlg;
 
         GameData.tutorialFlg = saveData.tutorialFlg;
+
+        GameData.distance = saveData.distance;
     }
 
     /// AesManagedマネージャーを取得

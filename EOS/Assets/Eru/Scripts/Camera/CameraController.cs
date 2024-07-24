@@ -5,8 +5,6 @@ public class CameraController : MonoBehaviour
 {
     public Transform player;         // プレイヤーのTransform
     [SerializeField]
-    private float distance = 10.0f;    // プレイヤーからの距離
-    [SerializeField]
     private float sensitivity = 5.0f; // マウスやスティックの感度
     [SerializeField]
     private float maxYAngle = 80f;    // カメラの縦方向の制限角度
@@ -25,11 +23,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private InputActionReference zoomOutPad;
 
-    private float scroll = 0.0f;
-
     private void Start()
     {
-        offset = new Vector3(0, 0, -distance);
+        offset = new Vector3(0, 0, -GameData.distance);
         cameraXY.action.Enable();
         zoom.action.Enable();
         zoomInPad.action.Enable();
@@ -66,25 +62,25 @@ public class CameraController : MonoBehaviour
 
 
         //Zoom
-        if (zoomInPad.action.triggered)
+        if (zoomInPad.action.IsPressed())
         {
-            distance -= 0.5f;
-            distance = Mathf.Clamp(distance, 1, 10);
-            offset = new Vector3(0, 0, -distance);
+            GameData.distance *= 1.05f;
+            GameData.distance = Mathf.Clamp(GameData.distance, 1, 10);
+            offset = new Vector3(0, 0, -GameData.distance);
         }
-        else if (zoomOutPad.action.triggered)
+        else if (zoomOutPad.action.IsPressed())
         {
-            distance += 0.5f;
-            distance = Mathf.Clamp(distance, 1, 10);
-            offset = new Vector3(0, 0, -distance);
+            GameData.distance *= 0.95f;
+            GameData.distance = Mathf.Clamp(GameData.distance, 1, 10);
+            offset = new Vector3(0, 0, -GameData.distance);
         }
 
         float inputZoom = zoom.action.ReadValue<float>();
         if (inputZoom != 0)
         {
-            distance -= inputZoom;
-            distance = Mathf.Clamp(distance, 1, 10);
-            offset = new Vector3(0, 0, -distance);
+            GameData.distance -= inputZoom;
+            GameData.distance = Mathf.Clamp(GameData.distance, 1, 10);
+            offset = new Vector3(0, 0, -GameData.distance);
         }
     }
 }

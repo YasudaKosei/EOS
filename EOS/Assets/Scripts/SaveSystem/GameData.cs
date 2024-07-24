@@ -11,4 +11,6 @@ public class GameData
     public static bool easyModeFlg = false;
 
     public static bool tutorialFlg = false;
+
+    public static float distance = 6.0f;
 }
