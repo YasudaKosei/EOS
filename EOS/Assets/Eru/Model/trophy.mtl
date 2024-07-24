@@ -1,0 +1,9 @@
+# Created by Metasequoia
+
+newmtl mat2
+Ka 0.53880 0.53880 0.60000
+Kd 0.71840 0.71840 0.80000
+Ks 0.00000 0.00000 0.00000
+Ns 5.00000
+map_Kd trophytex.png
+
