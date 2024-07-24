@@ -16,10 +16,24 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private InputActionReference cameraXY;
 
+    [SerializeField]
+    private InputActionReference zoom;
+
+    [SerializeField]
+    private InputActionReference zoomInPad;
+
+    [SerializeField]
+    private InputActionReference zoomOutPad;
+
+    private float scroll = 0.0f;
+
     private void Start()
     {
         offset = new Vector3(0, 0, -distance);
         cameraXY.action.Enable();
+        zoom.action.Enable();
+        zoomInPad.action.Enable();
+        zoomOutPad.action.Enable();
     }
 
     private void Update()
@@ -48,5 +62,29 @@ public class CameraController : MonoBehaviour
         // プレイヤーの移動に合わせてカメラも移動
         Vector3 desiredPosition = player.position + rotationQuat * offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 5.0f);
+
+
+
+        //Zoom
+        if (zoomInPad.action.triggered)
+        {
+            distance -= 0.5f;
+            distance = Mathf.Clamp(distance, 1, 10);
+            offset = new Vector3(0, 0, -distance);
+        }
+        else if (zoomOutPad.action.triggered)
+        {
+            distance += 0.5f;
+            distance = Mathf.Clamp(distance, 1, 10);
+            offset = new Vector3(0, 0, -distance);
+        }
+
+        float inputZoom = zoom.action.ReadValue<float>();
+        if (inputZoom != 0)
+        {
+            distance -= inputZoom;
+            distance = Mathf.Clamp(distance, 1, 10);
+            offset = new Vector3(0, 0, -distance);
+        }
     }
 }
