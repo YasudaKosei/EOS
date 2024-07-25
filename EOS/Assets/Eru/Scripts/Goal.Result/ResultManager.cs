@@ -1,4 +1,7 @@
+#if !UNITY_SWITCH
 using Steamworks;
+#endif
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -64,7 +67,10 @@ public class ResultManager : MonoBehaviour
         if (GameData.StageClearTime[stageNum] == 0 || GameData.StageClearTime[stageNum] > tm.ITimer) GameData.StageClearTime[stageNum] = tm.ITimer;
 
         dm.Save();
+
+#if !UNITY_SWITCH
         SteamAchv();
+#endif
 
         StartCoroutine(Show());
     }
@@ -104,6 +110,7 @@ public class ResultManager : MonoBehaviour
         yield break;
     }
 
+#if !UNITY_SWITCH
     private void SteamAchv()
     {
         string[] achvAPI;
@@ -192,4 +199,5 @@ public class ResultManager : MonoBehaviour
             }
         }
     }
+#endif
 }

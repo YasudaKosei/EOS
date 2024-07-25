@@ -1,4 +1,6 @@
+#if !UNITY_SWITCH
 using Steamworks;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +15,7 @@ public class VersionText : MonoBehaviour
     {
         vText.text = "Version " + Application.version;
 
+#if !UNITY_SWITCH
         if (SteamManager.Initialized)
         {
             // API初期化成功後（必須）
@@ -27,6 +30,7 @@ public class VersionText : MonoBehaviour
                 bool bSuccess = SteamUserStats.StoreStats();
             }
         }
+#endif
     }
 }
 
