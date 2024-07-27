@@ -82,6 +82,8 @@ public class Save : MonoBehaviour
 
         saveData.tutorialFlg = GameData.tutorialFlg;
 
+        saveData.distance = GameData.distance;
+
         return saveData;
     }
 

@@ -12,4 +12,6 @@ public class SaveData
     public bool easyModeFlg = false;
 
     public bool tutorialFlg = false;
+
+    public float distance = 6;
 }

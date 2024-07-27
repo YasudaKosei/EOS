@@ -56,6 +56,7 @@ public class TomatoController : MonoBehaviour, Skill
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         cam = Camera.main;
+        cam.GetComponent<CameraController>().player = this.gameObject.transform;
         cameraTransform = cam.transform;
         jump.action.Enable();
         move.action.Enable();

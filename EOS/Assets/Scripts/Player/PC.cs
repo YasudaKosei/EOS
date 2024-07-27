@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using Cinemachine;
 
 public class PC : MonoBehaviour
 {
@@ -36,22 +35,12 @@ public class PC : MonoBehaviour
 
     private Vector3 nowPos;
 
-    private GameObject CMFreeLook;
-    private CinemachineFreeLook freeLook;
-
     void Awake()
     {
         //有効化
         change.action.Enable();
 
-        CMFreeLook = GameObject.Find("CM FreeLook1");
-        freeLook = CMFreeLook.GetComponent<CinemachineFreeLook>();
-
         nowPlayer = Instantiate(playerType[playerID], startPos.position, Quaternion.identity);
-
-        freeLook.Follow = nowPlayer.transform;
-        freeLook.LookAt = nowPlayer.transform;
-
     }
 
     void Update()
@@ -76,10 +65,6 @@ public class PC : MonoBehaviour
         nowPos.y += 1f;
         Destroy(nowPlayer);
         nowPlayer = Instantiate(playerType[playerID], nowPos, Quaternion.identity);
-
-        freeLook.Follow = nowPlayer.transform;
-        freeLook.LookAt = nowPlayer.transform;
-
     }
 
     public void PlayerRespawn()
