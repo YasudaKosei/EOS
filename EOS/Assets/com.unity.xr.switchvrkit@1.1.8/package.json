@@ -1,0 +1,32 @@
+{
+  "name": "com.unity.xr.switchvrkit",
+  "displayName": "Switch VR Kit",
+  "version": "1.1.8",
+  "unity": "2019.3",
+  "description": "Provides rendering and input support for Switch VR Kit devices using the XRSDK.",
+  "keywords": [
+    "Switch",
+    "VR Kit",
+    "xr",
+    "reality",
+    "xreditorsubsystem",
+    "xrsdk"
+  ],
+  "registry": "https://staging-packages.unity.com",
+  "documentationUrl": "",
+  "dependencies": {
+    "com.unity.xr.management": "3.2.15",
+    "com.unity.ext.nunit": "1.0.0"
+  },
+  "_upm": {
+    "changelog": "- Fix the memory alignment issue on Unity 6."
+  },
+  "upmCi": {
+    "footprint": "ec63a3cc4264e53b3616cb47706e3c68b59a2b98"
+  },
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/com.unity.xr.switchvrkit.git",
+    "type": "git",
+    "revision": "3e287033fc793fbc9d356a80d0fab70565f7283c"
+  }
+}
