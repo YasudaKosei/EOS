@@ -29,80 +29,12 @@ public class ChangeSoundVolume : MonoBehaviour
     [SerializeField, Header("SEミュートトグル")]
     private Toggle seToggle;
 
-    private void Start()
+    FsSaveDataPlayerPrefs fsSaveDataPlayerPrefs;
+
+    private void Awake()
     {
+        fsSaveDataPlayerPrefs = GameObject.FindWithTag("SaveData").GetComponent<FsSaveDataPlayerPrefs>();
         Load();
-        StartCoroutine(StartTpggle());
-    }
-
-    private IEnumerator StartTpggle()
-    {
-        yield return new WaitForSeconds(1.0f);
-
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
-
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //セーブファイルのパスを設定
-        string SaveFilePath = path + "/SoundVolume.bytes";
-
-        //セーブファイルがあるか
-        if (File.Exists(SaveFilePath))
-        {
-            //ファイルモードをオープンにする
-            FileStream file = new FileStream(SaveFilePath, FileMode.Open, FileAccess.Read);
-            try
-            {
-                // ファイル読み込み
-                byte[] arrRead = File.ReadAllBytes(SaveFilePath);
-
-                // 復号化
-                byte[] arrDecrypt = AesDecrypt(arrRead);
-
-                // byte配列を文字列に変換
-                string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
-
-                // JSON形式の文字列をセーブデータのクラスに変換
-                AudioSaveData saveData = JsonUtility.FromJson<AudioSaveData>(decryptStr);
-
-                //データの反映
-                masterToggle.isOn = saveData.masFlg;
-                bgmToggle.isOn = saveData.bgmFlg;
-                seToggle.isOn = saveData.seFlg;
-
-            }
-            finally
-            {
-                // ファイルを閉じる
-                if (file != null)
-                {
-                    file.Close();
-                }
-            }
-        }
-        else
-        {
-            //セーブファイルがない場合
-            //初期化
-            masterSlider.value = -20f;
-            bgmSlider.value = -20f;
-            seSlider.value = -20f;
-            masterToggle.isOn = true;
-            bgmToggle.isOn = true;
-            seToggle.isOn = true;
-            audioMixer.SetFloat("MasterVolume", masterSlider.value);
-            audioMixer.SetFloat("BgmVolume", bgmSlider.value);
-            audioMixer.SetFloat("SeVolume", seSlider.value);
-        }
     }
 
     private void OnDestroy()
@@ -119,6 +51,7 @@ public class ChangeSoundVolume : MonoBehaviour
         }
         else bgmToggle.isOn = true;
         audioMixer.SetFloat("BgmVolume", volume);
+        Save();
     }
 
     public void SetSE(float volume)
@@ -130,6 +63,7 @@ public class ChangeSoundVolume : MonoBehaviour
         }
         else seToggle.isOn = true;
         audioMixer.SetFloat("SeVolume", volume);
+        Save();
     }
 
     public void SetMASTER(float volume)
@@ -141,6 +75,7 @@ public class ChangeSoundVolume : MonoBehaviour
         }
         else masterToggle.isOn = true;
         audioMixer.SetFloat("MasterVolume", volume);
+        Save();
     }
 
     public void MuteMASTER(bool mute)
@@ -150,6 +85,7 @@ public class ChangeSoundVolume : MonoBehaviour
         else vol = masterSlider.value;
 
         audioMixer.SetFloat("MasterVolume", vol);
+        Save();
     }
 
     public void MuteBGM(bool mute)
@@ -159,6 +95,7 @@ public class ChangeSoundVolume : MonoBehaviour
         else vol = bgmSlider.value;
 
         audioMixer.SetFloat("BgmVolume", vol);
+        Save();
     }
 
     public void MuteSE(bool mute)
@@ -168,6 +105,7 @@ public class ChangeSoundVolume : MonoBehaviour
         else vol = seSlider.value;
 
         audioMixer.SetFloat("SeVolume", vol);
+        Save();
     }
 
 
@@ -176,120 +114,41 @@ public class ChangeSoundVolume : MonoBehaviour
     /// </summary>
     public void Save()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
-
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //セーブファイルのパスを設定
-        string SaveFilePath = path + "/SoundVolume.bytes";
-
         // セーブデータの作成
         AudioSaveData saveData = CreateSaveData();
 
         // セーブデータをJSON形式の文字列に変換
         string jsonString = JsonUtility.ToJson(saveData);
 
-        // 文字列をbyte配列に変換
-        byte[] bytes = Encoding.UTF8.GetBytes(jsonString);
+        PlayerPrefs.SetString("ChangeSoundVolume", jsonString);
 
-        // AES暗号化
-        byte[] arrEncrypted = AesEncrypt(bytes);
-
-        // 指定したパスにファイルを作成
-        FileStream file = new(SaveFilePath, FileMode.Create, FileAccess.Write);
-
-        //ファイルに保存する
-        try
-        {
-            // ファイルに保存
-            file.Write(arrEncrypted, 0, arrEncrypted.Length);
-        }
-        finally
-        {
-            // ファイルを閉じる
-            if (file != null)
-            {
-                file.Close();
-            }
-        }
+        fsSaveDataPlayerPrefs.SavePlayerPrefs();
     }
 
-
-    /// <summary>
-    /// ロード
-    /// </summary>
     public void Load()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
+        string decryptStr = PlayerPrefs.GetString("ChangeSoundVolume", "");
 
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //セーブファイルのパスを設定
-        string SaveFilePath = path + "/SoundVolume.bytes";
-
-        //セーブファイルがあるか
-        if (File.Exists(SaveFilePath))
+        if (decryptStr == "")
         {
-            //ファイルモードをオープンにする
-            FileStream file = new FileStream(SaveFilePath, FileMode.Open, FileAccess.Read);
-            try
-            {
-                // ファイル読み込み
-                byte[] arrRead = File.ReadAllBytes(SaveFilePath);
-
-                // 復号化
-                byte[] arrDecrypt = AesDecrypt(arrRead);
-
-                // byte配列を文字列に変換
-                string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
-
-                // JSON形式の文字列をセーブデータのクラスに変換
-                AudioSaveData saveData = JsonUtility.FromJson<AudioSaveData>(decryptStr);
-
-                //データの反映
-                ReadData(saveData);
-
-            }
-            finally
-            {
-                // ファイルを閉じる
-                if (file != null)
-                {
-                    file.Close();
-                }
-            }
-        }
-        else
-        {
-            //セーブファイルがない場合
-            //初期化
-            masterSlider.value = -20;
-            bgmSlider.value = -20;
-            seSlider.value = -20;
+            masterSlider.value = -20f;
+            bgmSlider.value = -20f;
+            seSlider.value = -20f;
             masterToggle.isOn = true;
             bgmToggle.isOn = true;
             seToggle.isOn = true;
             audioMixer.SetFloat("MasterVolume", masterSlider.value);
             audioMixer.SetFloat("BgmVolume", bgmSlider.value);
             audioMixer.SetFloat("SeVolume", seSlider.value);
+            Save();
+        }
+        else
+        {
+            // JSON形式の文字列をセーブデータのクラスに変換
+            AudioSaveData saveData = JsonUtility.FromJson<AudioSaveData>(decryptStr);
+
+            //データの反映
+            ReadData(saveData);
         }
     }
 
@@ -401,26 +260,7 @@ public class ChangeSoundVolume : MonoBehaviour
     /// </summary>
     public void Init()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
 
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //ファイル削除
-        File.Delete(path + "/SoundVolume.bytes");
-
-        //リロード
-        Load();
-
-        Debug.Log("データの初期化が終わりました");
     }
 }
 

@@ -45,9 +45,17 @@ public class DisplayManager : MonoBehaviour
     public static bool inversionY = true;
     public static bool JapaneseFlg = true;
 
-    void Start()
+    FsSaveDataPlayerPrefs fsSaveDataPlayerPrefs;
+
+    private void Awake()
     {
+        fsSaveDataPlayerPrefs = GameObject.FindWithTag("SaveData").GetComponent<FsSaveDataPlayerPrefs>();
         Load();
+    }
+
+    private void Start()
+    {
+        LanguageChange();
     }
 
     private void OnDestroy()
@@ -68,6 +76,7 @@ public class DisplayManager : MonoBehaviour
 
         //更新
         ChangeDisplay();
+        Save(); 
     }
 
     /// <summary>
@@ -140,6 +149,7 @@ public class DisplayManager : MonoBehaviour
 
         //更新
         ChangeDisplay();
+        Save();
     }
 
     /// <summary>
@@ -155,6 +165,7 @@ public class DisplayManager : MonoBehaviour
             resolutionDropDown.value = 0;
             ChangeResolution();
         }
+        Save();
     }
 
     /// <summary>
@@ -163,9 +174,16 @@ public class DisplayManager : MonoBehaviour
     /// <param name="value"></param>
     public void LanguageChange()
     {
-        if (languageDropDown.value == 0) JapaneseFlg = true;
-        else JapaneseFlg = false;
+        string lang = nn.oe.Language.GetDesired();
 
+        if (lang == "ja")
+        {
+            JapaneseFlg = true;
+        }
+        else
+        {
+            JapaneseFlg = false;
+        }
         LanguageUpdate();
     }
 
@@ -251,110 +269,29 @@ public class DisplayManager : MonoBehaviour
 
         toggleX.isOn = inversionX;
         toggleY.isOn = inversionY;
+
+        Save();
     }
 
 
     public void Save()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
-
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //セーブファイルのパスを設定
-        string SaveFilePath = path + "/display.bytes";
-
         // セーブデータの作成
         DisplaySaveData saveData = CreateSaveData();
 
         // セーブデータをJSON形式の文字列に変換
         string jsonString = JsonUtility.ToJson(saveData);
 
-        // 文字列をbyte配列に変換
-        byte[] bytes = Encoding.UTF8.GetBytes(jsonString);
+        PlayerPrefs.SetString("DisplayManager", jsonString);
 
-        // AES暗号化
-        byte[] arrEncrypted = AesEncrypt(bytes);
-
-        // 指定したパスにファイルを作成
-        FileStream file = new(SaveFilePath, FileMode.Create, FileAccess.Write);
-
-        //ファイルに保存する
-        try
-        {
-            // ファイルに保存
-            file.Write(arrEncrypted, 0, arrEncrypted.Length);
-        }
-        finally
-        {
-            // ファイルを閉じる
-            if (file != null)
-            {
-                file.Close();
-            }
-        }
+        fsSaveDataPlayerPrefs.SavePlayerPrefs();
     }
-
 
     public void Load()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
+        string decryptStr = PlayerPrefs.GetString("DisplayManager", "");
 
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //セーブファイルのパスを設定
-        string SaveFilePath = path + "/display.bytes";
-
-        //セーブファイルがあるか
-        if (File.Exists(SaveFilePath))
-        {
-            //ファイルモードをオープンにする
-            FileStream file = new(SaveFilePath, FileMode.Open, FileAccess.Read);
-            try
-            {
-                // ファイル読み込み
-                byte[] arrRead = File.ReadAllBytes(SaveFilePath);
-
-                // 復号化
-                byte[] arrDecrypt = AesDecrypt(arrRead);
-
-                // byte配列を文字列に変換
-                string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
-
-                // JSON形式の文字列をセーブデータのクラスに変換
-                DisplaySaveData saveData = JsonUtility.FromJson<DisplaySaveData>(decryptStr);
-
-                //データの反映
-                ReadData(saveData);
-
-            }
-            finally
-            {
-                // ファイルを閉じる
-                if (file != null)
-                {
-                    file.Close();
-                }
-            }
-        }
-        else
+        if (decryptStr == "")
         {
             screenDropDown.value = 0;
             resolutionDropDown.value = 0;
@@ -362,6 +299,15 @@ public class DisplayManager : MonoBehaviour
             sensitivityY = 2.0f;
             inversionX = false;
             inversionY = true;
+            Save();
+        }
+        else
+        {
+            // JSON形式の文字列をセーブデータのクラスに変換
+            DisplaySaveData saveData = JsonUtility.FromJson<DisplaySaveData>(decryptStr);
+
+            //データの反映
+            ReadData(saveData);
         }
 
         //更新
@@ -370,7 +316,6 @@ public class DisplayManager : MonoBehaviour
         SensitivityUpdate();
         LanguageUpdate();
     }
-
 
 
     // セーブデータの作成
@@ -456,26 +401,7 @@ public class DisplayManager : MonoBehaviour
     //セーブデータ削除
     public void Init()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
 
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
-
-#endif
-
-        //ファイル削除
-        File.Delete(path + "/display.bytes");
-
-        //リロード
-        Load();
-
-        Debug.Log("データの初期化が終わりました");
     }
 }
 

@@ -3959,7 +3959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2604953630251319786
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11787,7 +11787,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9035535068532892748}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RebindSaveManager, Assembly-CSharp
         m_MethodName: Init
         m_Mode: 1
@@ -12235,7 +12235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4821512129959034574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14535,7 +14535,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9035535068532892748}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RebindSaveManager, Assembly-CSharp
         m_MethodName: Init
         m_Mode: 1
@@ -18017,7 +18017,6 @@ GameObject:
   - component: {fileID: 9035535068532892747}
   - component: {fileID: 9035535068532892740}
   - component: {fileID: 9035535068532892744}
-  - component: {fileID: 9035535068532892748}
   - component: {fileID: 9035535068532892749}
   - component: {fileID: 9035535068532892750}
   - component: {fileID: 9035535068532892743}
@@ -18142,30 +18141,6 @@ MonoBehaviour:
   padCan: {fileID: 4821512130827237354}
   quitMenu: {fileID: 2604953629722246569}
   goalFlg: 0
---- !u!114 &9035535068532892748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9035535068532892741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a73003c49a406b4c89908babad0117b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionAsset: {fileID: -944628639613478452, guid: 63e51ee15a949d64e9af9c7e665c796f, type: 3}
-  rebindUI:
-  - {fileID: 4032388267844482456}
-  - {fileID: 4032388266400193844}
-  - {fileID: 4032388267615257551}
-  - {fileID: 4032388267216815988}
-  - {fileID: 4032388266722845845}
-  - {fileID: 4032388267091192103}
-  - {fileID: 4032388266630658359}
-  - {fileID: 4032388266285920839}
-  - {fileID: 4032388267467735823}
-  - {fileID: 4032388267028660008}
 --- !u!114 &9035535068532892749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18227,7 +18202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9035535068532892741}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 299bc70abb2ecac479cf4763a6672582, type: 3}
   m_Name: 
@@ -18258,7 +18233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9035535068532892741}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fff05819e9c2b5844815bcd5960d6d36, type: 3}
   m_Name: 

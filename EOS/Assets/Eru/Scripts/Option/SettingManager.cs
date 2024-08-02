@@ -20,7 +20,7 @@ public class SettingManager : MonoBehaviour
     private int nowOpution = 1;
 
     private const int optionLeftBorder = 1;
-    private const int optionRightBorder = 4;
+    private const int optionRightBorder = 2;
 
     //public static OptionManager instance;
 

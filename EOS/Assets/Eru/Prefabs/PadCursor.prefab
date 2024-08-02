@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 140677577355092480}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -111,7 +110,6 @@ RectTransform:
   m_Children:
   - {fileID: 140677576843662298}
   m_Father: {fileID: 6617127458018108514}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -135,7 +133,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 998
   m_TargetDisplay: 0
@@ -228,7 +228,15 @@ MonoBehaviour:
       m_SingletonActionBindings:
       - m_Name: 
         m_Id: 3f1921a5-e80e-45ed-8a1e-63a300e39235
-        m_Path: <Gamepad>/buttonSouth
+        m_Path: <SwitchProControllerHID>/buttonEast
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Button
+        m_Flags: 0
+      - m_Name: 
+        m_Id: e2c0f5dd-0d98-45e1-b279-8bb34b83bf5c
+        m_Path: <NPad>/buttonEast
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -367,6 +375,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617127458018108512}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -374,7 +383,6 @@ Transform:
   m_Children:
   - {fileID: 140677577355092480}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6617127458018108515
 MonoBehaviour:

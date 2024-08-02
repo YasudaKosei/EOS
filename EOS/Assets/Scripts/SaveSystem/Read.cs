@@ -14,61 +14,13 @@ public class Read : MonoBehaviour
 
     private void DoRead()
     {
-#if UNITY_EDITOR
-        //UnityEditor上なら
-        //Assetファイルの中のSaveファイルのパスを入れる
-        string path = Application.dataPath + "/Save";
+        string decryptStr = PlayerPrefs.GetString("Save", "");
 
-#else
-        //そうでなければ
-        //.exeがあるところにSaveファイルを作成しそこのパスを入れる
-        Directory.CreateDirectory("Save");
-        string path = Directory.GetCurrentDirectory() + "/Save";
+        // JSON形式の文字列をセーブデータのクラスに変換
+        SaveData saveData = JsonUtility.FromJson<SaveData>(decryptStr);
 
-#endif
-
-        //セーブファイルのパスを設定
-        string SaveFilePath = path + "/save.bytes";
-
-        //セーブファイルがあるか
-        if (File.Exists(SaveFilePath))
-        {
-            DataManager.saveData = true;
-
-            //ファイルモードをオープンにする
-            FileStream file = new(SaveFilePath, FileMode.Open, FileAccess.Read);
-            try
-            {
-                // ファイル読み込み
-                byte[] arrRead = File.ReadAllBytes(SaveFilePath);
-
-                // 復号化
-                byte[] arrDecrypt = AesDecrypt(arrRead);
-
-                // byte配列を文字列に変換
-                string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
-
-                // JSON形式の文字列をセーブデータのクラスに変換
-                SaveData saveData = JsonUtility.FromJson<SaveData>(decryptStr);
-
-                //データの反映
-                ReadData(saveData);
-
-            }
-            finally
-            {
-                // ファイルを閉じる
-                if (file != null)
-                {
-                    file.Close();
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("セーブファイルがありません");
-            DataManager.saveData = false;
-        }
+        //データの反映
+        ReadData(saveData);
 
         this.enabled = false;
 
