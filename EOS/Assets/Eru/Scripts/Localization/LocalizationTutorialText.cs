@@ -12,10 +12,18 @@ public class LocalizationTutorialText : MonoBehaviour
     [SerializeField, Header("英語")]
     private string[] textEN;
 
-    void Update()
+    void Start()
     {
-        if (DisplayManager.JapaneseFlg) Japanese();
-        else English();
+        string lang = nn.oe.Language.GetDesired();
+
+        if (lang == "ja")
+        {
+            Japanese();
+        }
+        else
+        {
+            English();
+        }
     }
 
     private void Japanese()

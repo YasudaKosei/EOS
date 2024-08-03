@@ -16723,6 +16723,7 @@ GameObject:
   - component: {fileID: 8055848400243223717}
   - component: {fileID: 8055848400243223719}
   - component: {fileID: 8055848400243223716}
+  - component: {fileID: 7155826552491090866}
   m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -16790,7 +16791,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Settings
+  m_Text: 
+--- !u!114 &7155826552491090866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055848400243223722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7d44537e45e784f953a41d8e520533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jpText: "\u8A2D\u5B9A"
+  enText: Settings
 --- !u!1 &8055848400337627436
 GameObject:
   m_ObjectHideFlags: 0
@@ -16948,6 +16963,7 @@ GameObject:
   - component: {fileID: 8055848400412485268}
   - component: {fileID: 8055848400412485270}
   - component: {fileID: 8055848400412485271}
+  - component: {fileID: 7780563439986735631}
   m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -17015,7 +17031,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: StageSelect
+  m_Text: 
+--- !u!114 &7780563439986735631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055848400412485269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7d44537e45e784f953a41d8e520533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jpText: "\u30B9\u30C6\u30FC\u30B8\u30BB\u30EC\u30AF\u30C8"
+  enText: StageSelect
 --- !u!1 &8055848400591276049
 GameObject:
   m_ObjectHideFlags: 0
@@ -17063,6 +17093,7 @@ GameObject:
   - component: {fileID: 8055848400621817920}
   - component: {fileID: 8055848400621817922}
   - component: {fileID: 8055848400621817923}
+  - component: {fileID: 5350191597222979631}
   m_Layer: 0
   m_Name: MenuText
   m_TagString: Untagged
@@ -17130,7 +17161,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: 
+--- !u!114 &5350191597222979631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055848400621817921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7d44537e45e784f953a41d8e520533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jpText: "\u30E1\u30CB\u30E5\u30FC"
+  enText: MENU
 --- !u!1 &8055848400674289703
 GameObject:
   m_ObjectHideFlags: 0
@@ -17142,6 +17187,7 @@ GameObject:
   - component: {fileID: 8055848400674289702}
   - component: {fileID: 8055848400674289696}
   - component: {fileID: 8055848400674289697}
+  - component: {fileID: 5864739499475170321}
   m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -17209,7 +17255,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry
+  m_Text: 
+--- !u!114 &5864739499475170321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055848400674289703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7d44537e45e784f953a41d8e520533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jpText: "\u30EA\u30C8\u30E9\u30A4"
+  enText: Retry
 --- !u!1 &8055848401288494436
 GameObject:
   m_ObjectHideFlags: 0
@@ -17221,6 +17281,7 @@ GameObject:
   - component: {fileID: 8055848401288494439}
   - component: {fileID: 8055848401288494433}
   - component: {fileID: 8055848401288494438}
+  - component: {fileID: 1216860394678357832}
   m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -17288,7 +17349,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CloseMenu
+  m_Text: 
+--- !u!114 &1216860394678357832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055848401288494436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7d44537e45e784f953a41d8e520533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jpText: "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B"
+  enText: CloseMenu
 --- !u!1 &8055848401425413944
 GameObject:
   m_ObjectHideFlags: 0

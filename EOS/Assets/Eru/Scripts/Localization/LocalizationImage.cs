@@ -12,10 +12,18 @@ public class LocalizationImage : MonoBehaviour
     [SerializeField, Header("英語画像")]
     private Sprite[] spriteEN = new Sprite[31];
 
-    void Update()
+    void Start()
     {
-        if (DisplayManager.JapaneseFlg) Japanese();
-        else English();
+        string lang = nn.oe.Language.GetDesired();
+
+        if (lang == "ja")
+        {
+            Japanese();
+        }
+        else
+        {
+            English();
+        }
     }
 
     private void Japanese()
